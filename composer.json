@@ -1,0 +1,38 @@
+{
+    "name": "graham-campbell/github",
+    "description": "GitHub Is A GitHub Bridge For Laravel 4.1+",
+    "keywords": ["laravel", "framework", "github", "php-github-api", "PHP GitHub API", "github bridge", "bridge", "GitHub", "Laravel GitHub", "Laravel-GitHub", "Graham Campbell", "GrahamCampbell"],
+    "license": "Apache-2.0",
+    "authors": [
+        {
+            "name": "Graham Campbell",
+            "email": "graham@mineuk.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.4.7",
+        "illuminate/support": "~4.1",
+        "graham-campbell/manager": "~1.0",
+        "knplabs/github-api": "~1.2"
+    },
+    "require-dev": {
+        "graham-campbell/testbench": "~1.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "GrahamCampbell\\GitHub\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "GrahamCampbell\\Tests\\GitHub\\": "tests/"
+        }
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "0.1-dev"
+        }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}
