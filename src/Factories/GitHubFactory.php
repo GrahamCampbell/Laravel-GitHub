@@ -50,7 +50,7 @@ class GitHubFactory
     /**
      * Make a new github client.
      *
-     * @param array $config
+     * @param string[] $config
      *
      * @return \Github\Client
      */
@@ -76,7 +76,7 @@ class GitHubFactory
     /**
      * Get the configuration data.
      *
-     * @param array $config
+     * @param string[] $config
      *
      * @throws \InvalidArgumentException
      *
@@ -95,7 +95,7 @@ class GitHubFactory
      * Get the main client.
      *
      * @param \Github\HttpClient\CachedHttpClient $http
-     * @param array                               $config
+     * @param string[]                            $config
      *
      * @return \Github\Client
      */
