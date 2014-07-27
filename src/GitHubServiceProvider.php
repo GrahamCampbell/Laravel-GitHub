@@ -21,18 +21,16 @@ use Illuminate\Support\ServiceProvider;
 /**
  * This is the github service provider class.
  *
- * @package    Laravel-GitHub
- * @author     Graham Campbell
- * @copyright  Copyright 2014 Graham Campbell
- * @license    https://github.com/GrahamCampbell/Laravel-GitHub/blob/master/LICENSE.md
- * @link       https://github.com/GrahamCampbell/Laravel-GitHub
+ * @author    Graham Campbell <graham@mineuk.com>
+ * @copyright 2014 Graham Campbell
+ * @license   <https://github.com/GrahamCampbell/Laravel-GitHub/blob/master/LICENSE.md> Apache 2.0
  */
 class GitHubServiceProvider extends ServiceProvider
 {
     /**
      * Indicates if loading of the provider is deferred.
      *
-     * @var bool
+     * @type bool
      */
     protected $defer = false;
 

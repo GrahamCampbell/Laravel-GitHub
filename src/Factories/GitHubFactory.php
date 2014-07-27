@@ -22,25 +22,24 @@ use Github\HttpClient\CachedHttpClient;
 /**
  * This is the github factory class.
  *
- * @package    Laravel-GitHub
- * @author     Graham Campbell
- * @copyright  Copyright 2014 Graham Campbell
- * @license    https://github.com/GrahamCampbell/Laravel-GitHub/blob/master/LICENSE.md
- * @link       https://github.com/GrahamCampbell/Laravel-GitHub
+ * @author    Graham Campbell <graham@mineuk.com>
+ * @copyright 2014 Graham Campbell
+ * @license   <https://github.com/GrahamCampbell/Laravel-GitHub/blob/master/LICENSE.md> Apache 2.0
  */
 class GitHubFactory
 {
     /**
      * The cache path.
      *
-     * @var string
+     * @type string
      */
     protected $path;
 
     /**
      * Create a new github factory instance.
      *
-     * @param  string  $path
+     * @param string $path
+     *
      * @return void
      */
     public function __construct($path)
@@ -51,7 +50,8 @@ class GitHubFactory
     /**
      * Make a new github client.
      *
-     * @param  array  $config
+     * @param array $config
+     *
      * @return \Github\Client
      */
     public function make(array $config)
@@ -76,10 +76,11 @@ class GitHubFactory
     /**
      * Get the configuration data.
      *
-     * @param  array  $config
-     * @return array
+     * @param array $config
      *
      * @throws \InvalidArgumentException
+     *
+     * @return string[]
      */
     protected function getConfig(array $config)
     {
@@ -93,8 +94,9 @@ class GitHubFactory
     /**
      * Get the main client.
      *
-     * @param  \Github\HttpClient\CachedHttpClient  $http
-     * @param  array  $config
+     * @param \Github\HttpClient\CachedHttpClient $http
+     * @param array                               $config
+     *
      * @return \Github\Client
      */
     protected function getClient(CachedHttpClient $http, array $config)
