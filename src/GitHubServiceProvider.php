@@ -51,20 +51,36 @@ class GitHubServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->registerGitHubManager();
+        $this->registerFactory();
+        $this->registerManager();
     }
 
     /**
-     * Register the github manager class.
+     * Register the factory class.
      *
      * @return void
      */
-    protected function registerGitHubManager()
+    protected function registerFactory()
+    {
+        $this->app->bindShared('github.factory', function ($app) {
+            $path = $app['path.storage'] . '/github';
+
+            return new Factories\GitHubFactory($path);
+        });
+
+        $this->app->alias('github.factory', 'GrahamCampbell\GitHub\Factories\GitHubFactory');
+    }
+
+    /**
+     * Register the manager class.
+     *
+     * @return void
+     */
+    protected function registerManager()
     {
         $this->app->bindShared('github', function ($app) {
             $config = $app['config'];
-            $path = $app['path.storage'] . '/github';
-            $factory = new Factories\GitHubFactory($path);
+            $factory = $app['github.factory'];
 
             return new GitHubManager($config, $factory);
         });
@@ -80,7 +96,8 @@ class GitHubServiceProvider extends ServiceProvider
     public function provides()
     {
         return array(
-            'github'
+            'github',
+            'github.factory'
         );
     }
 }

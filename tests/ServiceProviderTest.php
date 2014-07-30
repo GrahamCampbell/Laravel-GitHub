@@ -29,6 +29,11 @@ class ServiceProviderTest extends AbstractTestCase
 {
     use ServiceProviderTestCaseTrait;
 
+    public function testGitHubFactoryIsInjectable()
+    {
+        $this->assertIsInjectable('GrahamCampbell\GitHub\Factories\GitHubFactory');
+    }
+
     public function testGitHubManagerIsInjectable()
     {
         $this->assertIsInjectable('GrahamCampbell\GitHub\GitHubManager');
