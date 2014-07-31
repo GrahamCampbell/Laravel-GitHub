@@ -31,7 +31,7 @@ class GitHubFactory
     /**
      * The cache path.
      *
-     * @type string
+     * @var string
      */
     protected $path;
 

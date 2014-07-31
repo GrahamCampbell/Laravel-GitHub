@@ -32,7 +32,7 @@ class GitHubManager extends AbstractManager
     /**
      * The factory instance.
      *
-     * @type \GrahamCampbell\GitHub\Factories\GitHubFactory
+     * @var \GrahamCampbell\GitHub\Factories\GitHubFactory
      */
     protected $factory;
 
