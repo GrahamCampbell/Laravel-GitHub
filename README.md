@@ -64,6 +64,80 @@ This facade will dynamically pass static method calls to the `'github'` object i
 
 This class contains no public methods of interest. This class should be added to the providers array in `app/config/app.php`. This class will setup ioc bindings.
 
+##### Real Examples
+
+Here you can see an example of just how simple this package is to use. Out of the box, the default adapter is `main`. After you enter your authentication details in the config file, it will just work:
+
+```php
+use GrahamCampbell\GitHub\Facades\GitHub;
+// you can alias this in app/config/app.php if you like
+
+GitHub::api('me')->organizations();
+// we're done here - how easy was that, it just works!
+
+GitHub::api('repo')->show('GrahamCampbell', 'Laravel-GitHub');
+// this example is simple, and there are far more methods available
+```
+
+The github manager will behave like it is a `\GitHub\Client` class. If you want to call specific connections, you can do with the `connection` method:
+
+```php
+use GrahamCampbell\GitHub\Facades\GitHub;
+
+// the alternative connection is the other example provided in the default config
+GitHub::connection('alternative')->api('me')->emails()->add('foo@bar.com');
+
+// now we can see that new email address in the list of all the user's emails
+GitHub::connection('alternative')->api('me')->emails()->all();
+```
+
+With that in mind, note that:
+
+```php
+use GrahamCampbell\GitHub\Facades\GitHub;
+
+// writing this:
+GitHub::connection('main')->api('issues')->show('GrahamCampbell', 'Laravel-GitHub', 2);
+
+// is identical to writing this:
+GitHub::api('issues')->show('GrahamCampbell', 'Laravel-GitHub', 2);
+
+// and is also identical to writing this:
+GitHub::connection()->api('issues')->show('GrahamCampbell', 'Laravel-GitHub', 2);
+
+// this is because the main connection is configured to be the default
+GitHub::getDefaultConnection(); // this will return main
+
+// we can change the default connection
+GitHub::setDefaultConnection('alternative'); // the default is now alternative
+```
+
+If you prefer to use dependency injection over facades like me, then you can easily inject the manager like so:
+
+```php
+use GrahamCampbell\GitHub\GitHubManager;
+use Illuminate\Support\Facades\App; // you probably have this aliased already
+
+class Foo
+{
+    protected $github;
+
+    public function __construct(GitHubManager $github)
+    {
+        $this->github = $github;
+    }
+
+    public function bar()
+    {
+        $this->github->api('issues')->show('GrahamCampbell', 'Laravel-GitHub', 2);
+    }
+}
+
+App::make('Foo')->bar();
+```
+
+For more information on how to use the `\GitHub\Client` class we are calling behind the scenes here, check out the docs at https://github.com/KnpLabs/php-github-api/blob/master/doc/index.md, and the manager class at https://github.com/GrahamCampbell/Laravel-Manager#usage.
+
 ##### Further Information
 
 There are other classes in this package that are not documented here. This is because they are not intended for public use and are used internally by this package.
