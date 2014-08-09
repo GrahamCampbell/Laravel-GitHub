@@ -87,7 +87,7 @@ use GrahamCampbell\GitHub\Facades\GitHub;
 // the alternative connection is the other example provided in the default config
 GitHub::connection('alternative')->api('me')->emails()->add('foo@bar.com');
 
-// now we can see that new email address in the list of all the user's emails
+// now we can see the new email address in the list of all the user's emails
 GitHub::connection('alternative')->api('me')->emails()->all();
 ```
 
