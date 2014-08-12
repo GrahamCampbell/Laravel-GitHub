@@ -23,6 +23,17 @@ use Illuminate\Config\Repository;
 /**
  * This is the github manager class.
  *
+ * @method \Github\Api\ApiInterface api(string $name)
+ * @method void authenticate(string $tokenOrLogin, string|null $password = null, string|null $authMethod = null)
+ * @method void setEnterpriseUrl(string $enterpriseUrl)
+ * @method \Github\HttpClient\HttpClientInterface getHttpClient()
+ * @method void setHttpClient(\Github\HttpClient\HttpClientInterface $httpClient)
+ * @method void clearHeaders()
+ * @method void setHeaders(array $headers)
+ * @method mixed getOption(string $name)
+ * @method void setOption(string $name, mixed $value)
+ * @method array getSupportedApiVersions()
+ *
  * @author    Graham Campbell <graham@mineuk.com>
  * @copyright 2014 Graham Campbell
  * @license   <https://github.com/GrahamCampbell/Laravel-GitHub/blob/master/LICENSE.md> Apache 2.0
