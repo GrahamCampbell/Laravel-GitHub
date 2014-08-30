@@ -16,7 +16,6 @@
 
 namespace GrahamCampbell\Tests\GitHub\Factories;
 
-use Mockery;
 use GrahamCampbell\Tests\GitHub\AbstractTestCase;
 use GrahamCampbell\GitHub\Factories\GitHubFactory;
 

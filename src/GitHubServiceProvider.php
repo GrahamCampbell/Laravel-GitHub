@@ -63,7 +63,7 @@ class GitHubServiceProvider extends ServiceProvider
     protected function registerFactory()
     {
         $this->app->bindShared('github.factory', function ($app) {
-            $path = $app['path.storage'] . '/github';
+            $path = $app['path.storage'].'/github';
 
             return new Factories\GitHubFactory($path);
         });
