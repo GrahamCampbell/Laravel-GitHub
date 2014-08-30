@@ -2,11 +2,11 @@ Laravel GitHub
 ==============
 
 
-[![Build Status](https://img.shields.io/travis/GrahamCampbell/Laravel-GitHub/master.svg?style=flat)](https://travis-ci.org/GrahamCampbell/Laravel-GitHub)
-[![Coverage Status](https://img.shields.io/scrutinizer/coverage/g/GrahamCampbell/Laravel-GitHub.svg?style=flat)](https://scrutinizer-ci.com/g/GrahamCampbell/Laravel-GitHub/code-structure)
-[![Quality Score](https://img.shields.io/scrutinizer/g/GrahamCampbell/Laravel-GitHub.svg?style=flat)](https://scrutinizer-ci.com/g/GrahamCampbell/Laravel-GitHub)
-[![Software License](https://img.shields.io/badge/license-Apache%202.0-brightgreen.svg?style=flat)](LICENSE.md)
-[![Latest Version](https://img.shields.io/github/release/GrahamCampbell/Laravel-GitHub.svg?style=flat)](https://github.com/GrahamCampbell/Laravel-GitHub/releases)
+[![Build Status](https://img.shields.io/travis/GrahamCampbell/Laravel-GitHub/master.svg?style=flat-square)](https://travis-ci.org/GrahamCampbell/Laravel-GitHub)
+[![Coverage Status](https://img.shields.io/scrutinizer/coverage/g/GrahamCampbell/Laravel-GitHub.svg?style=flat-square)](https://scrutinizer-ci.com/g/GrahamCampbell/Laravel-GitHub/code-structure)
+[![Quality Score](https://img.shields.io/scrutinizer/g/GrahamCampbell/Laravel-GitHub.svg?style=flat-square)](https://scrutinizer-ci.com/g/GrahamCampbell/Laravel-GitHub)
+[![Software License](https://img.shields.io/badge/license-Apache%202.0-brightgreen.svg?style=flat-square)](LICENSE.md)
+[![Latest Version](https://img.shields.io/github/release/GrahamCampbell/Laravel-GitHub.svg?style=flat-square)](https://github.com/GrahamCampbell/Laravel-GitHub/releases)
 
 
 ## Introduction
