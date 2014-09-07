@@ -38,7 +38,7 @@ class GitHubManagerTest extends AbstractTestBenchTestCase
         $manager->getConfig()->shouldReceive('get')->once()
             ->with('graham-campbell/github::default')->andReturn('main');
 
-        $this->assertEquals($manager->getConnections(), array());
+        $this->assertSame(array(), $manager->getConnections());
 
         $return = $manager->connection();
 
