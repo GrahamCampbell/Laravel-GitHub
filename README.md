@@ -72,10 +72,10 @@ Here you can see an example of just how simple this package is to use. Out of th
 use GrahamCampbell\GitHub\Facades\GitHub;
 // you can alias this in app/config/app.php if you like
 
-GitHub::api('me')->organizations();
+GitHub::me()->organizations();
 // we're done here - how easy was that, it just works!
 
-GitHub::api('repo')->show('GrahamCampbell', 'Laravel-GitHub');
+GitHub::repo()->show('GrahamCampbell', 'Laravel-GitHub');
 // this example is simple, and there are far more methods available
 ```
 
@@ -85,10 +85,10 @@ The github manager will behave like it is a `\GitHub\Client` class. If you want 
 use GrahamCampbell\GitHub\Facades\GitHub;
 
 // the alternative connection is the other example provided in the default config
-GitHub::connection('alternative')->api('me')->emails()->add('foo@bar.com');
+GitHub::connection('alternative')->me()->emails()->add('foo@bar.com');
 
 // now we can see the new email address in the list of all the user's emails
-GitHub::connection('alternative')->api('me')->emails()->all();
+GitHub::connection('alternative')->me()->emails()->all();
 ```
 
 With that in mind, note that:
@@ -97,13 +97,13 @@ With that in mind, note that:
 use GrahamCampbell\GitHub\Facades\GitHub;
 
 // writing this:
-GitHub::connection('main')->api('issues')->show('GrahamCampbell', 'Laravel-GitHub', 2);
+GitHub::connection('main')->issues()->show('GrahamCampbell', 'Laravel-GitHub', 2);
 
 // is identical to writing this:
-GitHub::api('issues')->show('GrahamCampbell', 'Laravel-GitHub', 2);
+GitHub::issues()->show('GrahamCampbell', 'Laravel-GitHub', 2);
 
 // and is also identical to writing this:
-GitHub::connection()->api('issues')->show('GrahamCampbell', 'Laravel-GitHub', 2);
+GitHub::connection()->issues()->show('GrahamCampbell', 'Laravel-GitHub', 2);
 
 // this is because the main connection is configured to be the default
 GitHub::getDefaultConnection(); // this will return main
@@ -129,7 +129,7 @@ class Foo
 
     public function bar()
     {
-        $this->github->api('issues')->show('GrahamCampbell', 'Laravel-GitHub', 2);
+        $this->github->issues()->show('GrahamCampbell', 'Laravel-GitHub', 2);
     }
 }
 
