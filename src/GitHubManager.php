@@ -18,7 +18,7 @@ namespace GrahamCampbell\GitHub;
 
 use GrahamCampbell\GitHub\Factories\GitHubFactory;
 use GrahamCampbell\Manager\AbstractManager;
-use Illuminate\Config\Repository;
+use Illuminate\Contracts\Config\Config;
 
 /**
  * This is the github manager class.
@@ -77,12 +77,12 @@ class GitHubManager extends AbstractManager
     /**
      * Create a new github manager instance.
      *
-     * @param \Illuminate\Config\Repository                  $config
+     * @param \Illuminate\Contracts\Config\Config            $config
      * @param \GrahamCampbell\GitHub\Factories\GitHubFactory $factory
      *
      * @return void
      */
-    public function __construct(Repository $config, GitHubFactory $factory)
+    public function __construct(Config $config, GitHubFactory $factory)
     {
         parent::__construct($config);
         $this->factory = $factory;

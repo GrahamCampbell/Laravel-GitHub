@@ -9,21 +9,21 @@ Laravel GitHub
 [![Latest Version](https://img.shields.io/github/release/GrahamCampbell/Laravel-GitHub.svg?style=flat-square)](https://github.com/GrahamCampbell/Laravel-GitHub/releases)
 
 
-### Looking for a laravel 5 compatable version?
+### Looking for a laravel 4 compatable version?
 
-Checkout the [master branch](https://github.com/GrahamCampbell/Laravel-GitHub/tree/master), installable by requiring `"graham-campbell/github": "~2.0"`.
+Checkout the [1.0 branch](https://github.com/GrahamCampbell/Laravel-GitHub/tree/1.0), installable by requiring `"graham-campbell/github": "~1.0"`.
 
 
 ## Introduction
 
-Laravel GitHub was created by, and is maintained by [Graham Campbell](https://github.com/GrahamCampbell), and is a [PHP GitHub API](https://github.com/KnpLabs/php-github-api) bridge for [Laravel 4.1/4.2](http://laravel.com). It utilises my [Laravel Manager](https://github.com/GrahamCampbell/Laravel-Manager) package. Feel free to check out the [change log](CHANGELOG.md), [releases](https://github.com/GrahamCampbell/Laravel-GitHub/releases), [license](LICENSE.md), [api docs](http://docs.grahamjcampbell.co.uk), and [contribution guidelines](CONTRIBUTING.md).
+Laravel GitHub was created by, and is maintained by [Graham Campbell](https://github.com/GrahamCampbell), and is a [PHP GitHub API](https://github.com/KnpLabs/php-github-api) bridge for [Laravel 5](http://laravel.com). It utilises my [Laravel Manager](https://github.com/GrahamCampbell/Laravel-Manager) package. Feel free to check out the [change log](CHANGELOG.md), [releases](https://github.com/GrahamCampbell/Laravel-GitHub/releases), [license](LICENSE.md), [api docs](http://docs.grahamjcampbell.co.uk), and [contribution guidelines](CONTRIBUTING.md).
 
 
 ## Installation
 
 [PHP](https://php.net) 5.4+ or [HHVM](http://hhvm.com) 3.2+, and [Composer](https://getcomposer.org) are required.
 
-To get the latest version of Laravel GitHub, simply require `"graham-campbell/github": "~1.0"` in your `composer.json` file. You'll then need to run `composer install` or `composer update` to download it and have the autoloader updated.
+To get the latest version of Laravel GitHub, simply require `"graham-campbell/github": "~2.0"` in your `composer.json` file. You'll then need to run `composer install` or `composer update` to download it and have the autoloader updated.
 
 Once Laravel GitHub is installed, you need to register the service provider. Open up `app/config/app.php` and add the following to the `providers` key.
 
