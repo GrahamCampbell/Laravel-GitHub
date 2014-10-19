@@ -16,9 +16,9 @@
 
 namespace GrahamCampbell\Tests\GitHub;
 
-use Mockery;
 use GrahamCampbell\GitHub\GitHubManager;
 use GrahamCampbell\TestBench\AbstractTestCase as AbstractTestBenchTestCase;
+use Mockery;
 
 /**
  * This is the github manager test class.
