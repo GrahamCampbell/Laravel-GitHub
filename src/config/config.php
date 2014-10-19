@@ -43,13 +43,13 @@ return array(
     'connections' => array(
 
         'main' => array(
-            'token'   => 'your-token'
+            'token'   => 'your-token',
         ),
 
         'alternative' => array(
-            'token'   => 'your-token'
-        )
+            'token'   => 'your-token',
+        ),
 
-    )
+    ),
 
 );

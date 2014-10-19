@@ -16,8 +16,8 @@
 
 namespace GrahamCampbell\Tests\GitHub\Factories;
 
-use GrahamCampbell\Tests\GitHub\AbstractTestCase;
 use GrahamCampbell\GitHub\Factories\GitHubFactory;
+use GrahamCampbell\Tests\GitHub\AbstractTestCase;
 
 /**
  * This is the filesystem factory test class.

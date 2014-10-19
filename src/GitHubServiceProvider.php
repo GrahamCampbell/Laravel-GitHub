@@ -97,7 +97,7 @@ class GitHubServiceProvider extends ServiceProvider
     {
         return array(
             'github',
-            'github.factory'
+            'github.factory',
         );
     }
 }

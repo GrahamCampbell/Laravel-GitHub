@@ -2,11 +2,13 @@ CHANGE LOG
 ==========
 
 
-## V1.0 RC 1 (Upcoming)
+## V1.0 (Upcoming)
 
 * Improved the test suite
+* Added cs fixers to the test suite
 * Increased the minimum upstream version
-* Other minor fixes and tweaks
+* Improved the docs
+* Other minor tweaks
 
 
 ## V0.1.1 Alpha (12/08/2014)

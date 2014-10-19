@@ -16,8 +16,8 @@
 
 namespace GrahamCampbell\Tests\GitHub\Facades;
 
-use GrahamCampbell\Tests\GitHub\AbstractTestCase;
 use GrahamCampbell\TestBench\Traits\FacadeTestCaseTrait;
+use GrahamCampbell\Tests\GitHub\AbstractTestCase;
 
 /**
  * This is the github facade test class.
