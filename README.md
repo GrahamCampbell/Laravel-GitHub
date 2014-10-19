@@ -41,7 +41,7 @@ Laravel GitHub requires connection configuration.
 To get started, first publish the package config file:
 
 ```bash
-$ php artisan config:publish graham-campbell/github
+$ php artisan publish:config graham-campbell/github
 ```
 
 There are two config options:
