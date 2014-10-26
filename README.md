@@ -26,11 +26,11 @@ To get the latest version of Laravel GitHub, simply add the following line to th
 
 You'll then need to run `composer install` or `composer update` to download it and have the autoloader updated.
 
-Once Laravel GitHub is installed, you need to register the service provider. Open up `app/config/app.php` and add the following to the `providers` key.
+Once Laravel GitHub is installed, you need to register the service provider. Open up `config/app.php` and add the following to the `providers` key.
 
 * `'GrahamCampbell\GitHub\GitHubServiceProvider'`
 
-You can register the GitHub facade in the `aliases` key of your `app/config/app.php` file if you like.
+You can register the GitHub facade in the `aliases` key of your `config/app.php` file if you like.
 
 * `'GitHub' => 'GrahamCampbell\GitHub\Facades\GitHub'`
 
@@ -72,7 +72,7 @@ This facade will dynamically pass static method calls to the `'github'` object i
 
 ##### GitHubServiceProvider
 
-This class contains no public methods of interest. This class should be added to the providers array in `app/config/app.php`. This class will setup ioc bindings.
+This class contains no public methods of interest. This class should be added to the providers array in `config/app.php`. This class will setup ioc bindings.
 
 ##### Real Examples
 
@@ -80,7 +80,7 @@ Here you can see an example of just how simple this package is to use. Out of th
 
 ```php
 use GrahamCampbell\GitHub\Facades\GitHub;
-// you can alias this in app/config/app.php if you like
+// you can alias this in config/app.php if you like
 
 GitHub::me()->organizations();
 // we're done here - how easy was that, it just works!
