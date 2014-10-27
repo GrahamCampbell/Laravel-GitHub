@@ -62,7 +62,7 @@ class GitHubServiceProvider extends ServiceProvider
      */
     protected function registerFactory()
     {
-        $this->app->bindShared('github.factory', function ($app) {
+        $this->app->singleton('github.factory', function ($app) {
             $path = $app['path.storage'].'/github';
 
             return new Factories\GitHubFactory($path);
@@ -78,7 +78,7 @@ class GitHubServiceProvider extends ServiceProvider
      */
     protected function registerManager()
     {
-        $this->app->bindShared('github', function ($app) {
+        $this->app->singleton('github', function ($app) {
             $config = $app['config'];
             $factory = $app['github.factory'];
 
