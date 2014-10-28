@@ -31,14 +31,14 @@ class GitHubManagerTest extends AbstractTestBenchTestCase
 {
     public function testCreateConnection()
     {
-        $config = array('token' => 'your-token');
+        $config = ['token' => 'your-token'];
 
         $manager = $this->getManager($config);
 
         $manager->getConfig()->shouldReceive('get')->once()
             ->with('graham-campbell/github::default')->andReturn('main');
 
-        $this->assertSame(array(), $manager->getConnections());
+        $this->assertSame([], $manager->getConnections());
 
         $return = $manager->connection();
 
@@ -55,7 +55,7 @@ class GitHubManagerTest extends AbstractTestBenchTestCase
         $manager = new GitHubManager($repo, $factory);
 
         $manager->getConfig()->shouldReceive('get')->once()
-            ->with('graham-campbell/github::connections')->andReturn(array('main' => $config));
+            ->with('graham-campbell/github::connections')->andReturn(['main' => $config]);
 
         $config['name'] = 'main';
 
