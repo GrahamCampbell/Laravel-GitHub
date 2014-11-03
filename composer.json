@@ -9,6 +9,12 @@
             "email": "graham@mineuk.com"
         }
     ],
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "https://github.com/GrahamCampbell/testbench"
+        }
+    ],
     "require": {
         "php": ">=5.4.7",
         "illuminate/contracts": "~5.0",
@@ -17,6 +23,7 @@
         "knplabs/github-api": "~1.3"
     },
     "require-dev": {
+        "orchestra/testbench": "dev-fix-logging as 3.0.x-dev",
         "graham-campbell/testbench": "~2.0"
     },
     "autoload": {
