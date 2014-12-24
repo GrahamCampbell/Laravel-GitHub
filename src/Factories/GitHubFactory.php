@@ -70,7 +70,7 @@ class GitHubFactory
      */
     protected function getHttp()
     {
-        return new CachedHttpClient(array('cache_dir' => $this->path));
+        return new CachedHttpClient(['cache_dir' => $this->path]);
     }
 
     /**
@@ -88,7 +88,7 @@ class GitHubFactory
             throw new \InvalidArgumentException('The github client requires configuration.');
         }
 
-        return array_only($config, array('token'));
+        return array_only($config, ['token']);
     }
 
     /**

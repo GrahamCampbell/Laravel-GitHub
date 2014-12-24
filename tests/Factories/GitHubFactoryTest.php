@@ -32,7 +32,7 @@ class GitHubFactoryTest extends AbstractTestCase
     {
         $factory = $this->getFactory();
 
-        $return = $factory->make(array('token'  => 'your-token'));
+        $return = $factory->make(['token'  => 'your-token']);
 
         $this->assertInstanceOf('GitHub\Client', $return);
     }
@@ -44,7 +44,7 @@ class GitHubFactoryTest extends AbstractTestCase
     {
         $factory = $this->getFactory();
 
-        $factory->make(array());
+        $factory->make([]);
     }
 
     protected function getFactory()
