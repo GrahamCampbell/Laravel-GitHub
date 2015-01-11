@@ -2,7 +2,7 @@
     "name": "graham-campbell/github",
     "description": "GitHub Is A GitHub Bridge For Laravel 4.1/4.2",
     "keywords": ["laravel", "framework", "github", "php-github-api", "PHP GitHub API", "github bridge", "bridge", "GitHub", "Laravel GitHub", "Laravel-GitHub", "Graham Campbell", "GrahamCampbell"],
-    "license": "Apache-2.0",
+    "license": "MIT",
     "authors": [
         {
             "name": "Graham Campbell",

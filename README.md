@@ -1,7 +1,7 @@
 Laravel GitHub
 ==============
 
-Laravel GitHub was created by, and is maintained by [Graham Campbell](https://github.com/GrahamCampbell), and is a [PHP GitHub API](https://github.com/KnpLabs/php-github-api) bridge for [Laravel 4.1/4.2](http://laravel.com). It utilises my [Laravel Manager](https://github.com/GrahamCampbell/Laravel-Manager) package. Feel free to check out the [change log](CHANGELOG.md), [releases](https://github.com/GrahamCampbell/Laravel-GitHub/releases), [license](LICENSE.md), [api docs](http://docs.grahamjcampbell.co.uk), and [contribution guidelines](CONTRIBUTING.md).
+Laravel GitHub was created by, and is maintained by [Graham Campbell](https://github.com/GrahamCampbell), and is a [PHP GitHub API](https://github.com/KnpLabs/php-github-api) bridge for [Laravel 4.1/4.2](http://laravel.com). It utilises my [Laravel Manager](https://github.com/GrahamCampbell/Laravel-Manager) package. Feel free to check out the [change log](CHANGELOG.md), [releases](https://github.com/GrahamCampbell/Laravel-GitHub/releases), [license](LICENSE), [api docs](http://docs.grahamjcampbell.co.uk), and [contribution guidelines](CONTRIBUTING.md).
 
 ![Laravel GitHub](https://cloud.githubusercontent.com/assets/2829600/4432304/c142959e-468c-11e4-9efe-b219dae94557.PNG)
 
@@ -9,7 +9,7 @@ Laravel GitHub was created by, and is maintained by [Graham Campbell](https://gi
 <a href="https://travis-ci.org/GrahamCampbell/Laravel-GitHub"><img src="https://img.shields.io/travis/GrahamCampbell/Laravel-GitHub/master.svg?style=flat-square" alt="Build Status"></img></a>
 <a href="https://scrutinizer-ci.com/g/GrahamCampbell/Laravel-GitHub/code-structure"><img src="https://img.shields.io/scrutinizer/coverage/g/GrahamCampbell/Laravel-GitHub.svg?style=flat-square" alt="Coverage Status"></img></a>
 <a href="https://scrutinizer-ci.com/g/GrahamCampbell/Laravel-GitHub"><img src="https://img.shields.io/scrutinizer/g/GrahamCampbell/Laravel-GitHub.svg?style=flat-square" alt="Quality Score"></img></a>
-<a href="LICENSE.md"><img src="https://img.shields.io/badge/license-Apache%202.0-brightgreen.svg?style=flat-square" alt="Software License"></img></a>
+<a href="LICENSE"><img src="https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square" alt="Software License"></img></a>
 <a href="https://github.com/GrahamCampbell/Laravel-GitHub/releases"><img src="https://img.shields.io/github/release/GrahamCampbell/Laravel-GitHub.svg?style=flat-square" alt="Latest Version"></img></a>
 </p>
 
@@ -157,18 +157,4 @@ Feel free to check out the [API Documentation](http://docs.grahamjcampbell.co.uk
 
 ## License
 
-Apache License
-
-Copyright 2014 Graham Campbell
-
-Licensed under the Apache License, Version 2.0 (the "License");
-you may not use this file except in compliance with the License.
-You may obtain a copy of the License at
-
- http://www.apache.org/licenses/LICENSE-2.0
-
-Unless required by applicable law or agreed to in writing, software
-distributed under the License is distributed on an "AS IS" BASIS,
-WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-See the License for the specific language governing permissions and
-limitations under the License.
+Laravel GitHub is licensed under [The MIT License (MIT)](LICENSE).
