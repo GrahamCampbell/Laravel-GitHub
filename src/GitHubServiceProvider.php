@@ -11,7 +11,7 @@
 
 namespace GrahamCampbell\GitHub;
 
-use Illuminate\Support\ServiceProvider;
+use Orchestra\Support\Providers\ServiceProvider;
 
 /**
  * This is the github service provider class.
@@ -21,20 +21,13 @@ use Illuminate\Support\ServiceProvider;
 class GitHubServiceProvider extends ServiceProvider
 {
     /**
-     * Indicates if loading of the provider is deferred.
-     *
-     * @var bool
-     */
-    protected $defer = false;
-
-    /**
-     * Bootstrap the application events.
+     * Boot the service provider.
      *
      * @return void
      */
     public function boot()
     {
-        $this->package('graham-campbell/github', 'graham-campbell/github', __DIR__);
+        $this->addConfigComponent('graham-campbell/github', 'graham-campbell/github', realpath(__DIR__.'/../config'));
     }
 
     /**
