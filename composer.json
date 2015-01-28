@@ -13,8 +13,6 @@
         "php": ">=5.4.7",
         "illuminate/contracts": "5.0.*",
         "illuminate/support": "5.0.*",
-        "orchestra/config": "3.0.*",
-        "orchestra/support-providers": "3.0.*",
         "graham-campbell/manager": "~2.0",
         "knplabs/github-api": "~1.3"
     },

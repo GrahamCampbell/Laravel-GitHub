@@ -11,7 +11,8 @@
 
 namespace GrahamCampbell\GitHub;
 
-use Orchestra\Support\Providers\ServiceProvider;
+use Illuminate\Contracts\Foundation\Application;
+use Illuminate\Support\ServiceProvider;
 
 /**
  * This is the github service provider class.
@@ -27,7 +28,21 @@ class GitHubServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        $this->addConfigComponent('graham-campbell/github', 'graham-campbell/github', realpath(__DIR__.'/../config'));
+        $this->setupConfig();
+    }
+
+    /**
+     * Setup the config.
+     *
+     * @return void
+     */
+    protected function setupConfig()
+    {
+        $source = realpath(__DIR__.'/../config/github.php');
+
+        $this->publishes([$source => config_path('github.php')]);
+
+        $this->mergeConfigFrom('github', $source);
     }
 
     /**
@@ -37,41 +52,45 @@ class GitHubServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->registerFactory();
-        $this->registerManager();
+        $this->registerFactory($this->app);
+        $this->registerManager($this->app);
     }
 
     /**
      * Register the factory class.
      *
+     * @param \Illuminate\Contracts\Foundation\Application $app
+     *
      * @return void
      */
-    protected function registerFactory()
+    protected function registerFactory(Application $app)
     {
-        $this->app->singleton('github.factory', function ($app) {
+        $app->singleton('github.factory', function ($app) {
             $path = $app['path.storage'].'/github';
 
             return new Factories\GitHubFactory($path);
         });
 
-        $this->app->alias('github.factory', 'GrahamCampbell\GitHub\Factories\GitHubFactory');
+        $app->alias('github.factory', 'GrahamCampbell\GitHub\Factories\GitHubFactory');
     }
 
     /**
      * Register the manager class.
      *
+     * @param \Illuminate\Contracts\Foundation\Application $app
+     *
      * @return void
      */
-    protected function registerManager()
+    protected function registerManager(Application $app)
     {
-        $this->app->singleton('github', function ($app) {
+        $app->singleton('github', function ($app) {
             $config = $app['config'];
             $factory = $app['github.factory'];
 
             return new GitHubManager($config, $factory);
         });
 
-        $this->app->alias('github', 'GrahamCampbell\GitHub\GitHubManager');
+        $app->alias('github', 'GrahamCampbell\GitHub\GitHubManager');
     }
 
     /**

@@ -29,7 +29,7 @@ class GitHubManagerTest extends AbstractTestBenchTestCase
         $manager = $this->getManager($config);
 
         $manager->getConfig()->shouldReceive('get')->once()
-            ->with('graham-campbell/github::default')->andReturn('main');
+            ->with('github.default')->andReturn('main');
 
         $this->assertSame([], $manager->getConnections());
 
@@ -48,7 +48,7 @@ class GitHubManagerTest extends AbstractTestBenchTestCase
         $manager = new GitHubManager($repo, $factory);
 
         $manager->getConfig()->shouldReceive('get')->once()
-            ->with('graham-campbell/github::connections')->andReturn(['main' => $config]);
+            ->with('github.connections')->andReturn(['main' => $config]);
 
         $config['name'] = 'main';
 

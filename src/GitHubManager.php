@@ -100,7 +100,7 @@ class GitHubManager extends AbstractManager
      */
     protected function getConfigName()
     {
-        return 'graham-campbell/github';
+        return 'github';
     }
 
     /**
