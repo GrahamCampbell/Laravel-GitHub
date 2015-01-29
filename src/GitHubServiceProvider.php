@@ -42,7 +42,7 @@ class GitHubServiceProvider extends ServiceProvider
 
         $this->publishes([$source => config_path('github.php')]);
 
-        $this->mergeConfigFrom($source,'github');
+        $this->mergeConfigFrom($source, 'github');
     }
 
     /**
