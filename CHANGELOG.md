@@ -2,7 +2,7 @@ CHANGE LOG
 ==========
 
 
-## V2.0 Beta 1 (Upcoming)
+## V2.0 (05/02/2015)
 
 * Upgraded to laravel 5.0
 
