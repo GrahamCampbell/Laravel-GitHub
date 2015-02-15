@@ -13,6 +13,7 @@ namespace GrahamCampbell\GitHub\Factories;
 
 use Github\Client;
 use Github\HttpClient\CachedHttpClient;
+use GrahamCampbell\GitHub\Authenticators\AuthenticatorFactory;
 
 /**
  * This is the github factory class.
@@ -21,6 +22,13 @@ use Github\HttpClient\CachedHttpClient;
  */
 class GitHubFactory
 {
+    /**
+     * The authenticator factory instance.
+     *
+     * @var \GrahamCampbell\GitHub\Authenticators\AuthenticatorFactory
+     */
+    protected $auth;
+
     /**
      * The cache path.
      *
@@ -35,8 +43,9 @@ class GitHubFactory
      *
      * @return void
      */
-    public function __construct($path)
+    public function __construct(AuthenticatorFactory $auth, $path)
     {
+        $this->auth = $auth;
         $this->path = $path;
     }
 
@@ -49,9 +58,7 @@ class GitHubFactory
      */
     public function make(array $config)
     {
-        $http = $this->getHttp();
-
-        $config = $this->getConfig($config);
+        $http = $this->getHttpClient();
 
         return $this->getClient($http, $config);
     }
@@ -61,27 +68,9 @@ class GitHubFactory
      *
      * @return \Github\HttpClient\CachedHttpClient
      */
-    protected function getHttp()
+    protected function getHttpClient()
     {
         return new CachedHttpClient(['cache_dir' => $this->path]);
-    }
-
-    /**
-     * Get the configuration data.
-     *
-     * @param string[] $config
-     *
-     * @throws \InvalidArgumentException
-     *
-     * @return string[]
-     */
-    protected function getConfig(array $config)
-    {
-        if (!array_key_exists('token', $config)) {
-            throw new \InvalidArgumentException('The github client requires configuration.');
-        }
-
-        return array_only($config, ['token']);
     }
 
     /**
@@ -96,8 +85,6 @@ class GitHubFactory
     {
         $client = new Client($http);
 
-        $client->authenticate($config['token'], 'http_token');
-
-        return $client;
+        return $this->auth->make(array_get($config, 'method'))->with($client)->authenticate($config);
     }
 }

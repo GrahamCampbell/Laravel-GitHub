@@ -2,6 +2,11 @@ CHANGE LOG
 ==========
 
 
+## V3.0 (Upcoming)
+
+* Supporting all authentication methods
+
+
 ## V2.0 (05/02/2015)
 
 * Upgraded to laravel 5.0

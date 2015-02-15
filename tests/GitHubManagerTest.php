@@ -35,7 +35,7 @@ class GitHubManagerTest extends AbstractTestBenchTestCase
 
         $return = $manager->connection();
 
-        $this->assertInstanceOf('GitHub\Client', $return);
+        $this->assertInstanceOf('Github\Client', $return);
 
         $this->assertArrayHasKey('main', $manager->getConnections());
     }
@@ -53,7 +53,7 @@ class GitHubManagerTest extends AbstractTestBenchTestCase
         $config['name'] = 'main';
 
         $manager->getFactory()->shouldReceive('make')->once()
-            ->with($config)->andReturn(Mockery::mock('GitHub\Client'));
+            ->with($config)->andReturn(Mockery::mock('Github\Client'));
 
         return $manager;
     }

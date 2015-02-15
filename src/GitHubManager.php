@@ -86,7 +86,7 @@ class GitHubManager extends AbstractManager
      *
      * @param array $config
      *
-     * @return \GitHub\Client
+     * @return \Github\Client
      */
     protected function createConnection(array $config)
     {

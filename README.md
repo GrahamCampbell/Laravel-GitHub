@@ -59,14 +59,14 @@ This option (`'default'`) is where you may specify which of the connections belo
 
 ##### GitHub Connections
 
-This option (`'connections'`) is where each of the connections are setup for your application. Example configuration has been included, but you may add as many connections as you would like.
+This option (`'connections'`) is where each of the connections are setup for your application. Example configuration has been included, but you may add as many connections as you would like. Note that the 3 supported authentication methods are: `"application"`, `"password"`, and `"token"`.
 
 
 ## Usage
 
 ##### GitHubManager
 
-This is the class of most interest. It is bound to the ioc container as `'github'` and can be accessed using the `Facades\GitHub` facade. This class implements the `ManagerInterface` by extending `AbstractManager`. The interface and abstract class are both part of my [Laravel Manager](https://github.com/GrahamCampbell/Laravel-Manager) package, so you may want to go and checkout the docs for how to use the manager class over at [that repo](https://github.com/GrahamCampbell/Laravel-Manager#usage). Note that the connection class returned will always be an instance of `\GitHub\Client`.
+This is the class of most interest. It is bound to the ioc container as `'github'` and can be accessed using the `Facades\GitHub` facade. This class implements the `ManagerInterface` by extending `AbstractManager`. The interface and abstract class are both part of my [Laravel Manager](https://github.com/GrahamCampbell/Laravel-Manager) package, so you may want to go and checkout the docs for how to use the manager class over at [that repo](https://github.com/GrahamCampbell/Laravel-Manager#usage). Note that the connection class returned will always be an instance of `\Github\Client`.
 
 ##### Facades\GitHub
 
@@ -91,7 +91,7 @@ GitHub::repo()->show('GrahamCampbell', 'Laravel-GitHub');
 // this example is simple, and there are far more methods available
 ```
 
-The github manager will behave like it is a `\GitHub\Client` class. If you want to call specific connections, you can do with the `connection` method:
+The github manager will behave like it is a `\Github\Client` class. If you want to call specific connections, you can do with the `connection` method:
 
 ```php
 use GrahamCampbell\GitHub\Facades\GitHub;
@@ -148,7 +148,7 @@ class Foo
 App::make('Foo')->bar();
 ```
 
-For more information on how to use the `\GitHub\Client` class we are calling behind the scenes here, check out the docs at https://github.com/KnpLabs/php-github-api/blob/master/doc/index.md, and the manager class at https://github.com/GrahamCampbell/Laravel-Manager#usage.
+For more information on how to use the `\Github\Client` class we are calling behind the scenes here, check out the docs at https://github.com/KnpLabs/php-github-api/blob/master/doc/index.md, and the manager class at https://github.com/GrahamCampbell/Laravel-Manager#usage.
 
 ##### Further Information
 

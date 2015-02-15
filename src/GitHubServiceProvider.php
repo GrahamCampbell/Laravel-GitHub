@@ -66,9 +66,10 @@ class GitHubServiceProvider extends ServiceProvider
     protected function registerFactory(Application $app)
     {
         $app->singleton('github.factory', function ($app) {
+            $auth = new Authenticators\AuthenticatorFactory();
             $path = $app['path.storage'].'/github';
 
-            return new Factories\GitHubFactory($path);
+            return new Factories\GitHubFactory($auth, $path);
         });
 
         $app->alias('github.factory', 'GrahamCampbell\GitHub\Factories\GitHubFactory');

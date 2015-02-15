@@ -11,11 +11,12 @@
 
 namespace GrahamCampbell\Tests\GitHub\Factories;
 
+use GrahamCampbell\GitHub\Authenticators\AuthenticatorFactory;
 use GrahamCampbell\GitHub\Factories\GitHubFactory;
 use GrahamCampbell\Tests\GitHub\AbstractTestCase;
 
 /**
- * This is the filesystem factory test class.
+ * This is the github factory test class.
  *
  * @author Graham Campbell <graham@mineuk.com>
  */
@@ -25,15 +26,27 @@ class GitHubFactoryTest extends AbstractTestCase
     {
         $factory = $this->getFactory();
 
-        $return = $factory->make(['token'  => 'your-token']);
+        $return = $factory->make(['token' => 'your-token', 'method' => 'token']);
 
-        $this->assertInstanceOf('GitHub\Client', $return);
+        $this->assertInstanceOf('Github\Client', $return);
     }
 
     /**
      * @expectedException \InvalidArgumentException
+     * @expectedExceptionMessage Unsupported authentication method [bar].
      */
-    public function testMakeWithoutToken()
+    public function testMakeInvalidMethod()
+    {
+        $factory = $this->getFactory();
+
+        $factory->make(['method' => 'bar']);
+    }
+
+    /**
+     * @expectedException \InvalidArgumentException
+     * @expectedExceptionMessage Unsupported authentication method [].
+     */
+    public function testMakeEmpty()
     {
         $factory = $this->getFactory();
 
@@ -42,6 +55,6 @@ class GitHubFactoryTest extends AbstractTestCase
 
     protected function getFactory()
     {
-        return new GitHubFactory(__DIR__);
+        return new GitHubFactory(new AuthenticatorFactory(), __DIR__);
     }
 }

@@ -31,18 +31,28 @@ return [
     |
     | Here are each of the connections setup for your application. Example
     | configuration has been included, but you may add as many connections as
-    | you would like.
+    | you would like. Note that the 3 supported authentication methods are:
+    | "application", "password", and "token".
     |
     */
 
     'connections' => [
 
         'main' => [
-            'token'   => 'your-token',
+            'token'  => 'your-token',
+            'method' => 'token',
         ],
 
         'alternative' => [
-            'token'   => 'your-token',
+            'clientId'     => 'your-client-id',
+            'clientSecret' => 'your-client-secret',
+            'method'       => 'application',
+        ],
+
+        'other' => [
+            'username' => 'your-username',
+            'password' => 'your-password',
+            'method'   => 'password',
         ],
 
     ],
