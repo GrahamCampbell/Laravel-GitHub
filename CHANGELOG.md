@@ -2,7 +2,7 @@ CHANGE LOG
 ==========
 
 
-## V3.0 (Upcoming)
+## V3.0 (17/02/2015)
 
 * Supporting all authentication methods
 
