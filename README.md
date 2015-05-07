@@ -34,10 +34,6 @@ You can register the GitHub facade in the `aliases` key of your `config/app.php`
 
 * `'GitHub' => 'GrahamCampbell\GitHub\Facades\GitHub'`
 
-#### Looking for a laravel 4 compatable version?
-
-Checkout the [1.0 branch](https://github.com/GrahamCampbell/Laravel-GitHub/tree/1.0), installable by requiring `"graham-campbell/github": "~1.0"`.
-
 
 ## Configuration
 
