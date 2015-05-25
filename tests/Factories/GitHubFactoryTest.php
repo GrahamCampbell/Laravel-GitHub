@@ -26,9 +26,9 @@ class GitHubFactoryTest extends AbstractTestCase
     {
         $factory = $this->getFactory();
 
-        $return = $factory->make(['token' => 'your-token', 'method' => 'token']);
+        $client = $factory->make(['token' => 'your-token', 'method' => 'token']);
 
-        $this->assertInstanceOf('Github\Client', $return);
+        $this->assertInstanceOf('Github\Client', $client);
     }
 
     /**
