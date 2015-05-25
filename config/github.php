@@ -49,16 +49,16 @@ return [
             'clientId'     => 'your-client-id',
             'clientSecret' => 'your-client-secret',
             'method'       => 'application',
-            // 'baseUrl' => 'https://api.github.com/',
-            // 'version' => 'v3',
+            // 'baseUrl'      => 'https://api.github.com/',
+            // 'version'      => 'v3',
         ],
 
         'other' => [
             'username' => 'your-username',
             'password' => 'your-password',
             'method'   => 'password',
-            // 'baseUrl' => 'https://api.github.com/',
-            // 'version' => 'v3',
+            // 'baseUrl'  => 'https://api.github.com/',
+            // 'version'  => 'v3',
         ],
 
     ],
