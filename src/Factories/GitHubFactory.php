@@ -58,7 +58,7 @@ class GitHubFactory
      */
     public function make(array $config)
     {
-        $http = $this->getHttpClient();
+        $http = $this->getHttpClient($config);
 
         return $this->getClient($http, $config);
     }
@@ -66,11 +66,19 @@ class GitHubFactory
     /**
      * Get the http client.
      *
+     * @param string[] $config
+     *
      * @return \Github\HttpClient\CachedHttpClient
      */
-    protected function getHttpClient()
+    protected function getHttpClient(array $config)
     {
-        return new CachedHttpClient(['cache_dir' => $this->path]);
+        $options = [
+            'base_url'    => array_get($config, 'baseUrl', 'https://api.github.com/'),
+            'api_version' => array_get($config, 'version', 'v3'),
+            'cache_dir'   => $this->path,
+        ];
+
+        return new CachedHttpClient($options);
     }
 
     /**

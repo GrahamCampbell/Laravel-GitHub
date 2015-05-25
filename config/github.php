@@ -39,20 +39,26 @@ return [
     'connections' => [
 
         'main' => [
-            'token'  => 'your-token',
-            'method' => 'token',
+            'token'   => 'your-token',
+            'method'  => 'token',
+            // 'baseUrl' => 'https://api.github.com/',
+            // 'version' => 'v3',
         ],
 
         'alternative' => [
             'clientId'     => 'your-client-id',
             'clientSecret' => 'your-client-secret',
             'method'       => 'application',
+            // 'baseUrl' => 'https://api.github.com/',
+            // 'version' => 'v3',
         ],
 
         'other' => [
             'username' => 'your-username',
             'password' => 'your-password',
             'method'   => 'password',
+            // 'baseUrl' => 'https://api.github.com/',
+            // 'version' => 'v3',
         ],
 
     ],
