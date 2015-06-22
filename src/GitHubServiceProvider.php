@@ -40,7 +40,9 @@ class GitHubServiceProvider extends ServiceProvider
     {
         $source = realpath(__DIR__.'/../config/github.php');
 
-        $this->publishes([$source => config_path('github.php')]);
+        if (class_exists('Illuminate\Foundation\Application', false)) {
+            $this->publishes([$source => config_path('github.php')]);
+        }
 
         $this->mergeConfigFrom($source, 'github');
     }
