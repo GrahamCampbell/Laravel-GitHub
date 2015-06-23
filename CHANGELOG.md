@@ -2,6 +2,11 @@ CHANGE LOG
 ==========
 
 
+## V3.3 (Upcoming)
+
+* Lumen support
+
+
 ## V3.2 (25/05/2015)
 
 * Added more configuration
