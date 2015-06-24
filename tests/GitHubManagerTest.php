@@ -12,7 +12,7 @@
 namespace GrahamCampbell\Tests\GitHub;
 
 use Github\Client;
-use GrahamCampbell\GitHub\Factories\GitHubFactory;
+use GrahamCampbell\GitHub\GitHubFactory;
 use GrahamCampbell\GitHub\GitHubManager;
 use GrahamCampbell\TestBench\AbstractTestCase as AbstractTestBenchTestCase;
 use Illuminate\Contracts\Config\Repository;

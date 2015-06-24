@@ -11,7 +11,6 @@
 
 namespace GrahamCampbell\GitHub;
 
-use GrahamCampbell\GitHub\Factories\GitHubFactory;
 use GrahamCampbell\Manager\AbstractManager;
 use Illuminate\Contracts\Config\Repository;
 
@@ -63,7 +62,7 @@ class GitHubManager extends AbstractManager
     /**
      * The factory instance.
      *
-     * @var \GrahamCampbell\GitHub\Factories\GitHubFactory
+     * @var \GrahamCampbell\GitHub\GitHubFactory
      */
     protected $factory;
 
@@ -71,7 +70,7 @@ class GitHubManager extends AbstractManager
      * Create a new github manager instance.
      *
      * @param \Illuminate\Contracts\Config\Repository        $config
-     * @param \GrahamCampbell\GitHub\Factories\GitHubFactory $factory
+     * @param \GrahamCampbell\GitHub\GitHubFactory $factory
      *
      * @return void
      */
@@ -106,7 +105,7 @@ class GitHubManager extends AbstractManager
     /**
      * Get the factory instance.
      *
-     * @return \GrahamCampbell\GitHub\Factories\GitHubFactory
+     * @return \GrahamCampbell\GitHub\GitHubFactory
      */
     public function getFactory()
     {

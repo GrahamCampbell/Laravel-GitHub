@@ -9,19 +9,19 @@
  * file that was distributed with this source code.
  */
 
-namespace GrahamCampbell\Tests\GitHub\Factories;
+namespace GrahamCampbell\Tests\GitHub;
 
 use Github\Client;
 use GrahamCampbell\GitHub\Authenticators\AuthenticatorFactory;
-use GrahamCampbell\GitHub\Factories\GitHubFactory;
-use GrahamCampbell\Tests\GitHub\AbstractTestCase;
+use GrahamCampbell\GitHub\GitHubFactory;
+use GrahamCampbell\TestBench\AbstractTestCase as AbstractTestBenchTestCase;
 
 /**
  * This is the github factory test class.
  *
  * @author Graham Campbell <graham@cachethq.io>
  */
-class GitHubFactoryTest extends AbstractTestCase
+class GitHubFactoryTest extends AbstractTestBenchTestCase
 {
     public function testMakeStandard()
     {

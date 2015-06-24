@@ -9,7 +9,7 @@
  * file that was distributed with this source code.
  */
 
-namespace GrahamCampbell\GitHub\Factories;
+namespace GrahamCampbell\GitHub;
 
 use Github\Client;
 use Github\HttpClient\CachedHttpClient;

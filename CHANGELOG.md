@@ -2,10 +2,11 @@ CHANGE LOG
 ==========
 
 
-## V3.3 (Upcoming)
+## V4.0 (Upcoming)
 
 * Official lumen support
 * Code cleanup
+* Moved the factory
 
 
 ## V3.2 (25/05/2015)

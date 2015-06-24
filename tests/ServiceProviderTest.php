@@ -12,7 +12,7 @@
 namespace GrahamCampbell\Tests\GitHub;
 
 use GrahamCampbell\GitHub\Authenticators\AuthenticatorFactory;
-use GrahamCampbell\GitHub\Factories\GitHubFactory;
+use GrahamCampbell\GitHub\GitHubFactory;
 use GrahamCampbell\GitHub\GitHubManager;
 use GrahamCampbell\TestBenchCore\ServiceProviderTrait;
 

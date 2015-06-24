@@ -12,7 +12,6 @@
 namespace GrahamCampbell\GitHub;
 
 use GrahamCampbell\GitHub\Authenticators\AuthenticatorFactory;
-use GrahamCampbell\GitHub\Factories\GitHubFactory;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Support\ServiceProvider;
 
