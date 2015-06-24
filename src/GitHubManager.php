@@ -69,8 +69,8 @@ class GitHubManager extends AbstractManager
     /**
      * Create a new github manager instance.
      *
-     * @param \Illuminate\Contracts\Config\Repository        $config
-     * @param \GrahamCampbell\GitHub\GitHubFactory $factory
+     * @param \Illuminate\Contracts\Config\Repository $config
+     * @param \GrahamCampbell\GitHub\GitHubFactory    $factory
      *
      * @return void
      */
