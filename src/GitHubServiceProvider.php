@@ -11,6 +11,8 @@
 
 namespace GrahamCampbell\GitHub;
 
+use GrahamCampbell\GitHub\Authenticators\AuthenticatorFactory;
+use GrahamCampbell\GitHub\Factories\GitHubFactory;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Support\ServiceProvider;
 
@@ -54,27 +56,44 @@ class GitHubServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->registerFactory($this->app);
+        $this->registerAuthFactory($this->app);
+        $this->registerGitHubFactory($this->app);
         $this->registerManager($this->app);
     }
 
     /**
-     * Register the factory class.
+     * Register the auth factory class.
      *
      * @param \Illuminate\Contracts\Foundation\Application $app
      *
      * @return void
      */
-    protected function registerFactory(Application $app)
+    protected function registerAuthFactory(Application $app)
     {
-        $app->singleton('github.factory', function ($app) {
-            $auth = new Authenticators\AuthenticatorFactory();
-            $path = $app['path.storage'].'/github';
-
-            return new Factories\GitHubFactory($auth, $path);
+        $app->singleton('github.authfactory', function ($app) {
+            return new AuthenticatorFactory();
         });
 
-        $app->alias('github.factory', 'GrahamCampbell\GitHub\Factories\GitHubFactory');
+        $app->alias('github.authfactory', AuthenticatorFactory::class);
+    }
+
+    /**
+     * Register the github factory class.
+     *
+     * @param \Illuminate\Contracts\Foundation\Application $app
+     *
+     * @return void
+     */
+    protected function registerGitHubFactory(Application $app)
+    {
+        $app->singleton('github.factory', function ($app) {
+            $auth = $app['github.authfactory'];
+            $path = $app['path.storage'].'/github';
+
+            return new GitHubFactory($auth, $path);
+        });
+
+        $app->alias('github.factory', GitHubFactory::class);
     }
 
     /**
@@ -93,7 +112,7 @@ class GitHubServiceProvider extends ServiceProvider
             return new GitHubManager($config, $factory);
         });
 
-        $app->alias('github', 'GrahamCampbell\GitHub\GitHubManager');
+        $app->alias('github', GitHubManager::class);
     }
 
     /**
@@ -104,8 +123,9 @@ class GitHubServiceProvider extends ServiceProvider
     public function provides()
     {
         return [
-            'github',
+            'github.authfactory',
             'github.factory',
+            'github',
         ];
     }
 }
