@@ -11,8 +11,11 @@
 
 namespace GrahamCampbell\Tests\GitHub;
 
+use Github\Client;
+use GrahamCampbell\GitHub\Factories\GitHubFactory;
 use GrahamCampbell\GitHub\GitHubManager;
 use GrahamCampbell\TestBench\AbstractTestCase as AbstractTestBenchTestCase;
+use Illuminate\Contracts\Config\Repository;
 use Mockery;
 
 /**
@@ -35,15 +38,15 @@ class GitHubManagerTest extends AbstractTestBenchTestCase
 
         $return = $manager->connection();
 
-        $this->assertInstanceOf('Github\Client', $return);
+        $this->assertInstanceOf(Client::class, $return);
 
         $this->assertArrayHasKey('main', $manager->getConnections());
     }
 
     protected function getManager(array $config)
     {
-        $repo = Mockery::mock('Illuminate\Contracts\Config\Repository');
-        $factory = Mockery::mock('GrahamCampbell\GitHub\Factories\GitHubFactory');
+        $repo = Mockery::mock(Repository::class);
+        $factory = Mockery::mock(GitHubFactory::class);
 
         $manager = new GitHubManager($repo, $factory);
 
@@ -53,7 +56,7 @@ class GitHubManagerTest extends AbstractTestBenchTestCase
         $config['name'] = 'main';
 
         $manager->getFactory()->shouldReceive('make')->once()
-            ->with($config)->andReturn(Mockery::mock('Github\Client'));
+            ->with($config)->andReturn(Mockery::mock(Client::class));
 
         return $manager;
     }

@@ -11,6 +11,7 @@
 
 namespace GrahamCampbell\Tests\GitHub;
 
+use GrahamCampbell\GitHub\GitHubServiceProvider;
 use GrahamCampbell\TestBench\AbstractPackageTestCase;
 
 /**
@@ -29,6 +30,6 @@ abstract class AbstractTestCase extends AbstractPackageTestCase
      */
     protected function getServiceProviderClass($app)
     {
-        return 'GrahamCampbell\GitHub\GitHubServiceProvider';
+        return GitHubServiceProvider::class;
     }
 }

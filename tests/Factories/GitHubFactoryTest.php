@@ -11,6 +11,7 @@
 
 namespace GrahamCampbell\Tests\GitHub\Factories;
 
+use Github\Client;
 use GrahamCampbell\GitHub\Authenticators\AuthenticatorFactory;
 use GrahamCampbell\GitHub\Factories\GitHubFactory;
 use GrahamCampbell\Tests\GitHub\AbstractTestCase;
@@ -28,7 +29,7 @@ class GitHubFactoryTest extends AbstractTestCase
 
         $client = $factory->make(['token' => 'your-token', 'method' => 'token']);
 
-        $this->assertInstanceOf('Github\Client', $client);
+        $this->assertInstanceOf(Client::class, $client);
     }
 
     /**

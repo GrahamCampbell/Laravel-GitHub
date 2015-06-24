@@ -11,7 +11,10 @@
 
 namespace GrahamCampbell\Tests\GitHub;
 
-use GrahamCampbell\TestBench\Traits\ServiceProviderTestCaseTrait;
+use GrahamCampbell\GitHub\Authenticators\AuthenticatorFactory;
+use GrahamCampbell\GitHub\Factories\GitHubFactory;
+use GrahamCampbell\GitHub\GitHubManager;
+use GrahamCampbell\TestBenchCore\ServiceProviderTrait;
 
 /**
  * This is the service provider test class.
@@ -20,15 +23,20 @@ use GrahamCampbell\TestBench\Traits\ServiceProviderTestCaseTrait;
  */
 class ServiceProviderTest extends AbstractTestCase
 {
-    use ServiceProviderTestCaseTrait;
+    use ServiceProviderTrait;
+
+    public function testAuthFactoryIsInjectable()
+    {
+        $this->assertIsInjectable(AuthenticatorFactory::class);
+    }
 
     public function testGitHubFactoryIsInjectable()
     {
-        $this->assertIsInjectable('GrahamCampbell\GitHub\Factories\GitHubFactory');
+        $this->assertIsInjectable(GitHubFactory::class);
     }
 
     public function testGitHubManagerIsInjectable()
     {
-        $this->assertIsInjectable('GrahamCampbell\GitHub\GitHubManager');
+        $this->assertIsInjectable(GitHubManager::class);
     }
 }

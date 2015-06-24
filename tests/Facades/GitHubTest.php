@@ -11,7 +11,9 @@
 
 namespace GrahamCampbell\Tests\GitHub\Facades;
 
-use GrahamCampbell\TestBench\Traits\FacadeTestCaseTrait;
+use GrahamCampbell\GitHub\Facades\GitHub;
+use GrahamCampbell\GitHub\GitHubManager;
+use GrahamCampbell\TestBenchCore\FacadeTrait;
 use GrahamCampbell\Tests\GitHub\AbstractTestCase;
 
 /**
@@ -21,7 +23,7 @@ use GrahamCampbell\Tests\GitHub\AbstractTestCase;
  */
 class GitHubTest extends AbstractTestCase
 {
-    use FacadeTestCaseTrait;
+    use FacadeTrait;
 
     /**
      * Get the facade accessor.
@@ -40,7 +42,7 @@ class GitHubTest extends AbstractTestCase
      */
     protected function getFacadeClass()
     {
-        return 'GrahamCampbell\GitHub\Facades\GitHub';
+        return GitHub::class;
     }
 
     /**
@@ -50,6 +52,6 @@ class GitHubTest extends AbstractTestCase
      */
     protected function getFacadeRoot()
     {
-        return 'GrahamCampbell\GitHub\GitHubManager';
+        return GitHubManager::class;
     }
 }

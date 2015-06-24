@@ -11,6 +11,7 @@
 
 namespace GrahamCampbell\Tests\GitHub\Authenticators;
 
+use Github\Client;
 use GrahamCampbell\GitHub\Authenticators\ApplicationAuthenticator;
 use GrahamCampbell\Tests\GitHub\AbstractTestCase;
 use Mockery;
@@ -26,7 +27,7 @@ class ApplicationAuthenticatorTest extends AbstractTestCase
     {
         $authenticator = $this->getAuthenticator();
 
-        $client = Mockery::mock('Github\Client');
+        $client = Mockery::mock(Client::class);
         $client->shouldReceive('authenticate')->once()
             ->with('your-client-id', 'your-client-secret', 'url_client_id');
 
@@ -36,14 +37,14 @@ class ApplicationAuthenticatorTest extends AbstractTestCase
             'method'       => 'application',
         ]);
 
-        $this->assertInstanceOf('Github\Client', $return);
+        $this->assertInstanceOf(Client::class, $return);
     }
 
     public function testMakeWithoutMethod()
     {
         $authenticator = $this->getAuthenticator();
 
-        $client = Mockery::mock('Github\Client');
+        $client = Mockery::mock(Client::class);
         $client->shouldReceive('authenticate')->once()
             ->with('your-client-id', 'your-client-secret', 'url_client_id');
 
@@ -52,7 +53,7 @@ class ApplicationAuthenticatorTest extends AbstractTestCase
             'clientSecret' => 'your-client-secret',
         ]);
 
-        $this->assertInstanceOf('Github\Client', $return);
+        $this->assertInstanceOf(Client::class, $return);
     }
 
     /**
@@ -63,13 +64,13 @@ class ApplicationAuthenticatorTest extends AbstractTestCase
     {
         $authenticator = $this->getAuthenticator();
 
-        $client = Mockery::mock('Github\Client');
+        $client = Mockery::mock(Client::class);
 
         $return = $authenticator->with($client)->authenticate([
             'clientSecret' => 'your-client-secret',
         ]);
 
-        $this->assertInstanceOf('Github\Client', $return);
+        $this->assertInstanceOf(Client::class, $return);
     }
 
     /**
@@ -80,13 +81,13 @@ class ApplicationAuthenticatorTest extends AbstractTestCase
     {
         $authenticator = $this->getAuthenticator();
 
-        $client = Mockery::mock('Github\Client');
+        $client = Mockery::mock(Client::class);
 
         $return = $authenticator->with($client)->authenticate([
-            'clientId'     => 'your-client-id',
+            'clientId' => 'your-client-id',
         ]);
 
-        $this->assertInstanceOf('Github\Client', $return);
+        $this->assertInstanceOf(Client::class, $return);
     }
 
     /**

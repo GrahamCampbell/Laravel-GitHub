@@ -11,6 +11,7 @@
 
 namespace GrahamCampbell\Tests\GitHub\Authenticators;
 
+use Github\Client;
 use GrahamCampbell\GitHub\Authenticators\PasswordAuthenticator;
 use GrahamCampbell\Tests\GitHub\AbstractTestCase;
 use Mockery;
@@ -26,7 +27,7 @@ class PasswordAuthenticatorTest extends AbstractTestCase
     {
         $authenticator = $this->getAuthenticator();
 
-        $client = Mockery::mock('Github\Client');
+        $client = Mockery::mock(Client::class);
         $client->shouldReceive('authenticate')->once()
             ->with('your-username', 'your-password', 'http_password');
 
@@ -36,14 +37,14 @@ class PasswordAuthenticatorTest extends AbstractTestCase
             'method'   => 'password',
         ]);
 
-        $this->assertInstanceOf('Github\Client', $return);
+        $this->assertInstanceOf(Client::class, $return);
     }
 
     public function testMakeWithoutMethod()
     {
         $authenticator = $this->getAuthenticator();
 
-        $client = Mockery::mock('Github\Client');
+        $client = Mockery::mock(Client::class);
         $client->shouldReceive('authenticate')->once()
             ->with('your-username', 'your-password', 'http_password');
 
@@ -52,7 +53,7 @@ class PasswordAuthenticatorTest extends AbstractTestCase
             'password' => 'your-password',
         ]);
 
-        $this->assertInstanceOf('Github\Client', $return);
+        $this->assertInstanceOf(Client::class, $return);
     }
 
     /**
@@ -63,13 +64,13 @@ class PasswordAuthenticatorTest extends AbstractTestCase
     {
         $authenticator = $this->getAuthenticator();
 
-        $client = Mockery::mock('Github\Client');
+        $client = Mockery::mock(Client::class);
 
         $return = $authenticator->with($client)->authenticate([
             'password' => 'your-password',
         ]);
 
-        $this->assertInstanceOf('Github\Client', $return);
+        $this->assertInstanceOf(Client::class, $return);
     }
 
     /**
@@ -80,12 +81,12 @@ class PasswordAuthenticatorTest extends AbstractTestCase
     {
         $authenticator = $this->getAuthenticator();
 
-        $client = Mockery::mock('Github\Client');
+        $client = Mockery::mock(Client::class);
         $return = $authenticator->with($client)->authenticate([
             'username' => 'your-username',
         ]);
 
-        $this->assertInstanceOf('Github\Client', $return);
+        $this->assertInstanceOf(Client::class, $return);
     }
 
     /**

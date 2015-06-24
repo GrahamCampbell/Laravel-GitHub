@@ -11,7 +11,10 @@
 
 namespace GrahamCampbell\Tests\GitHub\Authenticators;
 
+use GrahamCampbell\GitHub\Authenticators\ApplicationAuthenticator;
 use GrahamCampbell\GitHub\Authenticators\AuthenticatorFactory;
+use GrahamCampbell\GitHub\Authenticators\PasswordAuthenticator;
+use GrahamCampbell\GitHub\Authenticators\TokenAuthenticator;
 use GrahamCampbell\Tests\GitHub\AbstractTestCase;
 
 /**
@@ -27,7 +30,7 @@ class AuthenticatorFactoryTest extends AbstractTestCase
 
         $return = $factory->make('application');
 
-        $this->assertInstanceOf('GrahamCampbell\GitHub\Authenticators\ApplicationAuthenticator', $return);
+        $this->assertInstanceOf(ApplicationAuthenticator::class, $return);
     }
 
     public function testMakePasswordAuthenticator()
@@ -36,7 +39,7 @@ class AuthenticatorFactoryTest extends AbstractTestCase
 
         $return = $factory->make('password');
 
-        $this->assertInstanceOf('GrahamCampbell\GitHub\Authenticators\PasswordAuthenticator', $return);
+        $this->assertInstanceOf(PasswordAuthenticator::class, $return);
     }
 
     public function testMakeTokenAuthenticator()
@@ -45,7 +48,7 @@ class AuthenticatorFactoryTest extends AbstractTestCase
 
         $return = $factory->make('token');
 
-        $this->assertInstanceOf('GrahamCampbell\GitHub\Authenticators\TokenAuthenticator', $return);
+        $this->assertInstanceOf(TokenAuthenticator::class, $return);
     }
 
     /**

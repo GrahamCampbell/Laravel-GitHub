@@ -11,6 +11,7 @@
 
 namespace GrahamCampbell\Tests\GitHub\Authenticators;
 
+use Github\Client;
 use GrahamCampbell\GitHub\Authenticators\TokenAuthenticator;
 use GrahamCampbell\Tests\GitHub\AbstractTestCase;
 use Mockery;
@@ -26,7 +27,7 @@ class TokenAuthenticatorTest extends AbstractTestCase
     {
         $authenticator = $this->getAuthenticator();
 
-        $client = Mockery::mock('Github\Client');
+        $client = Mockery::mock(Client::class);
         $client->shouldReceive('authenticate')->once()
             ->with('your-token', 'http_token');
 
@@ -35,14 +36,14 @@ class TokenAuthenticatorTest extends AbstractTestCase
             'method' => 'token',
         ]);
 
-        $this->assertInstanceOf('Github\Client', $return);
+        $this->assertInstanceOf(Client::class, $return);
     }
 
     public function testMakeWithoutMethod()
     {
         $authenticator = $this->getAuthenticator();
 
-        $client = Mockery::mock('Github\Client');
+        $client = Mockery::mock(Client::class);
         $client->shouldReceive('authenticate')->once()
             ->with('your-token', 'http_token');
 
@@ -50,7 +51,7 @@ class TokenAuthenticatorTest extends AbstractTestCase
             'token'  => 'your-token',
         ]);
 
-        $this->assertInstanceOf('Github\Client', $return);
+        $this->assertInstanceOf(Client::class, $return);
     }
 
     /**
@@ -61,11 +62,11 @@ class TokenAuthenticatorTest extends AbstractTestCase
     {
         $authenticator = $this->getAuthenticator();
 
-        $client = Mockery::mock('Github\Client');
+        $client = Mockery::mock(Client::class);
 
         $return = $authenticator->with($client)->authenticate([]);
 
-        $this->assertInstanceOf('Github\Client', $return);
+        $this->assertInstanceOf(Client::class, $return);
     }
 
     /**
