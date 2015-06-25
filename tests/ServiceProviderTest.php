@@ -11,6 +11,7 @@
 
 namespace GrahamCampbell\Tests\GitHub;
 
+use Github\Client;
 use GrahamCampbell\GitHub\Authenticators\AuthenticatorFactory;
 use GrahamCampbell\GitHub\GitHubFactory;
 use GrahamCampbell\GitHub\GitHubManager;
@@ -38,5 +39,17 @@ class ServiceProviderTest extends AbstractTestCase
     public function testGitHubManagerIsInjectable()
     {
         $this->assertIsInjectable(GitHubManager::class);
+    }
+
+    public function testBindings()
+    {
+        $this->assertIsInjectable(Client::class);
+
+        $original = $this->app['github.connection'];
+        $this->app['github']->reconnect();
+        $new = $this->app['github.connection'];
+
+        $this->assertNotSame($original, $new);
+        $this->assertEquals($original, $new);
     }
 }

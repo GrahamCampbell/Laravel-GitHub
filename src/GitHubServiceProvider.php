@@ -11,6 +11,7 @@
 
 namespace GrahamCampbell\GitHub;
 
+use Github\Client;
 use GrahamCampbell\GitHub\Authenticators\AuthenticatorFactory;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Support\ServiceProvider;
@@ -58,6 +59,7 @@ class GitHubServiceProvider extends ServiceProvider
         $this->registerAuthFactory($this->app);
         $this->registerGitHubFactory($this->app);
         $this->registerManager($this->app);
+        $this->registerBindings($this->app);
     }
 
     /**
@@ -115,6 +117,24 @@ class GitHubServiceProvider extends ServiceProvider
     }
 
     /**
+     * Register the bindings.
+     *
+     * @param \Illuminate\Contracts\Foundation\Application $app
+     *
+     * @return void
+     */
+    protected function registerBindings(Application $app)
+    {
+        $app->bind('github.connection', function ($app) {
+            $manager = $app['github'];
+
+            return $manager->connection();
+        });
+
+        $app->alias('github.connection', Client::class);
+    }
+
+    /**
      * Get the services provided by the provider.
      *
      * @return string[]
@@ -125,6 +145,7 @@ class GitHubServiceProvider extends ServiceProvider
             'github.authfactory',
             'github.factory',
             'github',
+            'github.connection',
         ];
     }
 }
