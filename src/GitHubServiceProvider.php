@@ -71,7 +71,7 @@ class GitHubServiceProvider extends ServiceProvider
      */
     protected function registerAuthFactory(Application $app)
     {
-        $app->singleton('github.authfactory', function ($app) {
+        $app->singleton('github.authfactory', function () {
             return new AuthenticatorFactory();
         });
 
