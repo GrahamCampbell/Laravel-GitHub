@@ -26,13 +26,15 @@ To get the latest version of Laravel GitHub, simply add the following line to th
 
 You'll then need to run `composer install` or `composer update` to download it and have the autoloader updated.
 
+Alternatively you can require it directly via your terminal by running `composer require graham-campbell/github` in the project root directory.
+
 Once Laravel GitHub is installed, you need to register the service provider. Open up `config/app.php` and add the following to the `providers` key.
 
-* `GrahamCampbell\GitHub\GitHubServiceProvider::class`
+* `'GrahamCampbell\GitHub\GitHubServiceProvider'`
 
 You can register the GitHub facade in the `aliases` key of your `config/app.php` file if you like.
 
-* `'GitHub' => GrahamCampbell\GitHub\Facades\GitHub::class`
+* `'GitHub' => 'GrahamCampbell\GitHub\Facades\GitHub'`
 
 
 ## Configuration
