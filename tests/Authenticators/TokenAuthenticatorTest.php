@@ -82,6 +82,7 @@ class TokenAuthenticatorTest extends AbstractTestCase
             'method' => 'token',
         ]);
     }
+
     protected function getAuthenticator()
     {
         return new TokenAuthenticator();
