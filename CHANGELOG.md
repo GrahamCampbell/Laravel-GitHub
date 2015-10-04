@@ -2,6 +2,11 @@ CHANGE LOG
 ==========
 
 
+## V4.1 (Upcoming)
+
+* Improved lumen support
+
+
 ## V4.0 (26/06/2015)
 
 * Official lumen support
