@@ -32,24 +32,22 @@ class GitHubServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        $this->setupConfig($this->app);
+        $this->setupConfig();
     }
 
     /**
      * Setup the config.
      *
-     * @param \Illuminate\Contracts\Foundation\Application $app
-     *
      * @return void
      */
-    protected function setupConfig(Application $app)
+    protected function setupConfig()
     {
         $source = realpath(__DIR__.'/../config/github.php');
 
-        if ($app instanceof LaravelApplication && $app->runningInConsole()) {
+        if ($this->app instanceof LaravelApplication && $this->app->runningInConsole()) {
             $this->publishes([$source => config_path('github.php')]);
-        } elseif ($app instanceof LumenApplication) {
-            $app->configure('github');
+        } elseif ($this->app instanceof LumenApplication) {
+            $this->app->configure('github');
         }
 
         $this->mergeConfigFrom($source, 'github');
