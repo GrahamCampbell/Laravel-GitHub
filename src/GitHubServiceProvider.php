@@ -13,7 +13,7 @@ namespace GrahamCampbell\GitHub;
 
 use Github\Client;
 use GrahamCampbell\GitHub\Authenticators\AuthenticatorFactory;
-use Illuminate\Contracts\Foundation\Application;
+use Illuminate\Contracts\Container\Container;
 use Illuminate\Foundation\Application as LaravelApplication;
 use Illuminate\Support\ServiceProvider;
 use Laravel\Lumen\Application as LumenApplication;
@@ -60,82 +60,74 @@ class GitHubServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->registerAuthFactory($this->app);
-        $this->registerGitHubFactory($this->app);
-        $this->registerManager($this->app);
-        $this->registerBindings($this->app);
+        $this->registerAuthFactory();
+        $this->registerGitHubFactory();
+        $this->registerManager();
+        $this->registerBindings();
     }
 
     /**
      * Register the auth factory class.
      *
-     * @param \Illuminate\Contracts\Foundation\Application $app
-     *
      * @return void
      */
-    protected function registerAuthFactory(Application $app)
+    protected function registerAuthFactory()
     {
-        $app->singleton('github.authfactory', function () {
+        $this->app->singleton('github.authfactory', function () {
             return new AuthenticatorFactory();
         });
 
-        $app->alias('github.authfactory', AuthenticatorFactory::class);
+        $this->app->alias('github.authfactory', AuthenticatorFactory::class);
     }
 
     /**
      * Register the github factory class.
      *
-     * @param \Illuminate\Contracts\Foundation\Application $app
-     *
      * @return void
      */
-    protected function registerGitHubFactory(Application $app)
+    protected function registerGitHubFactory()
     {
-        $app->singleton('github.factory', function ($app) {
+        $this->app->singleton('github.factory', function (Container $app) {
             $auth = $app['github.authfactory'];
             $path = $app['path.storage'].'/github';
 
             return new GitHubFactory($auth, $path);
         });
 
-        $app->alias('github.factory', GitHubFactory::class);
+        $this->app->alias('github.factory', GitHubFactory::class);
     }
 
     /**
      * Register the manager class.
      *
-     * @param \Illuminate\Contracts\Foundation\Application $app
-     *
      * @return void
      */
-    protected function registerManager(Application $app)
+    protected function registerManager()
     {
-        $app->singleton('github', function ($app) {
+        $this->app->singleton('github', function (Container $app) {
             $config = $app['config'];
             $factory = $app['github.factory'];
 
             return new GitHubManager($config, $factory);
         });
 
-        $app->alias('github', GitHubManager::class);
+        $this->app->alias('github', GitHubManager::class);
     }
 
     /**
      * Register the bindings.
      *
-     * @param \Illuminate\Contracts\Foundation\Application $app
-     *
      * @return void
      */
-    protected function registerBindings(Application $app)
+    protected function registerBindings()
     {
-        $app->bind('github.connection', function ($app) {
+        $this->app->bind('github.connection', function (Container $app) {
             $manager = $app['github'];
 
             return $manager->connection();
         });
 
-        $app->alias('github.connection', Client::class);
+        $this->app->alias('github.connection', Client::class);
     }
 
     /**
