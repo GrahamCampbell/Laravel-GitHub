@@ -39,7 +39,8 @@ class GitHubFactory
     /**
      * Create a new github factory instance.
      *
-     * @param string $path
+     * @param \GrahamCampbell\GitHub\Authenticators\AuthenticatorFactory $auth
+     * @param string                                                     $path
      *
      * @return void
      */
