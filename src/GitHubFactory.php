@@ -13,6 +13,8 @@ namespace GrahamCampbell\GitHub;
 
 use Github\Client;
 use Github\HttpClient\CachedHttpClient;
+use Github\HttpClient\HttpClient;
+use Github\HttpClient\HttpClientInterface;
 use GrahamCampbell\GitHub\Authenticators\AuthenticatorFactory;
 
 /**
@@ -69,28 +71,37 @@ class GitHubFactory
      *
      * @param string[] $config
      *
-     * @return \Github\HttpClient\CachedHttpClient
+     * @return \Github\HttpClient\HttpClientInterface
      */
     protected function getHttpClient(array $config)
     {
         $options = [
             'base_url'    => array_get($config, 'baseUrl', 'https://api.github.com/'),
             'api_version' => array_get($config, 'version', 'v3'),
-            'cache_dir'   => $this->path,
         ];
 
-        return new CachedHttpClient($options);
+        if (isset($config['cache'])) {
+            if ($config['cache'] === true) {
+                $options['cache_dir'] = $this->path;
+            } elseif (is_string($config['cache'])) {
+                $options['cache_dir'] = $config['cache'];
+            }
+        } else {
+            $options['cache_dir'] = $this->path;
+        }
+
+        return isset($options['cache_dir']) ? new CachedHttpClient($options) : new HttpClient($options);
     }
 
     /**
      * Get the main client.
      *
-     * @param \Github\HttpClient\CachedHttpClient $http
-     * @param string[]                            $config
+     * @param \Github\HttpClient\HttpClientInterface $http
+     * @param string[]                               $config
      *
      * @return \Github\Client
      */
-    protected function getClient(CachedHttpClient $http, array $config)
+    protected function getClient(HttpClientInterface $http, array $config)
     {
         $client = new Client($http);
 

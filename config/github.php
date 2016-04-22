@@ -41,6 +41,7 @@ return [
         'main' => [
             'token'   => 'your-token',
             'method'  => 'token',
+            'cache'   => true,
             // 'baseUrl' => 'https://api.github.com/',
             // 'version' => 'v3',
         ],
@@ -49,6 +50,7 @@ return [
             'clientId'     => 'your-client-id',
             'clientSecret' => 'your-client-secret',
             'method'       => 'application',
+            'cache'        => true,
             // 'baseUrl'      => 'https://api.github.com/',
             // 'version'      => 'v3',
         ],
@@ -57,6 +59,7 @@ return [
             'username' => 'your-username',
             'password' => 'your-password',
             'method'   => 'password',
+            'cache'    => true,
             // 'baseUrl'  => 'https://api.github.com/',
             // 'version'  => 'v3',
         ],
