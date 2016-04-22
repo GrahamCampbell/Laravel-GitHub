@@ -12,6 +12,8 @@
 namespace GrahamCampbell\Tests\GitHub;
 
 use Github\Client;
+use Github\HttpClient\CachedHttpClient;
+use Github\HttpClient\HttpClient;
 use GrahamCampbell\GitHub\Authenticators\AuthenticatorFactory;
 use GrahamCampbell\GitHub\GitHubFactory;
 use GrahamCampbell\TestBench\AbstractTestCase as AbstractTestBenchTestCase;
