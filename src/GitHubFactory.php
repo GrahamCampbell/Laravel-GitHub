@@ -16,6 +16,7 @@ use Github\HttpClient\CachedHttpClient;
 use Github\HttpClient\HttpClient;
 use Github\HttpClient\HttpClientInterface;
 use GrahamCampbell\GitHub\Authenticators\AuthenticatorFactory;
+use Guzzle\Plugin\Backoff\BackoffPlugin;
 
 /**
  * This is the github factory class.
@@ -90,7 +91,13 @@ class GitHubFactory
             $options['cache_dir'] = $this->path;
         }
 
-        return isset($options['cache_dir']) ? new CachedHttpClient($options) : new HttpClient($options);
+        $client = isset($options['cache_dir']) ? new CachedHttpClient($options) : new HttpClient($options);
+
+        if (array_get($config, 'backoff')) {
+            $client->addSubscriber(BackoffPlugin::getExponentialBackoff());
+        }
+
+        return $client;
     }
 
     /**
