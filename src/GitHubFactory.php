@@ -79,17 +79,8 @@ class GitHubFactory
         $options = [
             'base_url'    => array_get($config, 'baseUrl', 'https://api.github.com/'),
             'api_version' => array_get($config, 'version', 'v3'),
+            'cache_dir'   => $this->getCacheDir($config),
         ];
-
-        if (isset($config['cache'])) {
-            if ($config['cache'] === true) {
-                $options['cache_dir'] = $this->path;
-            } elseif (is_string($config['cache'])) {
-                $options['cache_dir'] = $config['cache'];
-            }
-        } else {
-            $options['cache_dir'] = $this->path;
-        }
 
         $client = isset($options['cache_dir']) ? new CachedHttpClient($options) : new HttpClient($options);
 
@@ -98,6 +89,28 @@ class GitHubFactory
         }
 
         return $client;
+    }
+
+    /**
+     * Get the cache directory.
+     *
+     * @param string[] $config
+     *
+     * @return string|null
+     */
+    protected function getCacheDir(array $config)
+    {
+        if (!isset($config['cache'])) {
+            return $this->path;
+        }
+
+        if ($config['cache'] === true) {
+            return $this->path;
+        }
+
+        if (is_string($config['cache'])) {
+            return $config['cache'];
+        }
     }
 
     /**
