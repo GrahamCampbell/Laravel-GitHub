@@ -33,7 +33,7 @@ class LogAdapter extends AbstractLogAdapter
         LOG_WARNING => LogLevel::WARNING,
         LOG_ERR     => LogLevel::ERROR,
         LOG_CRIT    => LogLevel::CRITICAL,
-        LOG_ALERT   => LogLevel::ALERT
+        LOG_ALERT   => LogLevel::ALERT,
     ];
 
     /**
