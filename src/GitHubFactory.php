@@ -16,7 +16,6 @@ use Github\HttpClient\CachedHttpClient;
 use Github\HttpClient\HttpClient;
 use Github\HttpClient\HttpClientInterface;
 use GrahamCampbell\GitHub\Authenticators\AuthenticatorFactory;
-use Guzzle\Log\PsrLogAdapter;
 use Guzzle\Plugin\Backoff\BackoffPlugin;
 use Guzzle\Plugin\Log\LogPlugin;
 use Psr\Log\LoggerInterface;
@@ -101,7 +100,7 @@ class GitHubFactory
         }
 
         if ($logging = array_get($config, 'logging')) {
-            $client->addSubscriber(new LogPlugin(new PsrLogAdapter($this->log), $logging));
+            $client->addSubscriber(new LogPlugin(new LogAdapter($this->log), $logging));
         }
 
         return $client;
