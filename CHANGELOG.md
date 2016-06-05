@@ -2,6 +2,11 @@ CHANGE LOG
 ==========
 
 
+## V4.4 (05/06/2016)
+
+* Added support for logging
+
+
 ## V4.3 (26/04/2016)
 
 * Added laravel 5.3 support
