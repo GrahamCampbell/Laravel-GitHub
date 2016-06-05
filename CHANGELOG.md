@@ -2,6 +2,11 @@ CHANGE LOG
 ==========
 
 
+## V4.4.1 (05/06/2016)
+
+* Use our own log adapter
+
+
 ## V4.4 (05/06/2016)
 
 * Added support for logging
