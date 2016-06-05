@@ -33,7 +33,7 @@ class GitHubFactory
      *
      * @var \Psr\Log\LoggerInterface
      */
-    protected $auth;
+    protected $log;
 
     /**
      * The authenticator factory instance.
