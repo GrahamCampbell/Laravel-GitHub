@@ -17,6 +17,8 @@ use Github\HttpClient\HttpClient;
 use GrahamCampbell\GitHub\Authenticators\AuthenticatorFactory;
 use GrahamCampbell\GitHub\GitHubFactory;
 use GrahamCampbell\TestBench\AbstractTestCase as AbstractTestBenchTestCase;
+use Mockery;
+use Psr\Log\LoggerInterface;
 
 /**
  * This is the github factory test class.
@@ -93,6 +95,6 @@ class GitHubFactoryTest extends AbstractTestBenchTestCase
 
     protected function getFactory()
     {
-        return new GitHubFactory(new AuthenticatorFactory(), __DIR__);
+        return new GitHubFactory(Mockery::mock(LoggerInterface::class), new AuthenticatorFactory(), __DIR__);
     }
 }

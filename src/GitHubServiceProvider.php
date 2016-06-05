@@ -17,6 +17,7 @@ use Illuminate\Contracts\Container\Container;
 use Illuminate\Foundation\Application as LaravelApplication;
 use Illuminate\Support\ServiceProvider;
 use Laravel\Lumen\Application as LumenApplication;
+use Psr\Log\LoggerInterface;
 
 /**
  * This is the github service provider class.
@@ -88,10 +89,11 @@ class GitHubServiceProvider extends ServiceProvider
     protected function registerGitHubFactory()
     {
         $this->app->singleton('github.factory', function (Container $app) {
+            $log = $app->make(LoggerInterface::class);
             $auth = $app['github.authfactory'];
             $path = $app['path.storage'].'/github';
 
-            return new GitHubFactory($auth, $path);
+            return new GitHubFactory($log, $auth, $path);
         });
 
         $this->app->alias('github.factory', GitHubFactory::class);

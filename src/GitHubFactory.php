@@ -16,7 +16,10 @@ use Github\HttpClient\CachedHttpClient;
 use Github\HttpClient\HttpClient;
 use Github\HttpClient\HttpClientInterface;
 use GrahamCampbell\GitHub\Authenticators\AuthenticatorFactory;
+use Guzzle\Log\PsrLogAdapter;
 use Guzzle\Plugin\Backoff\BackoffPlugin;
+use Guzzle\Plugin\Log\LogPlugin;
+use Psr\Log\LoggerInterface;
 
 /**
  * This is the github factory class.
@@ -25,6 +28,13 @@ use Guzzle\Plugin\Backoff\BackoffPlugin;
  */
 class GitHubFactory
 {
+    /**
+     * The psr logger instance.
+     *
+     * @var \Psr\Log\LoggerInterface
+     */
+    protected $auth;
+
     /**
      * The authenticator factory instance.
      *
@@ -42,13 +52,15 @@ class GitHubFactory
     /**
      * Create a new github factory instance.
      *
+     * @param \Psr\Log\LoggerInterface                                   $log
      * @param \GrahamCampbell\GitHub\Authenticators\AuthenticatorFactory $auth
      * @param string                                                     $path
      *
      * @return void
      */
-    public function __construct(AuthenticatorFactory $auth, $path)
+    public function __construct(LoggerInterface $log, AuthenticatorFactory $auth, $path)
     {
+        $this->log = $log;
         $this->auth = $auth;
         $this->path = $path;
     }
@@ -86,6 +98,10 @@ class GitHubFactory
 
         if (array_get($config, 'backoff')) {
             $client->addSubscriber(BackoffPlugin::getExponentialBackoff());
+        }
+
+        if ($logging = array_get($config, 'logging')) {
+            $client->addSubscriber(new LogPlugin(new PsrLogAdapter($this->log), $logging));
         }
 
         return $client;
