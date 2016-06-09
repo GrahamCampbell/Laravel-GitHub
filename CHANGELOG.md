@@ -2,6 +2,11 @@ CHANGE LOG
 ==========
 
 
+## V4.4.2 (09/06/2016)
+
+* Fixed lumen support
+
+
 ## V4.4.1 (05/06/2016)
 
 * Use our own log adapter
