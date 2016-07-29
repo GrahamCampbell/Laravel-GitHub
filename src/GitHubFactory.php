@@ -12,13 +12,10 @@
 namespace GrahamCampbell\GitHub;
 
 use Github\Client;
-use Github\HttpClient\CachedHttpClient;
-use Github\HttpClient\HttpClient;
-use Github\HttpClient\HttpClientInterface;
 use GrahamCampbell\GitHub\Authenticators\AuthenticatorFactory;
-use Guzzle\Plugin\Backoff\BackoffPlugin;
-use Guzzle\Plugin\Log\LogPlugin;
-use Psr\Log\LoggerInterface;
+use Illuminate\Contracts\Cache\Repository;
+use Http\Client\Common\Plugin\RetryPlugin;
+use Madewithlove\IlluminatePsrCacheBridge\Laravel\CacheItemPool;
 
 /**
  * This is the github factory class.
@@ -28,13 +25,6 @@ use Psr\Log\LoggerInterface;
 class GitHubFactory
 {
     /**
-     * The psr logger instance.
-     *
-     * @var \Psr\Log\LoggerInterface
-     */
-    protected $log;
-
-    /**
      * The authenticator factory instance.
      *
      * @var \GrahamCampbell\GitHub\Authenticators\AuthenticatorFactory
@@ -42,26 +32,24 @@ class GitHubFactory
     protected $auth;
 
     /**
-     * The cache path.
+     * The illuminate cache instance.
      *
-     * @var string
+     * @var \Illuminate\Contracts\Cache\Repository|null
      */
-    protected $path;
+    protected $cache;
 
     /**
      * Create a new github factory instance.
      *
-     * @param \Psr\Log\LoggerInterface                                   $log
      * @param \GrahamCampbell\GitHub\Authenticators\AuthenticatorFactory $auth
-     * @param string                                                     $path
+     * @param \Illuminate\Contracts\Cache\Repository|null                $cache
      *
      * @return void
      */
-    public function __construct(LoggerInterface $log, AuthenticatorFactory $auth, $path)
+    public function __construct(AuthenticatorFactory $auth, Repository $cache = null)
     {
-        $this->log = $log;
         $this->auth = $auth;
-        $this->path = $path;
+        $this->cache = $cache;
     }
 
     /**
@@ -73,72 +61,15 @@ class GitHubFactory
      */
     public function make(array $config)
     {
-        $http = $this->getHttpClient($config);
+        $client = new Client();
 
-        return $this->getClient($http, $config);
-    }
-
-    /**
-     * Get the http client.
-     *
-     * @param string[] $config
-     *
-     * @return \Github\HttpClient\HttpClientInterface
-     */
-    protected function getHttpClient(array $config)
-    {
-        $options = [
-            'base_url'    => array_get($config, 'baseUrl', 'https://api.github.com/'),
-            'api_version' => array_get($config, 'version', 'v3'),
-            'cache_dir'   => $this->getCacheDir($config),
-        ];
-
-        $client = isset($options['cache_dir']) ? new CachedHttpClient($options) : new HttpClient($options);
+        if ($this->cache && array_get($config, 'cache') && class_exists(CacheItemPool::class)) {
+            $client->addCache(new CacheItemPool($this->cache));
+        }
 
         if (array_get($config, 'backoff')) {
-            $client->addSubscriber(BackoffPlugin::getExponentialBackoff());
+            $client->addPlugin(new RetryPlugin(['retries' => 2]));
         }
-
-        if ($logging = array_get($config, 'logging')) {
-            $client->addSubscriber(new LogPlugin(new LogAdapter($this->log), $logging));
-        }
-
-        return $client;
-    }
-
-    /**
-     * Get the cache directory.
-     *
-     * @param string[] $config
-     *
-     * @return string|null
-     */
-    protected function getCacheDir(array $config)
-    {
-        if (!isset($config['cache'])) {
-            return $this->path;
-        }
-
-        if ($config['cache'] === true) {
-            return $this->path;
-        }
-
-        if (is_string($config['cache'])) {
-            return $config['cache'];
-        }
-    }
-
-    /**
-     * Get the main client.
-     *
-     * @param \Github\HttpClient\HttpClientInterface $http
-     * @param string[]                               $config
-     *
-     * @return \Github\Client
-     */
-    protected function getClient(HttpClientInterface $http, array $config)
-    {
-        $client = new Client($http);
 
         return $this->auth->make(array_get($config, 'method'))->with($client)->authenticate($config);
     }
