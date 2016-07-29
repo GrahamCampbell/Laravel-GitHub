@@ -2,6 +2,11 @@ CHANGE LOG
 ==========
 
 
+## V5.0 (Upcoming)
+
+* Upgraded to the newest upstream library
+
+
 ## V4.4.2 (09/06/2016)
 
 * Fixed lumen support
