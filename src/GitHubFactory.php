@@ -13,8 +13,8 @@ namespace GrahamCampbell\GitHub;
 
 use Github\Client;
 use GrahamCampbell\GitHub\Authenticators\AuthenticatorFactory;
-use Illuminate\Contracts\Cache\Repository;
 use Http\Client\Common\Plugin\RetryPlugin;
+use Illuminate\Contracts\Cache\Repository;
 use Madewithlove\IlluminatePsrCacheBridge\Laravel\CacheItemPool;
 
 /**
