@@ -89,11 +89,10 @@ class GitHubServiceProvider extends ServiceProvider
     protected function registerGitHubFactory()
     {
         $this->app->singleton('github.factory', function (Container $app) {
-            $log = $app->make(LoggerInterface::class);
             $auth = $app['github.authfactory'];
-            $path = $app->storagePath().'/github';
+            $path = $app['cache'];
 
-            return new GitHubFactory($log, $auth, $path);
+            return new GitHubFactory($auth, $cache);
         });
 
         $this->app->alias('github.factory', GitHubFactory::class);
