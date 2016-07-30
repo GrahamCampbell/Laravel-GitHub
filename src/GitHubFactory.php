@@ -13,11 +13,9 @@ namespace GrahamCampbell\GitHub;
 
 use Github\Client;
 use GrahamCampbell\GitHub\Authenticators\AuthenticatorFactory;
-use Http\Client\Common\Plugin;
 use Http\Client\Common\Plugin\RetryPlugin;
 use Illuminate\Contracts\Cache\Repository;
 use Madewithlove\IlluminatePsrCacheBridge\Laravel\CacheItemPool;
-use ReflectionClass;
 
 /**
  * This is the github factory class.
@@ -70,7 +68,7 @@ class GitHubFactory
         }
 
         if (array_get($config, 'backoff')) {
-            $this->addPlugin($client, new RetryPlugin(['retries' => 2]));
+            $client->addPlugin(new RetryPlugin(['retries' => 2]));
         }
 
         if ($version = array_get($config, 'version')) {
@@ -78,22 +76,5 @@ class GitHubFactory
         }
 
         return $this->auth->make(array_get($config, 'method'))->with($client)->authenticate($config);
-    }
-
-    /**
-     * Add a plugin to the client.
-     *
-     * @param \Github\Client             $client
-     * @param \Http\Client\Common\Plugin $plugin
-     *
-     * @return void
-     */
-    protected function addPlugin(Client $client, Plugin $plugin)
-    {
-        $reflection = new ReflectionClass($client);
-
-        $method = $reflection->getMethod('addPlugin');
-        $method->setAccessible(true);
-        $method->invoke($client, $plugin);
     }
 }
