@@ -61,6 +61,15 @@ class GitHubFactoryTest extends AbstractTestBenchTestCase
         $this->assertInstanceOf(Client::class, $client);
     }
 
+    public function testMakeStandardExplicitEnterprise()
+    {
+        $factory = $this->getFactory();
+
+        $client = $factory->make(['token' => 'your-token', 'method' => 'token', 'enterprise' => 'https://example.com/']);
+
+        $this->assertInstanceOf(Client::class, $client);
+    }
+
     public function testMakeStandardExplicitVersion()
     {
         $factory = $this->getFactory();

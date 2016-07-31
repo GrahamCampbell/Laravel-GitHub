@@ -39,12 +39,12 @@ return [
     'connections' => [
 
         'main' => [
-            'token'   => 'your-token',
-            'method'  => 'token',
-            // 'cache'   => false,
-            // 'backoff' => false,
-            // 'baseUrl' => 'https://api.github.com/',
-            // 'version' => 'v3',
+            'token'      => 'your-token',
+            'method'     => 'token',
+            // 'cache'      => false,
+            // 'backoff'    => false,
+            // 'version'    => 'v3',
+            // 'enterprise' => false,
         ],
 
         'alternative' => [
@@ -53,18 +53,18 @@ return [
             'method'       => 'application',
             // 'cache'        => false,
             // 'backoff'      => false,
-            // 'baseUrl'      => 'https://api.github.com/',
             // 'version'      => 'v3',
+            // 'enterprise'   => false,
         ],
 
         'other' => [
-            'username' => 'your-username',
-            'password' => 'your-password',
-            'method'   => 'password',
-            // 'cache'    => false,
-            // 'backoff'  => false,
-            // 'baseUrl'  => 'https://api.github.com/',
-            // 'version'  => 'v3',
+            'username'   => 'your-username',
+            'password'   => 'your-password',
+            'method'     => 'password',
+            // 'cache'      => false,
+            // 'backoff'    => false,
+            // 'version'    => 'v3',
+            // 'enterprise' => false,
         ],
 
     ],
