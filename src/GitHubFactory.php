@@ -61,25 +61,15 @@ class GitHubFactory
      */
     public function make(array $config)
     {
-        $client = new Client();
-
-        if ($version = array_get($config, 'version')) {
-            $client->setOption('api_version', $version);
-        }
-
-        if ($enterprise = array_get($config, 'enterprise')) {
-            $client->setEnterpriseUrl($enterprise);
-        }
-
-        if ($this->cache && array_get($config, 'cache') && class_exists(CacheItemPool::class)) {
-            $client->addCache(new CacheItemPool($this->cache));
-        }
+        $client = new Client(null, array_get($config, 'version'), array_get($config, 'enterprise'));
 
         if (array_get($config, 'backoff')) {
             $client->addPlugin(new RetryPlugin(['retries' => 2]));
         }
 
-        $client->clearHeaders();
+        if ($this->cache && array_get($config, 'cache') && class_exists(CacheItemPool::class)) {
+            $client->addCache(new CacheItemPool($this->cache));
+        }
 
         return $this->auth->make(array_get($config, 'method'))->with($client)->authenticate($config);
     }
