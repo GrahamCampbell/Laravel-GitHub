@@ -117,7 +117,7 @@ class GitHubFactoryTest extends AbstractTestBenchTestCase
 
     protected function getFactory()
     {
-        $cache = Mockery::mock(Factory::class)
+        $cache = Mockery::mock(Factory::class);
 
         return [new GitHubFactory(new AuthenticatorFactory(), $cache), $cache];
     }
