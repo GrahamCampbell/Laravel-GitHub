@@ -14,7 +14,7 @@ namespace GrahamCampbell\GitHub;
 use Github\Client;
 use GrahamCampbell\GitHub\Authenticators\AuthenticatorFactory;
 use Http\Client\Common\Plugin\RetryPlugin;
-use Illuminate\Contracts\Cache\Repository;
+use Illuminate\Contracts\Cache\Factory;
 use Madewithlove\IlluminatePsrCacheBridge\Laravel\CacheItemPool;
 
 /**
@@ -34,7 +34,7 @@ class GitHubFactory
     /**
      * The illuminate cache instance.
      *
-     * @var \Illuminate\Contracts\Cache\Repository|null
+     * @var \Illuminate\Contracts\Cache\Factory|null
      */
     protected $cache;
 
@@ -42,11 +42,11 @@ class GitHubFactory
      * Create a new github factory instance.
      *
      * @param \GrahamCampbell\GitHub\Authenticators\AuthenticatorFactory $auth
-     * @param \Illuminate\Contracts\Cache\Repository|null                $cache
+     * @param \Illuminate\Contracts\Cache\Factory|null                   $cache
      *
      * @return void
      */
-    public function __construct(AuthenticatorFactory $auth, Repository $cache = null)
+    public function __construct(AuthenticatorFactory $auth, Factory $cache = null)
     {
         $this->auth = $auth;
         $this->cache = $cache;
@@ -63,12 +63,12 @@ class GitHubFactory
     {
         $client = new Client(null, array_get($config, 'version'), array_get($config, 'enterprise'));
 
-        if (array_get($config, 'backoff')) {
-            $client->addPlugin(new RetryPlugin(['retries' => 2]));
+        if ($backoff = array_get($config, 'backoff')) {
+            $client->addPlugin(new RetryPlugin(['retries' => $backoff === true ? 2 : $backoff]));
         }
 
-        if ($this->cache && array_get($config, 'cache') && class_exists(CacheItemPool::class)) {
-            $client->addCache(new CacheItemPool($this->cache));
+        if ($this->cache && class_exists(CacheItemPool::class) && $cache = array_get($config, 'cache')) {
+            $client->addCache(new CacheItemPool($this->cache->store($cache === true ? null : $cache)));
         }
 
         return $this->auth->make(array_get($config, 'method'))->with($client)->authenticate($config);

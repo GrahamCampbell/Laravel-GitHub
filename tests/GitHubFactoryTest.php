@@ -15,7 +15,7 @@ use Github\Client;
 use GrahamCampbell\GitHub\Authenticators\AuthenticatorFactory;
 use GrahamCampbell\GitHub\GitHubFactory;
 use GrahamCampbell\TestBench\AbstractTestCase as AbstractTestBenchTestCase;
-use Illuminate\Contracts\Cache\Repository;
+use Illuminate\Contracts\Cache\Factory;
 use Mockery;
 
 /**
@@ -103,6 +103,6 @@ class GitHubFactoryTest extends AbstractTestBenchTestCase
 
     protected function getFactory()
     {
-        return new GitHubFactory(new AuthenticatorFactory(), Mockery::mock(Repository::class));
+        return new GitHubFactory(new AuthenticatorFactory(), Mockery::mock(Factory::class));
     }
 }
