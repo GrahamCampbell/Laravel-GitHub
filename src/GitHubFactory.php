@@ -68,7 +68,7 @@ class GitHubFactory
         }
 
         if ($this->cache && class_exists(CacheItemPool::class) && $cache = array_get($config, 'cache')) {
-            $client->addCache(new CacheItemPool($this->cache->store($cache === true ? null : $cache)));
+            $client->addCache(new CacheItemPool($this->cache->store($cache === true ? null : $cache)), ['default_ttl' => 60]);
         }
 
         return $this->auth->make(array_get($config, 'method'))->with($client)->authenticate($config);
