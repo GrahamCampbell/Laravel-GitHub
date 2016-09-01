@@ -85,7 +85,14 @@ This class contains no public methods of interest. This class should be added to
 
 ##### Real Examples
 
-Here you can see an example of just how simple this package is to use. Out of the box, the default adapter is `main`. After you enter your authentication details in the config file, it will just work:
+Here you can see an example of just how simple this package is to use. Out of the box, the default adapter is `main`. After you enter your authentication details in .env file:
+
+```
+// using the default connection
+GITHUB_TOKEN=your-token
+```
+
+it will just work:
 
 ```php
 use GrahamCampbell\GitHub\Facades\GitHub;
