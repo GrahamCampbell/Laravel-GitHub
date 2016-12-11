@@ -2,7 +2,7 @@ CHANGE LOG
 ==========
 
 
-## V5.0 (Upcoming)
+## V5.0 (11/12/2016)
 
 * Upgraded to the newest upstream library
 
