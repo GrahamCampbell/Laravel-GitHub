@@ -12,6 +12,7 @@
 namespace GrahamCampbell\GitHub;
 
 use Github\Client;
+use Github\HttpClient\Builder;
 use GrahamCampbell\GitHub\Authenticators\AuthenticatorFactory;
 use Http\Client\Common\Plugin\RetryPlugin;
 use Illuminate\Contracts\Cache\Factory;
@@ -61,16 +62,30 @@ class GitHubFactory
      */
     public function make(array $config)
     {
-        $client = new Client(null, array_get($config, 'version'), array_get($config, 'enterprise'));
+        $client = new Client($this->getBuilder($config), array_get($config, 'version'), array_get($config, 'enterprise'));
+
+        return $this->auth->make(array_get($config, 'method'))->with($client)->authenticate($config);
+    }
+
+    /**
+     * Get the http client builder.
+     *
+     * @param string[] $config
+     *
+     * @return \Github\HttpClient\Builder
+     */
+    protected function getBuilder(array $config)
+    {
+        $builder = new Builder();
 
         if ($backoff = array_get($config, 'backoff')) {
-            $client->addPlugin(new RetryPlugin(['retries' => $backoff === true ? 2 : $backoff]));
+            $builder->addPlugin(new RetryPlugin(['retries' => $backoff === true ? 2 : $backoff]));
         }
 
         if ($this->cache && class_exists(CacheItemPool::class) && $cache = array_get($config, 'cache')) {
-            $client->addCache(new CacheItemPool($this->cache->store($cache === true ? null : $cache)));
+            $builder->addCache(new CacheItemPool($this->cache->store($cache === true ? null : $cache)));
         }
 
-        return $this->auth->make(array_get($config, 'method'))->with($client)->authenticate($config);
+        return $builder;
     }
 }
