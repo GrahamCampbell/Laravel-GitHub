@@ -22,7 +22,7 @@ Either [PHP](https://php.net) 5.5+ or [HHVM](http://hhvm.com) 3.6+ are required.
 To get the latest version of Laravel GitHub, simply require the project using [Composer](https://getcomposer.org):
 
 ```bash
-$ composer require graham-campbell/github
+$ composer require graham-campbell/github php-http/guzzle6-adapter
 ```
 
 Instead, you may of course manually update your require block and run `composer update` if you so choose:
@@ -30,7 +30,8 @@ Instead, you may of course manually update your require block and run `composer 
 ```json
 {
     "require": {
-        "graham-campbell/github": "^5.0"
+        "graham-campbell/github": "^5.0",
+        "php-http/guzzle6-adapter": "^1.1"
     }
 }
 ```
