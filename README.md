@@ -25,6 +25,8 @@ To get the latest version of Laravel GitHub, simply require the project using [C
 $ composer require graham-campbell/github php-http/guzzle6-adapter
 ```
 
+As an example, I've used the `php-http/guzzle6-adapter`, but you may install any package that "provides" `php-http/client-implementation`.
+
 Instead, you may of course manually update your require block and run `composer update` if you so choose:
 
 ```json
@@ -36,7 +38,7 @@ Instead, you may of course manually update your require block and run `composer 
 }
 ```
 
-You will also need to install an http driver such as `php-http/guzzle6-adapter`, and optionally install `madewithlove/illuminate-psr-cache-bridge` if you'd like to use caching.
+You will also need to install `madewithlove/illuminate-psr-cache-bridge` if you'd like to use caching.
 
 Once Laravel GitHub is installed, you need to register the service provider. Open up `config/app.php` and add the following to the `providers` key.
 
