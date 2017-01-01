@@ -2,6 +2,11 @@ CHANGE LOG
 ==========
 
 
+## V5.1 (01/01/2017)
+
+* Added laravel 5.4 support
+
+
 ## V5.0 (11/12/2016)
 
 * Upgraded to the newest upstream library
