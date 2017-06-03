@@ -40,6 +40,8 @@ Instead, you may of course manually update your require block and run `composer 
 
 You will also need to install `madewithlove/illuminate-psr-cache-bridge` if you'd like to use caching.
 
+Alternatively you can require it directly via your terminal by running `composer require graham-campbell/github` in the project root directory.
+
 Once Laravel GitHub is installed, you need to register the service provider. Open up `config/app.php` and add the following to the `providers` key.
 
 * `'GrahamCampbell\GitHub\GitHubServiceProvider'`
