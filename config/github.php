@@ -39,7 +39,7 @@ return [
     'connections' => [
 
         'main' => [
-            'token'      => 'your-token',
+            'token'      => env('GITHUB_TOKEN', 'your-token'),
             'method'     => 'token',
             // 'backoff'    => false,
             // 'cache'      => false,
@@ -48,8 +48,8 @@ return [
         ],
 
         'alternative' => [
-            'clientId'     => 'your-client-id',
-            'clientSecret' => 'your-client-secret',
+            'clientId'     => env('GITHUB_CLIENT_ID', 'your-client-id'),
+            'clientSecret' => env('GITHUB_CLIENT_SECRET', 'your-client-secret'),
             'method'       => 'application',
             // 'backoff'      => false,
             // 'cache'        => false,
@@ -58,8 +58,8 @@ return [
         ],
 
         'other' => [
-            'username'   => 'your-username',
-            'password'   => 'your-password',
+            'username'   => env('GITHUB_USERNAME', 'your-username'),
+            'password'   => env('GITHUB_PASSWORD', 'your-password'),
             'method'     => 'password',
             // 'backoff'    => false,
             // 'cache'      => false,
