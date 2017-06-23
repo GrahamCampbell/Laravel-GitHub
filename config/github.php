@@ -47,7 +47,7 @@ return [
             // 'enterprise' => false,
         ],
 
-        'alternative' => [
+        'app' => [
             'clientId'     => 'your-client-id',
             'clientSecret' => 'your-client-secret',
             'method'       => 'application',
@@ -57,7 +57,7 @@ return [
             // 'enterprise'   => false,
         ],
 
-        'other_alternative' => [
+        'jwt' => [
             'token'        => 'your-jwt-token',
             'method'       => 'jwt',
             // 'backoff'      => false,
