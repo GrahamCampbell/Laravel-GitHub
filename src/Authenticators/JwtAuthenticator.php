@@ -14,9 +14,10 @@ namespace GrahamCampbell\GitHub\Authenticators;
 use InvalidArgumentException;
 
 /**
- * This is the token authenticator class.
+ * This is the jwt authenticator class.
  *
  * @author Graham Campbell <graham@alt-three.com>
+ * @author Lucas Michot <lucas@semalead.com>
  */
 class JwtAuthenticator extends AbstractAuthenticator implements AuthenticatorInterface
 {
