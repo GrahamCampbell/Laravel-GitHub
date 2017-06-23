@@ -32,6 +32,8 @@ class AuthenticatorFactory
         switch ($method) {
             case 'application':
                 return new ApplicationAuthenticator();
+            case 'jwt':
+                return new JwtAuthenticator;
             case 'password':
                 return new PasswordAuthenticator();
             case 'token':
