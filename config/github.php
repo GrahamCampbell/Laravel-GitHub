@@ -32,7 +32,7 @@ return [
     | Here are each of the connections setup for your application. Example
     | configuration has been included, but you may add as many connections as
     | you would like. Note that the 3 supported authentication methods are:
-    | "application", "password", and "token".
+    | "application", "jwt", "password", and "token".
     |
     */
 
@@ -51,6 +51,15 @@ return [
             'clientId'     => 'your-client-id',
             'clientSecret' => 'your-client-secret',
             'method'       => 'application',
+            // 'backoff'      => false,
+            // 'cache'        => false,
+            // 'version'      => 'v3',
+            // 'enterprise'   => false,
+        ],
+
+        'other_alternative' => [
+            'token'        => 'your-jwt-token',
+            'method'       => 'jwt',
             // 'backoff'      => false,
             // 'cache'        => false,
             // 'version'      => 'v3',
