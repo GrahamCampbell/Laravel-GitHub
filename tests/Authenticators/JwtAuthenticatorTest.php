@@ -11,10 +11,10 @@
 
 namespace GrahamCampbell\Tests\GitHub\Authenticators;
 
-use Mockery;
 use Github\Client;
-use GrahamCampbell\Tests\GitHub\AbstractTestCase;
 use GrahamCampbell\GitHub\Authenticators\JwtAuthenticator;
+use GrahamCampbell\Tests\GitHub\AbstractTestCase;
+use Mockery;
 
 /**
  * This is the token authenticator test class.
@@ -85,6 +85,6 @@ class JwtAuthenticatorTest extends AbstractTestCase
 
     protected function getAuthenticator()
     {
-        return new JwtAuthenticator;
+        return new JwtAuthenticator();
     }
 }

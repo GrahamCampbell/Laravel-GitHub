@@ -33,7 +33,7 @@ class AuthenticatorFactory
             case 'application':
                 return new ApplicationAuthenticator();
             case 'jwt':
-                return new JwtAuthenticator;
+                return new JwtAuthenticator();
             case 'password':
                 return new PasswordAuthenticator();
             case 'token':
