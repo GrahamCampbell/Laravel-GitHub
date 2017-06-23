@@ -69,7 +69,7 @@ This option (`'default'`) is where you may specify which of the connections belo
 
 ##### GitHub Connections
 
-This option (`'connections'`) is where each of the connections are setup for your application. Example configuration has been included, but you may add as many connections as you would like. Note that the 3 supported authentication methods are: `"application"`, `"password"`, and `"token"`.
+This option (`'connections'`) is where each of the connections are setup for your application. Example configuration has been included, but you may add as many connections as you would like. Note that the 4 supported authentication methods are: `"application"`, `"jwt"`, `"password"`, and `"token"`.
 
 
 ## Usage
