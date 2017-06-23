@@ -17,9 +17,10 @@ use GrahamCampbell\Tests\GitHub\AbstractTestCase;
 use Mockery;
 
 /**
- * This is the token authenticator test class.
+ * This is the jwt authenticator test class.
  *
  * @author Graham Campbell <graham@alt-three.com>
+ * @author Lucas Michot <lucas@semalead.com>
  */
 class JwtAuthenticatorTest extends AbstractTestCase
 {
