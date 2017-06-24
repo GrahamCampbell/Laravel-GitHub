@@ -42,6 +42,14 @@
     "extra": {
         "branch-alias": {
             "dev-master": "5.1-dev"
+        },
+        "laravel": {
+            "providers": [
+                "GrahamCampbell\\GitHub\\GitHubServiceProvider"
+            ],
+            "aliases": {
+                "GitHub": "GrahamCampbell\\GitHub\\Facades\\GitHub"
+            }
         }
     },
     "minimum-stability": "dev",
