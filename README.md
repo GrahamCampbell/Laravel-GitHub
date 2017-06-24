@@ -17,36 +17,21 @@ Laravel GitHub was created by, and is maintained by [Graham Campbell](https://gi
 
 ## Installation
 
-Either [PHP](https://php.net) 5.5+ or [HHVM](http://hhvm.com) 3.6+ are required.
+Laravel GitHub requires [PHP](https://php.net) 5.5+. This particular version supports Laravel 5.1, 5.2, 5.3, or 5.4 only.
 
-To get the latest version of Laravel GitHub, simply require the project using [Composer](https://getcomposer.org):
+To get the latest version, simply require the project using [Composer](https://getcomposer.org). You will need to install any package that "provides" `php-http/client-implementation`.
+
+So, for example, if using Guzzle 6:
 
 ```bash
 $ composer require graham-campbell/github php-http/guzzle6-adapter
 ```
 
-As an example, I've used the `php-http/guzzle6-adapter`, but you may install any package that "provides" `php-http/client-implementation`.
+Once installed, you need to register the `GrahamCampbell\GitHub\GitHubServiceProvider` service provider in your `config/app.php`, and optionally alias our facade:
 
-Instead, you may of course manually update your require block and run `composer update` if you so choose:
-
-```json
-{
-    "require": {
-        "graham-campbell/github": "^5.0",
-        "php-http/guzzle6-adapter": "^1.1"
-    }
-}
+```php
+        'GitHub' => GrahamCampbell\GitHub\Facades\GitHub::class,
 ```
-
-You will also need to install `madewithlove/illuminate-psr-cache-bridge` if you'd like to use caching.
-
-Once Laravel GitHub is installed, you need to register the service provider. Open up `config/app.php` and add the following to the `providers` key.
-
-* `'GrahamCampbell\GitHub\GitHubServiceProvider'`
-
-You can register the GitHub facade in the `aliases` key of your `config/app.php` file if you like.
-
-* `'GitHub' => 'GrahamCampbell\GitHub\Facades\GitHub'`
 
 
 ## Configuration
