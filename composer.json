@@ -10,17 +10,17 @@
         }
     ],
     "require": {
-        "php": ">=5.5.9",
+        "php": "^7.0",
         "illuminate/contracts": "5.1.*|5.2.*|5.3.*|5.4.*",
         "illuminate/support": "5.1.*|5.2.*|5.3.*|5.4.*",
-        "graham-campbell/manager": "^2.3",
+        "graham-campbell/manager": "^3.0",
         "knplabs/github-api": "^2.0"
     },
     "require-dev": {
-        "graham-campbell/testbench": "^3.1",
+        "graham-campbell/testbench": "^4.0",
         "madewithlove/illuminate-psr-cache-bridge": "^1.0",
-        "mockery/mockery": "^0.9.4",
-        "phpunit/phpunit": "^4.8|^5.0",
+        "mockery/mockery": "^0.9.9",
+        "phpunit/phpunit": "^5.0",
         "php-http/guzzle6-adapter": "^1.0"
     },
     "suggest": {
@@ -41,7 +41,7 @@
     },
     "extra": {
         "branch-alias": {
-            "dev-master": "5.1-dev"
+            "dev-master": "6.0-dev"
         }
     },
     "minimum-stability": "dev",
