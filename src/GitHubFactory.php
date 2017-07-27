@@ -16,6 +16,7 @@ use Github\HttpClient\Builder;
 use GrahamCampbell\GitHub\Authenticators\AuthenticatorFactory;
 use Http\Client\Common\Plugin\RetryPlugin;
 use Illuminate\Contracts\Cache\Factory;
+use InvalidArgumentException;
 use Madewithlove\IlluminatePsrCacheBridge\Laravel\CacheItemPool;
 
 /**
@@ -58,11 +59,17 @@ class GitHubFactory
      *
      * @param string[] $config
      *
+     * @throws \InvalidArgumentException
+     *
      * @return \Github\Client
      */
     public function make(array $config)
     {
         $client = new Client($this->getBuilder($config), array_get($config, 'version'), array_get($config, 'enterprise'));
+
+        if (!array_key_exists('method', $config)) {
+            throw new InvalidArgumentException('The github factory requires an auth method.');
+        }
 
         return $this->auth->make(array_get($config, 'method'))->with($client)->authenticate($config);
     }

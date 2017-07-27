@@ -106,7 +106,7 @@ class GitHubFactoryTest extends AbstractTestBenchTestCase
 
     /**
      * @expectedException \InvalidArgumentException
-     * @expectedExceptionMessage Unsupported authentication method [].
+     * @expectedExceptionMessage The github factory requires an auth method.
      */
     public function testMakeEmpty()
     {

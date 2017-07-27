@@ -27,7 +27,7 @@ class AuthenticatorFactory
      *
      * @return \GrahamCampbell\GitHub\Authenticators\AuthenticatorInterface
      */
-    public function make($method)
+    public function make(string $method)
     {
         switch ($method) {
             case 'application':
