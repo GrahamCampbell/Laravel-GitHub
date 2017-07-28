@@ -52,22 +52,22 @@ This option (`'default'`) is where you may specify which of the connections belo
 
 ##### GitHub Connections
 
-This option (`'connections'`) is where each of the connections are setup for your application. Example configuration has been included, but you may add as many connections as you would like. Note that the 4 supported authentication methods are: `"application"`, `"jwt"`, `"password"`, and `"token"`.
+This option (`'connections'`) is where each of the connections is setup for your application. Example configuration has been included, but you may add as many connections as you would like. Note that the 4 supported authentication methods are: `"application"`, `"jwt"`, `"password"`, and `"token"`.
 
 
 ## Usage
 
 ##### GitHubManager
 
-This is the class of most interest. It is bound to the ioc container as `'github'` and can be accessed using the `Facades\GitHub` facade. This class implements the `ManagerInterface` by extending `AbstractManager`. The interface and abstract class are both part of my [Laravel Manager](https://github.com/GrahamCampbell/Laravel-Manager) package, so you may want to go and checkout the docs for how to use the manager class over at [that repo](https://github.com/GrahamCampbell/Laravel-Manager#usage). Note that the connection class returned will always be an instance of `\Github\Client`.
+This is the class of most interest. It is bound to the IOC container as `'GitHub'` and can be accessed using the `Facades\GitHub` facade. This class implements the `ManagerInterface` by extending `AbstractManager`. The interface and abstract class are both parts of my [Laravel Manager](https://github.com/GrahamCampbell/Laravel-Manager) package, so you may want to go and check out the docs for how to use the manager class over at [that repo](https://github.com/GrahamCampbell/Laravel-Manager#usage). Note that the connection class returned will always be an instance of `\Github\Client`.
 
 ##### Facades\GitHub
 
-This facade will dynamically pass static method calls to the `'github'` object in the ioc container which by default is the `GitHubManager` class.
+This facade will dynamically pass static method calls to the `'GitHub'` object in the IoC container which by default is the `GitHubManager` class.
 
 ##### GitHubServiceProvider
 
-This class contains no public methods of interest. This class should be added to the providers array in `config/app.php`. This class will setup ioc bindings.
+This class contains no public methods of interest. This class should be added to the provider's array in `config/app.php`. This class will set up IoC bindings.
 
 ##### Real Examples
 
@@ -84,7 +84,7 @@ GitHub::repo()->show('GrahamCampbell', 'Laravel-GitHub');
 // this example is simple, and there are far more methods available
 ```
 
-The github manager will behave like it is a `\Github\Client` class. If you want to call specific connections, you can do with the `connection` method:
+The GitHub manager will behave like it is a `\Github\Client` class. If you want to call specific connections, you can do with the `connection` method:
 
 ```php
 use GrahamCampbell\GitHub\Facades\GitHub;
