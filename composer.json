@@ -14,7 +14,7 @@
         "illuminate/contracts": "5.1.*|5.2.*|5.3.*|5.4.*|5.5.*",
         "illuminate/support": "5.1.*|5.2.*|5.3.*|5.4.*|5.5.*",
         "graham-campbell/manager": "^3.0",
-        "knplabs/github-api": "^2.0"
+        "knplabs/github-api": "2.5.*"
     },
     "require-dev": {
         "graham-campbell/analyzer": "^1.1",

@@ -14,8 +14,8 @@ declare(strict_types=1);
 namespace GrahamCampbell\GitHub;
 
 use Github\Client;
-use Github\HttpClient\Builder;
 use GrahamCampbell\GitHub\Authenticators\AuthenticatorFactory;
+use GrahamCampbell\GitHub\Http\ClientBuilder;
 use Http\Client\Common\Plugin\RetryPlugin;
 use Illuminate\Contracts\Cache\Factory;
 use InvalidArgumentException;
@@ -81,11 +81,11 @@ class GitHubFactory
      *
      * @param string[] $config
      *
-     * @return \Github\HttpClient\Builder
+     * @return \GrahamCampbell\GitHub\Http\ClientBuilder
      */
     protected function getBuilder(array $config)
     {
-        $builder = new Builder();
+        $builder = new ClientBuilder();
 
         if ($backoff = array_get($config, 'backoff')) {
             $builder->addPlugin(new RetryPlugin(['retries' => $backoff === true ? 2 : $backoff]));
