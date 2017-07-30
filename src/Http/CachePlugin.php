@@ -15,11 +15,10 @@ namespace GrahamCampbell\GitHub\Http;
 
 use Exception;
 use Http\Client\Common\Plugin;
-use Http\Client\Common\Plugin\Exception\RewindStreamException;
 use Http\Client\Common\Plugin\Cache\Generator\CacheKeyGenerator;
 use Http\Client\Common\Plugin\Cache\Generator\HeaderCacheKeyGenerator;
+use Http\Client\Common\Plugin\Exception\RewindStreamException;
 use Http\Message\StreamFactory;
-use Http\Promise\FulfilledPromise;
 use Psr\Cache\CacheItemInterface;
 use Psr\Cache\CacheItemPoolInterface;
 use Psr\Http\Message\RequestInterface;
@@ -130,8 +129,8 @@ class CachePlugin implements Plugin
                     ->expiresAfter($this->lifetime)
                     ->set([
                         'response' => $response,
-                        'body' => $body,
-                        'etag' => $response->getHeader('ETag'),
+                        'body'     => $body,
+                        'etag'     => $response->getHeader('ETag'),
                     ]);
                 $this->pool->save($cacheItem);
             }
@@ -145,7 +144,7 @@ class CachePlugin implements Plugin
      *
      * @param \Psr\Http\Message\RequestInterface $request
      *
-     * @return \Psr\Cache\CacheItemInterface 
+     * @return \Psr\Cache\CacheItemInterface
      */
     protected function createCacheItem(RequestInterface $request)
     {
