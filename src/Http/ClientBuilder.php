@@ -37,7 +37,7 @@ class ClientBuilder extends Builder
     {
         $this->setCachePlugin($cachePool, $config['generator'] ?? null, $config['lifetime'] ?? null);
 
-        $this->httpClientModified = true;
+        $this->getProperty('httpClientModified')->setValue($this, true);
     }
 
     /**
@@ -51,24 +51,26 @@ class ClientBuilder extends Builder
      */
     protected function setCachePlugin(CacheItemPoolInterface $cachePool, CacheKeyGenerator $generator = null, int $lifetime = null)
     {
-        $prop = (new ReflectionClass($this))->getProperty('cachePlugin');
+        $prop = $this->getProperty('cachePlugin');
 
-        $prop->setAccessible(true);
+        $stream = $this->getProperty('streamFactory')->getValue($this);
 
-        $prop->setValue($this, new CachePlugin($cachePool, $this->getStreamFactory(), $generator, $lifetime));
+        $prop->setValue($this, new CachePlugin($cachePool, $stream, $generator, $lifetime));
     }
 
     /**
-     * Get the internal stream factory.
+     * Get the builder reflection property for the given name.
      *
-     * @return \Http\Message\StreamFactory
+     * @param string $name
+     *
+     * @return \ReflectionProperty
      */
-    protected function getStreamFactory()
+    protected function getProperty(string $name)
     {
-        $prop = (new ReflectionClass($this))->getProperty('streamFactory');
+        $prop = (new ReflectionClass(Builder::class))->getProperty($name);
 
         $prop->setAccessible(true);
 
-        return $prop->getValue($this);
+        return $prop;
     }
 }

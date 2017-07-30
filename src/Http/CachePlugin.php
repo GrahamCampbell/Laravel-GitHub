@@ -166,11 +166,7 @@ class CachePlugin implements Plugin
             return false;
         }
 
-        if ($this->getCacheControlDirective($response, 'no-cache')) {
-            return false;
-        }
-
-        return true;
+        return !$this->getCacheControlDirective($response, 'no-cache');
     }
 
     /**
