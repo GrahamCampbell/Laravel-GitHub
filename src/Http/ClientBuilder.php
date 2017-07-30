@@ -15,7 +15,7 @@ namespace GrahamCampbell\GitHub\Http;
 
 use Github\HttpClient\Builder;
 use Http\Client\Common\Plugin\Cache\Generator\CacheKeyGenerator;
-use Psr\Cache\CacheItemInterface;
+use Psr\Cache\CacheItemPoolInterface;
 use ReflectionClass;
 
 /**
@@ -28,8 +28,8 @@ class ClientBuilder extends Builder
     /**
      * Add a cache plugin to cache responses locally.
      *
-     * @param \Psr\Cache\CacheItemInterface $cachePool
-     * @param array                         $config
+     * @param \Psr\Cache\CacheItemPoolInterface $cachePool
+     * @param array                             $config
      *
      * @return void
      */
@@ -43,7 +43,7 @@ class ClientBuilder extends Builder
     /**
      * Add a cache plugin to cache responses locally.
      *
-     * @param \Psr\Cache\CacheItemInterface                                     $cachePool
+     * @param \Psr\Cache\CacheItemPoolInterface                                 $cachePool
      * @param \Http\Client\Common\Plugin\Cache\Generator\CacheKeyGenerator|null $generator
      * @param int|null                                                          $lifetime
      *

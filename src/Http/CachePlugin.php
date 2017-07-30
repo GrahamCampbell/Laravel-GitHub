@@ -98,7 +98,7 @@ class CachePlugin implements Plugin
 
         $cacheItem = $this->createCacheItem($request);
 
-        if ($cacheItem->isHit() && ($etag = $this->getETag($cacheItem)))) {
+        if ($cacheItem->isHit() && ($etag = $this->getETag($cacheItem))) {
             $request = $request->withHeader('If-None-Match', $etag);
         }
 
