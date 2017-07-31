@@ -229,10 +229,6 @@ class CachePlugin implements Plugin
     {
         $data = $cacheItem->get();
 
-        if (!is_array($data['etag'])) {
-            return $data['etag'];
-        }
-
         foreach ($data['etag'] as $etag) {
             if (!empty($etag)) {
                 return $etag;
