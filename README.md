@@ -25,7 +25,9 @@ To get the latest version, simply require the project using [Composer](https://g
 $ composer require graham-campbell/github php-http/guzzle6-adapter
 ```
 
-Once installed, you need to register the `GrahamCampbell\GitHub\GitHubServiceProvider` service provider in your `config/app.php`, or if you're using Laravel 5.5, this can be done via the automatic package discovery. You can also optionally alias our facade:
+Once installed, you need to register the `GrahamCampbell\GitHub\GitHubServiceProvider` service provider in your `config/app.php`, or if you're using Laravel 5.5, this can be done via the automatic package discovery.
+
+You can also optionally alias our facade:
 
 ```php
         'GitHub' => GrahamCampbell\GitHub\Facades\GitHub::class,
