@@ -2,6 +2,11 @@ CHANGE LOG
 ==========
 
 
+## V6.1 (07/10/2017)
+
+* Support knplabs/github-api 2.6 too
+
+
 ## V6.0 (06/08/2017)
 
 * Support PHP 7.0, 7.1, 7.2
@@ -9,6 +14,7 @@ CHANGE LOG
 * More type hints
 * Added JWT authentication support
 * Rolled a custom caching plugging
+* Locked to knplabs/github-api 2.5
 
 
 ## V5.1 (01/01/2017)
