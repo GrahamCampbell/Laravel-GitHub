@@ -2,6 +2,12 @@ CHANGE LOG
 ==========
 
 
+## V6.2 (Upcoming)
+
+* Support knplabs/github-api 2.7 too
+* Fixed manager dynamic method phpdoc
+
+
 ## V6.1 (07/10/2017)
 
 * Support knplabs/github-api 2.6 too
