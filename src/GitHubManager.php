@@ -23,6 +23,7 @@ use Illuminate\Contracts\Config\Repository;
  * @method \Github\Api\CurrentUser me()
  * @method \Github\Api\Enterprise ent()
  * @method \Github\Api\Enterprise enterprise()
+ * @method \Github\Api\Miscellaneous\CodeOfConduct codeOfConduct()
  * @method \Github\Api\Miscellaneous\Emojis emojis()
  * @method \Github\Api\GitData git()
  * @method \Github\Api\GitData gitData()
