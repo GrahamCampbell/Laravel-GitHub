@@ -44,7 +44,7 @@ class GitHubServiceProvider extends ServiceProvider
      */
     protected function setupConfig()
     {
-        $source = realpath(__DIR__.'/../config/github.php');
+        $source = realpath($raw = __DIR__.'/../config/github.php') ?: $raw;
 
         if ($this->app instanceof LaravelApplication && $this->app->runningInConsole()) {
             $this->publishes([$source => config_path('github.php')]);
