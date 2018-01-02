@@ -2,6 +2,11 @@ CHANGE LOG
 ==========
 
 
+## V6.2.1 (02/01/2017)
+
+ Fixed config when inside phar
+
+
 ## V6.2 (28/12/2017)
 
 * Support knplabs/github-api 2.7 too
