@@ -2,7 +2,7 @@ CHANGE LOG
 ==========
 
 
-## V6.2.1 (02/01/2017)
+## V6.2.1 (02/01/2018)
 
  Fixed config when inside phar
 
