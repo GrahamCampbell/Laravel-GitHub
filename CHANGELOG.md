@@ -4,7 +4,7 @@ CHANGE LOG
 
 ## V6.2.1 (02/01/2018)
 
- Fixed config when inside phar
+* Fixed config when inside phar
 
 
 ## V6.2 (28/12/2017)
