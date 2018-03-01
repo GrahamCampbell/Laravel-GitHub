@@ -2,6 +2,13 @@ CHANGE LOG
 ==========
 
 
+## V7.0 (01/03/2018)
+
+* Support PHP 7.1 or 7.2
+* Support Laravel 5.5 or 5.6
+* Support knplabs/github-api 2.7
+
+
 ## V6.2.1 (02/01/2018)
 
 * Fixed config when inside phar
