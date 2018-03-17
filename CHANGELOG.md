@@ -2,6 +2,11 @@ CHANGE LOG
 ==========
 
 
+## V7.1 (Upcoming)
+
+* Use the new cache plugin package
+
+
 ## V7.0 (01/03/2018)
 
 * Support PHP 7.1 or 7.2
