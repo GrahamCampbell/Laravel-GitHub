@@ -13,6 +13,7 @@ declare(strict_types=1);
 
 namespace GrahamCampbell\GitHub\Authenticators;
 
+use GitHub\Client;
 use InvalidArgumentException;
 
 /**
@@ -41,7 +42,7 @@ class PasswordAuthenticator extends AbstractAuthenticator implements Authenticat
             throw new InvalidArgumentException('The password authenticator requires a username and password.');
         }
 
-        $this->client->authenticate($config['username'], $config['password'], 'http_password');
+        $this->client->authenticate($config['username'], $config['password'], Client::AUTH_HTTP_PASSWORD);
 
         return $this->client;
     }

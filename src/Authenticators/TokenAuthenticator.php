@@ -13,6 +13,7 @@ declare(strict_types=1);
 
 namespace GrahamCampbell\GitHub\Authenticators;
 
+use GitHub\Client;
 use InvalidArgumentException;
 
 /**
@@ -41,7 +42,7 @@ class TokenAuthenticator extends AbstractAuthenticator implements AuthenticatorI
             throw new InvalidArgumentException('The token authenticator requires a token.');
         }
 
-        $this->client->authenticate($config['token'], 'http_token');
+        $this->client->authenticate($config['token'], Client::AUTH_HTTP_TOKEN);
 
         return $this->client;
     }

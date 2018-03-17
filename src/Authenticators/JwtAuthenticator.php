@@ -13,6 +13,7 @@ declare(strict_types=1);
 
 namespace GrahamCampbell\GitHub\Authenticators;
 
+use GitHub\Client;
 use InvalidArgumentException;
 
 /**
@@ -42,7 +43,7 @@ class JwtAuthenticator extends AbstractAuthenticator implements AuthenticatorInt
             throw new InvalidArgumentException('The jwt authenticator requires a token.');
         }
 
-        $this->client->authenticate($config['token'], 'jwt');
+        $this->client->authenticate($config['token'], Client::AUTH_JWT);
 
         return $this->client;
     }
