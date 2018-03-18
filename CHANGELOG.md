@@ -2,7 +2,7 @@ CHANGE LOG
 ==========
 
 
-## V7.1 (Upcoming)
+## V7.1 (18/03/2018)
 
 * Use the new cache plugin package
 
