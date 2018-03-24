@@ -38,7 +38,7 @@ class ClientBuilder extends Builder
     {
         $this->setCachePlugin($cachePool, $config['generator'] ?? null, $config['lifetime'] ?? null);
 
-        $this->getProperty('httpClientModified')->setValue($this, true);
+        $this->setPropertyValue('httpClientModified', true);
     }
 
     /**
@@ -52,11 +52,34 @@ class ClientBuilder extends Builder
      */
     protected function setCachePlugin(CacheItemPoolInterface $cachePool, CacheKeyGenerator $generator = null, int $lifetime = null)
     {
-        $prop = $this->getProperty('cachePlugin');
+        $stream = $this->getPropertyValue('streamFactory');
 
-        $stream = $this->getProperty('streamFactory')->getValue($this);
+        $this->setPropertyValue('cachePlugin', new CachePlugin($cachePool, $stream, $generator, $lifetime));
+    }
 
-        $prop->setValue($this, new CachePlugin($cachePool, $stream, $generator, $lifetime));
+    /**
+     * Get the value of the given private property on the builder.
+     *
+     * @param string $name
+     *
+     * @return mixed
+     */
+    protected function getPropertyValue(string $name)
+    {
+        return static::getProperty($name)->getValue($this);
+    }
+
+    /**
+     * Set the value of the given private property on the builder.
+     *
+     * @param string $name
+     * @param mixed  $value
+     *
+     * @return void
+     */
+    protected function setPropertyValue(string $name, $value)
+    {
+        return static::getProperty($name)->setValue($this, $value);
     }
 
     /**
@@ -66,7 +89,7 @@ class ClientBuilder extends Builder
      *
      * @return \ReflectionProperty
      */
-    protected function getProperty(string $name)
+    protected static function getProperty(string $name)
     {
         $prop = (new ReflectionClass(Builder::class))->getProperty($name);
 
