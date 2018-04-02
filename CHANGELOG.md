@@ -2,6 +2,11 @@ CHANGE LOG
 ==========
 
 
+## V7.2 (Upcoming)
+
+* Support no authentication
+
+
 ## V7.2 (24/03/2018)
 
 * Support knplabs/github-api 2.8 too
