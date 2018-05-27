@@ -17,6 +17,7 @@ use GrahamCampbell\GitHub\Authenticators\ApplicationAuthenticator;
 use GrahamCampbell\GitHub\Authenticators\AuthenticatorFactory;
 use GrahamCampbell\GitHub\Authenticators\JwtAuthenticator;
 use GrahamCampbell\GitHub\Authenticators\PasswordAuthenticator;
+use GrahamCampbell\GitHub\Authenticators\PrivateKeyAuthenticator;
 use GrahamCampbell\GitHub\Authenticators\TokenAuthenticator;
 use GrahamCampbell\Tests\GitHub\AbstractTestCase;
 
@@ -61,6 +62,15 @@ class AuthenticatorFactoryTest extends AbstractTestCase
         $return = $factory->make('token');
 
         $this->assertInstanceOf(TokenAuthenticator::class, $return);
+    }
+
+    public function testMakePrivateKeyAuthenticator()
+    {
+        $factory = $this->getFactory();
+
+        $return = $factory->make('private');
+
+        $this->assertInstanceOf(PrivateKeyAuthenticator::class, $return);
     }
 
     /**

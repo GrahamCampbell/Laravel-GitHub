@@ -15,7 +15,8 @@
         "illuminate/support": "5.5.*|5.6.*",
         "graham-campbell/cache-plugin": "^1.0",
         "graham-campbell/manager": "^4.0",
-        "knplabs/github-api": "2.7.*|2.8.*"
+        "knplabs/github-api": "2.7.*|2.8.*",
+        "lcobucci/jwt": "^3.2"
     },
     "require-dev": {
         "graham-campbell/analyzer": "^2.0",

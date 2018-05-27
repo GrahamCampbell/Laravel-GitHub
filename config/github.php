@@ -78,6 +78,16 @@ return [
             // 'enterprise' => false,
         ],
 
+        'private' => [
+            'method'     => 'file',
+            'file'       => 'path-to-file',
+            'issuer'     => 'github-app-id',
+            // 'backoff'    => false,
+            // 'cache'      => false,
+            // 'version'    => 'v3',
+            // 'enterprise' => false,
+        ],
+
     ],
 
 ];
