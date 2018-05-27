@@ -30,7 +30,7 @@ class PrivateKeyAuthenticator extends AbstractAuthenticator implements Authentic
      *
      * @param array $config
      *
-     * @return Client|null
+     * @return \Github\Client
      */
     public function authenticate(array $config)
     {
@@ -39,20 +39,16 @@ class PrivateKeyAuthenticator extends AbstractAuthenticator implements Authentic
         }
 
         if (!array_key_exists('file', $config)) {
-            throw new InvalidArgumentException('Private key authentication require `file` config.');
-        }
-
-        if (!file_exists($config['file'])) {
-            throw new InvalidArgumentException('Private key authentication got not exists file.');
+            throw new InvalidArgumentException('Private key authentication require file config.');
         }
 
         if (!array_key_exists('issuer', $config)) {
-            throw new InvalidArgumentException('Private key authentication require `issuer` config.');
+            throw new InvalidArgumentException('Private key authentication require issuer config.');
         }
 
         $token = (new Builder())
             ->setIssuedAt((new \DateTime())->getTimestamp())
-            ->setExpiration((new \DateTime('+5 minutes'))->getTimestamp())
+            ->setExpiration((new \DateTime('+10 minutes'))->getTimestamp())
             ->setIssuer($config['issuer'])
             ->sign(new Sha256(), 'file://'.$config['file'])
             ->getToken();

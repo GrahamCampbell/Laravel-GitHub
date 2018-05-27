@@ -83,7 +83,7 @@ return [
         ],
 
         'private' => [
-            'method'     => 'file',
+            'method'     => 'private',
             'file'       => 'path-to-file',
             'issuer'     => 'github-app-id',
             // 'backoff'    => false,
