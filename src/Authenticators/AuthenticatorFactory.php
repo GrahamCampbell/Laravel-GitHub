@@ -38,6 +38,8 @@ class AuthenticatorFactory
                 return new ApplicationAuthenticator(); // AUTH_URL_CLIENT_ID
             case 'jwt':
                 return new JwtAuthenticator(); // AUTH_JWT
+            case 'private':
+                return new PrivateKeyAuthenticator(); // AUTH_JWT
             case 'password':
                 return new PasswordAuthenticator(); // AUTH_HTTP_PASSWORD
             case 'token':
