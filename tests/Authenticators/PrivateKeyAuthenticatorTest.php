@@ -6,6 +6,7 @@ use Github\Client;
 use GrahamCampbell\GitHub\Authenticators\PrivateKeyAuthenticator;
 use GrahamCampbell\Tests\GitHub\AbstractTestCase;
 use Lcobucci\JWT\Token;
+use Mockery;
 
 class PrivateKeyAuthenticatorTest extends AbstractTestCase
 {
@@ -13,10 +14,10 @@ class PrivateKeyAuthenticatorTest extends AbstractTestCase
     {
         $authenticator = $this->getAuthenticator();
 
-        $client = \Mockery::mock(Client::class);
+        $client = Mockery::mock(Client::class);
         $client
             ->shouldReceive('authenticate')->once()
-            ->with(\Mockery::on(function ($token) {
+            ->with(Mockery::on(function ($token) {
                 $this->assertInstanceOf(Token::class, $token);
 
                 return true;
@@ -32,13 +33,31 @@ class PrivateKeyAuthenticatorTest extends AbstractTestCase
 
     /**
      * @expectedException \InvalidArgumentException
-     * @expectedExceptionMessage Private key authentication require `issuer` config.
+     * @expectedExceptionMessage You must inform a valid key file
+     */
+    public function testMakeWithoutExistingFile()
+    {
+        $authenticator = $this->getAuthenticator();
+
+        $client = Mockery::mock(Client::class);
+
+        $return = $authenticator->with($client)->authenticate([
+            'file'   => 'test',
+            'issuer' => 1,
+        ]);
+
+        $this->assertInstanceOf(Client::class, $return);
+    }
+
+    /**
+     * @expectedException \InvalidArgumentException
+     * @expectedExceptionMessage Private key authentication require issuer config.
      */
     public function testMakeWithoutWithoutIssuer()
     {
         $authenticator = $this->getAuthenticator();
 
-        $client = \Mockery::mock(Client::class);
+        $client = Mockery::mock(Client::class);
 
         $return = $authenticator->with($client)->authenticate([
             'file' => __FILE__,
@@ -49,30 +68,13 @@ class PrivateKeyAuthenticatorTest extends AbstractTestCase
 
     /**
      * @expectedException \InvalidArgumentException
-     * @expectedExceptionMessage Private key authentication got not exists file.
-     */
-    public function testMakeWithoutExistingFile()
-    {
-        $authenticator = $this->getAuthenticator();
-
-        $client = \Mockery::mock(Client::class);
-
-        $return = $authenticator->with($client)->authenticate([
-            'file' => 'test',
-        ]);
-
-        $this->assertInstanceOf(Client::class, $return);
-    }
-
-    /**
-     * @expectedException \InvalidArgumentException
-     * @expectedExceptionMessage Private key authentication require `file` config.
+     * @expectedExceptionMessage Private key authentication require file config.
      */
     public function testMakeWithoutFile()
     {
         $authenticator = $this->getAuthenticator();
 
-        $client = \Mockery::mock(Client::class);
+        $client = Mockery::mock(Client::class);
 
         $return = $authenticator->with($client)->authenticate([]);
 
