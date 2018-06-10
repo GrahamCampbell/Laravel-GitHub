@@ -78,6 +78,10 @@ return [
             // 'enterprise' => false,
         ],
 
+        'none' => [
+            'method' => 'none',
+        ],
+
     ],
 
 ];
