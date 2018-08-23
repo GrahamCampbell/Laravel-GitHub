@@ -79,7 +79,11 @@ return [
         ],
 
         'none' => [
-            'method' => 'none',
+            'method'     => 'none',
+            // 'backoff'    => false,
+            // 'cache'      => false,
+            // 'version'    => 'v3',
+            // 'enterprise' => false,
         ],
 
     ],
