@@ -78,6 +78,14 @@ return [
             // 'enterprise' => false,
         ],
 
+        'none' => [
+            'method'     => 'none',
+            // 'backoff'    => false,
+            // 'cache'      => false,
+            // 'version'    => 'v3',
+            // 'enterprise' => false,
+        ],
+
     ],
 
 ];
