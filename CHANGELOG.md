@@ -2,6 +2,12 @@ CHANGE LOG
 ==========
 
 
+## V7.4 (23/08/2018)
+
+* Added Laravel 5.7 support
+* Support knplabs/github-api 2.9 too
+
+
 ## V7.3 (02/04/2018)
 
 * Support no authentication
