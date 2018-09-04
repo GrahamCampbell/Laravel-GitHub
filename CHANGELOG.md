@@ -2,6 +2,11 @@ CHANGE LOG
 ==========
 
 
+## V7.5 (04/09/2018)
+
+* Support knplabs/github-api 2.10 too
+
+
 ## V7.4 (23/08/2018)
 
 * Added Laravel 5.7 support
