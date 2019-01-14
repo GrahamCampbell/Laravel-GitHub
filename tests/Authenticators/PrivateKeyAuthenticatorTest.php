@@ -24,7 +24,7 @@ class PrivateKeyAuthenticatorTest extends AbstractTestCase
             }), 'jwt');
 
         $return = $authenticator->with($client)->authenticate([
-            'appId' => 1,
+            'appId'   => 1,
             'keyPath' => sprintf('%s/fixtures/key.pem', dirname(__DIR__)),
         ]);
 
@@ -42,7 +42,7 @@ class PrivateKeyAuthenticatorTest extends AbstractTestCase
         $client = Mockery::mock(Client::class);
 
         $return = $authenticator->with($client)->authenticate([
-            'appId' => 1,
+            'appId'   => 1,
             'keyPath' => 'test',
         ]);
 
@@ -91,7 +91,7 @@ class PrivateKeyAuthenticatorTest extends AbstractTestCase
 
         $authenticator->authenticate([
             'keyPath' => 'file',
-            'method' => 'private',
+            'method'  => 'private',
         ]);
     }
 

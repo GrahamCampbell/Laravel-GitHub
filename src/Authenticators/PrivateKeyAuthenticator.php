@@ -30,8 +30,9 @@ class PrivateKeyAuthenticator extends AbstractAuthenticator implements Authentic
      *
      * @param array $config
      *
-     * @return \Github\Client
      * @throws \Exception
+     *
+     * @return \Github\Client
      */
     public function authenticate(array $config)
     {
