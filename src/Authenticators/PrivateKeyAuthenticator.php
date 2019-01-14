@@ -31,6 +31,7 @@ class PrivateKeyAuthenticator extends AbstractAuthenticator implements Authentic
      * @param array $config
      *
      * @return \Github\Client
+     * @throws \Exception
      */
     public function authenticate(array $config)
     {
@@ -38,19 +39,19 @@ class PrivateKeyAuthenticator extends AbstractAuthenticator implements Authentic
             throw new InvalidArgumentException('The client instance was not given to the private key authenticator.');
         }
 
-        if (!array_key_exists('file', $config)) {
-            throw new InvalidArgumentException('Private key authentication require file config.');
+        if (!array_key_exists('keyPath', $config)) {
+            throw new InvalidArgumentException('Private key authentication requires the key path to be configured.');
         }
 
-        if (!array_key_exists('issuer', $config)) {
-            throw new InvalidArgumentException('Private key authentication require issuer config.');
+        if (!array_key_exists('appId', $config)) {
+            throw new InvalidArgumentException('Private key authentication requires the github application id to be configured.');
         }
 
         $token = (new Builder())
             ->setIssuedAt((new \DateTime())->getTimestamp())
             ->setExpiration((new \DateTime('+10 minutes'))->getTimestamp())
-            ->setIssuer($config['issuer'])
-            ->sign(new Sha256(), 'file://'.$config['file'])
+            ->setIssuer($config['appId'])
+            ->sign(new Sha256(), 'file://'.$config['keyPath'])
             ->getToken();
 
         $this->client->authenticate($token, Client::AUTH_JWT);

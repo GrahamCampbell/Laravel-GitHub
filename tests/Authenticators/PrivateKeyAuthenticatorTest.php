@@ -24,8 +24,8 @@ class PrivateKeyAuthenticatorTest extends AbstractTestCase
             }), 'jwt');
 
         $return = $authenticator->with($client)->authenticate([
-            'file'   => sprintf('%s/fixtures/key.pem', dirname(__DIR__)),
-            'issuer' => 1,
+            'appId' => 1,
+            'keyPath' => sprintf('%s/fixtures/key.pem', dirname(__DIR__)),
         ]);
 
         $this->assertInstanceOf(Client::class, $return);
@@ -33,7 +33,7 @@ class PrivateKeyAuthenticatorTest extends AbstractTestCase
 
     /**
      * @expectedException \InvalidArgumentException
-     * @expectedExceptionMessage You must inform a valid key file
+     * @expectedExceptionMessage You must provide a valid key file
      */
     public function testMakeWithoutExistingFile()
     {
@@ -42,8 +42,8 @@ class PrivateKeyAuthenticatorTest extends AbstractTestCase
         $client = Mockery::mock(Client::class);
 
         $return = $authenticator->with($client)->authenticate([
-            'file'   => 'test',
-            'issuer' => 1,
+            'appId' => 1,
+            'keyPath' => 'test',
         ]);
 
         $this->assertInstanceOf(Client::class, $return);
@@ -51,7 +51,7 @@ class PrivateKeyAuthenticatorTest extends AbstractTestCase
 
     /**
      * @expectedException \InvalidArgumentException
-     * @expectedExceptionMessage Private key authentication require issuer config.
+     * @expectedExceptionMessage Private key authentication requires the github application id to be configured.
      */
     public function testMakeWithoutWithoutIssuer()
     {
@@ -60,7 +60,7 @@ class PrivateKeyAuthenticatorTest extends AbstractTestCase
         $client = Mockery::mock(Client::class);
 
         $return = $authenticator->with($client)->authenticate([
-            'file' => __FILE__,
+            'keyPath' => __FILE__,
         ]);
 
         $this->assertInstanceOf(Client::class, $return);
@@ -68,7 +68,7 @@ class PrivateKeyAuthenticatorTest extends AbstractTestCase
 
     /**
      * @expectedException \InvalidArgumentException
-     * @expectedExceptionMessage Private key authentication require file config.
+     * @expectedExceptionMessage Private key authentication require the key path to be configured.
      */
     public function testMakeWithoutFile()
     {
@@ -90,7 +90,7 @@ class PrivateKeyAuthenticatorTest extends AbstractTestCase
         $authenticator = $this->getAuthenticator();
 
         $authenticator->authenticate([
-            'file'   => 'file',
+            'keyPath' => 'file',
             'method' => 'private',
         ]);
     }

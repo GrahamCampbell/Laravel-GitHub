@@ -80,12 +80,16 @@ return [
 
         'none' => [
             'method'     => 'none',
+            // 'backoff'    => false,
+            // 'cache'      => false,
+            // 'version'    => 'v3',
+            // 'enterprise' => false,
         ],
 
         'private' => [
+            'appId'      => 'your-github-app-id',
+            'keyPath'    => 'your-private-key-path',
             'method'     => 'private',
-            'file'       => 'path-to-file',
-            'issuer'     => 'github-app-id',
             // 'backoff'    => false,
             // 'cache'      => false,
             // 'version'    => 'v3',
