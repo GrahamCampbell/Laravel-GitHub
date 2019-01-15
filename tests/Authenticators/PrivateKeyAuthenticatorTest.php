@@ -33,7 +33,7 @@ class PrivateKeyAuthenticatorTest extends AbstractTestCase
 
     /**
      * @expectedException \InvalidArgumentException
-     * @expectedExceptionMessage You must provide a valid key file
+     * @expectedExceptionMessage You must inform a valid key file
      */
     public function testMakeWithoutExistingFile()
     {
@@ -53,7 +53,7 @@ class PrivateKeyAuthenticatorTest extends AbstractTestCase
      * @expectedException \InvalidArgumentException
      * @expectedExceptionMessage Private key authentication requires the github application id to be configured.
      */
-    public function testMakeWithoutWithoutIssuer()
+    public function testMakeWithoutWithoutAppId()
     {
         $authenticator = $this->getAuthenticator();
 
@@ -68,9 +68,9 @@ class PrivateKeyAuthenticatorTest extends AbstractTestCase
 
     /**
      * @expectedException \InvalidArgumentException
-     * @expectedExceptionMessage Private key authentication require the key path to be configured.
+     * @expectedExceptionMessage Private key authentication requires the key path to be configured.
      */
-    public function testMakeWithoutFile()
+    public function testMakeWithoutKeyPath()
     {
         $authenticator = $this->getAuthenticator();
 
