@@ -33,7 +33,7 @@ class PrivateKeyAuthenticatorTest extends AbstractTestCase
 
     /**
      * @expectedException \InvalidArgumentException
-     * @expectedExceptionMessage You must inform a valid key file
+     * @expectedExceptionMessage You must provide a valid key file
      */
     public function testMakeWithoutExistingFile()
     {
