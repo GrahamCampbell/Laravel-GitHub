@@ -4,7 +4,7 @@ CHANGE LOG
 
 ## V7.6 (xx/01/2019)
 
-* Require knplabs/github-api 2.10
+* Require knplabs/github-api 2.11
 
 
 ## V7.5 (04/09/2018)
