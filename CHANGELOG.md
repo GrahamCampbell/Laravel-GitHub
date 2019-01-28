@@ -2,7 +2,7 @@ CHANGE LOG
 ==========
 
 
-## V7.6 (xx/01/2019)
+## V7.6 (28/01/2019)
 
 * Require knplabs/github-api 2.11
 
