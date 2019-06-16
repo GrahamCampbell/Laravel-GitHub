@@ -2,6 +2,11 @@ CHANGE LOG
 ==========
 
 
+## V7.8 (16/06/2019)
+
+* Added private key authenticator
+
+
 ## V7.7 (07/04/2019)
 
 * Added Laravel 5.8 support
