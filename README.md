@@ -25,6 +25,12 @@ To get the latest version, simply require the project using [Composer](https://g
 $ composer require graham-campbell/github php-http/guzzle6-adapter:^1.1
 ```
 
+If you'd like to use the private key authenticator, then you will also need to install `lcobucci/jwt`:
+
+```bash
+$ composer require lcobucci/jwt:^3.3
+```
+
 Once installed, if you are not using automatic package discovery, then you need to register the `GrahamCampbell\GitHub\GitHubServiceProvider` service provider in your `config/app.php`.
 
 You can also optionally alias our facade:
