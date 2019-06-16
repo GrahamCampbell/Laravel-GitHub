@@ -16,6 +16,7 @@ namespace GrahamCampbell\Tests\GitHub\Authenticators;
 use Github\Client;
 use GrahamCampbell\GitHub\Authenticators\ApplicationAuthenticator;
 use GrahamCampbell\Tests\GitHub\AbstractTestCase;
+use InvalidArgumentException;
 use Mockery;
 
 /**
@@ -58,49 +59,42 @@ class ApplicationAuthenticatorTest extends AbstractTestCase
         $this->assertInstanceOf(Client::class, $return);
     }
 
-    /**
-     * @expectedException \InvalidArgumentException
-     * @expectedExceptionMessage The application authenticator requires a client id and secret.
-     */
     public function testMakeWithoutClientId()
     {
         $authenticator = $this->getAuthenticator();
 
         $client = Mockery::mock(Client::class);
 
-        $return = $authenticator->with($client)->authenticate([
+        $this->expectException(InvalidArgumentException::class);
+        $this->expectExceptionMessage('The application authenticator requires a client id and secret.');
+
+        $authenticator->with($client)->authenticate([
             'clientSecret' => 'your-client-secret',
         ]);
-
-        $this->assertInstanceOf(Client::class, $return);
     }
 
-    /**
-     * @expectedException \InvalidArgumentException
-     * @expectedExceptionMessage The application authenticator requires a client id and secret.
-     */
     public function testMakeWithoutClientSecret()
     {
         $authenticator = $this->getAuthenticator();
 
         $client = Mockery::mock(Client::class);
 
-        $return = $authenticator->with($client)->authenticate([
+        $this->expectException(InvalidArgumentException::class);
+        $this->expectExceptionMessage('The application authenticator requires a client id and secret.');
+
+        $authenticator->with($client)->authenticate([
             'clientId' => 'your-client-id',
         ]);
-
-        $this->assertInstanceOf(Client::class, $return);
     }
 
-    /**
-     * @expectedException \InvalidArgumentException
-     * @expectedExceptionMessage The client instance was not given to the application authenticator.
-     */
     public function testMakeWithoutSettingClient()
     {
         $authenticator = $this->getAuthenticator();
 
-        $return = $authenticator->authenticate([
+        $this->expectException(InvalidArgumentException::class);
+        $this->expectExceptionMessage('The client instance was not given to the application authenticator.');
+
+        $authenticator->authenticate([
             'clientId'     => 'your-client-id',
             'clientSecret' => 'your-client-secret',
             'method'       => 'application',

@@ -16,6 +16,7 @@ namespace GrahamCampbell\Tests\GitHub\Authenticators;
 use Github\Client;
 use GrahamCampbell\GitHub\Authenticators\PasswordAuthenticator;
 use GrahamCampbell\Tests\GitHub\AbstractTestCase;
+use InvalidArgumentException;
 use Mockery;
 
 /**
@@ -58,48 +59,42 @@ class PasswordAuthenticatorTest extends AbstractTestCase
         $this->assertInstanceOf(Client::class, $return);
     }
 
-    /**
-     * @expectedException \InvalidArgumentException
-     * @expectedExceptionMessage The password authenticator requires a username and password.
-     */
     public function testMakeWithoutUsername()
     {
         $authenticator = $this->getAuthenticator();
 
         $client = Mockery::mock(Client::class);
 
-        $return = $authenticator->with($client)->authenticate([
+        $this->expectException(InvalidArgumentException::class);
+        $this->expectExceptionMessage('The password authenticator requires a username and password.');
+
+        $authenticator->with($client)->authenticate([
             'password' => 'your-password',
         ]);
-
-        $this->assertInstanceOf(Client::class, $return);
     }
 
-    /**
-     * @expectedException \InvalidArgumentException
-     * @expectedExceptionMessage The password authenticator requires a username and password.
-     */
     public function testMakeWithoutPassword()
     {
         $authenticator = $this->getAuthenticator();
 
         $client = Mockery::mock(Client::class);
-        $return = $authenticator->with($client)->authenticate([
+
+        $this->expectException(InvalidArgumentException::class);
+        $this->expectExceptionMessage('The password authenticator requires a username and password.');
+
+        $authenticator->with($client)->authenticate([
             'username' => 'your-username',
         ]);
-
-        $this->assertInstanceOf(Client::class, $return);
     }
 
-    /**
-     * @expectedException \InvalidArgumentException
-     * @expectedExceptionMessage The client instance was not given to the password authenticator.
-     */
     public function testMakeWithoutSettingClient()
     {
         $authenticator = $this->getAuthenticator();
 
-        $return = $authenticator->authenticate([
+        $this->expectException(InvalidArgumentException::class);
+        $this->expectExceptionMessage('The client instance was not given to the password authenticator.');
+
+        $authenticator->authenticate([
             'username' => 'your-username',
             'password' => 'your-password',
             'method'   => 'password',

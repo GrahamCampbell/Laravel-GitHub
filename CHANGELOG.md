@@ -2,9 +2,14 @@ CHANGE LOG
 ==========
 
 
-## V7.6 (xx/01/2019)
+## V7.7 (07/04/2019)
 
-* Require knplabs/github-api 2.10
+* Added Laravel 5.8 support
+
+
+## V7.6 (28/01/2019)
+
+* Require knplabs/github-api 2.11
 
 
 ## V7.5 (04/09/2018)

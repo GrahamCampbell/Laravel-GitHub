@@ -16,6 +16,7 @@ namespace GrahamCampbell\Tests\GitHub\Authenticators;
 use Github\Client;
 use GrahamCampbell\GitHub\Authenticators\JwtAuthenticator;
 use GrahamCampbell\Tests\GitHub\AbstractTestCase;
+use InvalidArgumentException;
 use Mockery;
 
 /**
@@ -57,28 +58,24 @@ class JwtAuthenticatorTest extends AbstractTestCase
         $this->assertInstanceOf(Client::class, $return);
     }
 
-    /**
-     * @expectedException \InvalidArgumentException
-     * @expectedExceptionMessage The jwt authenticator requires a token.
-     */
     public function testMakeWithoutToken()
     {
         $authenticator = $this->getAuthenticator();
 
         $client = Mockery::mock(Client::class);
 
-        $return = $authenticator->with($client)->authenticate([]);
+        $this->expectException(InvalidArgumentException::class);
+        $this->expectExceptionMessage('The jwt authenticator requires a token.');
 
-        $this->assertInstanceOf(Client::class, $return);
+        $authenticator->with($client)->authenticate([]);
     }
 
-    /**
-     * @expectedException \InvalidArgumentException
-     * @expectedExceptionMessage The client instance was not given to the jwt authenticator.
-     */
     public function testMakeWithoutSettingClient()
     {
         $authenticator = $this->getAuthenticator();
+
+        $this->expectException(InvalidArgumentException::class);
+        $this->expectExceptionMessage('The client instance was not given to the jwt authenticator.');
 
         $authenticator->authenticate([
             'token'  => 'your-token',

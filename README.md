@@ -17,7 +17,7 @@ Laravel GitHub was created by, and is maintained by [Graham Campbell](https://gi
 
 ## Installation
 
-Laravel GitHub requires [PHP](https://php.net) 7.1 or 7.2. This particular version supports Laravel 5.5 - 5.7 only.
+Laravel GitHub requires [PHP](https://php.net) 7.1 - 7.3. This particular version supports Laravel 5.5 - 5.8 only.
 
 To get the latest version, simply require the project using [Composer](https://getcomposer.org). You will need to install any package that "provides" `php-http/client-implementation`. Most users will want:
 
