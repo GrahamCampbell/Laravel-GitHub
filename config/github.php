@@ -86,6 +86,16 @@ return [
             // 'enterprise' => false,
         ],
 
+        'private' => [
+            'appId'      => 'your-github-app-id',
+            'keyPath'    => 'your-private-key-path',
+            'method'     => 'private',
+            // 'backoff'    => false,
+            // 'cache'      => false,
+            // 'version'    => 'v3',
+            // 'enterprise' => false,
+        ],
+
     ],
 
 ];
