@@ -2,6 +2,11 @@ CHANGE LOG
 ==========
 
 
+## V8.0 (Upcoming)
+
+* Reworked caching
+
+
 ## V7.8 (16/06/2019)
 
 * Added private key authenticator
