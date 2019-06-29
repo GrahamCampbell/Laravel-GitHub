@@ -93,7 +93,7 @@ class ClientBuilder extends Builder
      */
     private function setPropertyValue(string $name, $value)
     {
-        return self::getProperty($name)->setValue($this, $value);
+        self::getProperty($name)->setValue($this, $value);
     }
 
     /**
