@@ -24,7 +24,7 @@ use Lcobucci\JWT\Signer\Rsa\Sha256;
  *
  * @author Pavel Zhytomirsky <r3volut1oner@gmail.com>
  */
-class PrivateKeyAuthenticator extends AbstractAuthenticator implements AuthenticatorInterface
+class PrivateKeyAuthenticator extends AbstractAuthenticator
 {
     /**
      * Build JWT token from provided private key file and authenticate with it.
