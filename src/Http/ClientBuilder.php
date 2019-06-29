@@ -14,9 +14,9 @@ declare(strict_types=1);
 namespace GrahamCampbell\GitHub\Http;
 
 use Github\HttpClient\Builder;
-use Http\Client\Common\Plugin\CachePlugin;
 use Http\Client\Common\Plugin\Cache\Generator\CacheKeyGenerator;
 use Http\Client\Common\Plugin\Cache\Generator\HeaderCacheKeyGenerator;
+use Http\Client\Common\Plugin\CachePlugin;
 use Psr\Cache\CacheItemPoolInterface;
 use ReflectionClass;
 

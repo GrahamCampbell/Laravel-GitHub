@@ -2,7 +2,7 @@ CHANGE LOG
 ==========
 
 
-## V8.0 (Upcoming)
+## V8.0 (29/06/2019)
 
 * Reworked caching
 
