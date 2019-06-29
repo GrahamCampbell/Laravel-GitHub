@@ -18,7 +18,9 @@ use GrahamCampbell\GitHub\Authenticators\AuthenticatorFactory;
 use GrahamCampbell\GitHub\Http\ClientBuilder;
 use Http\Client\Common\Plugin\RetryPlugin;
 use Illuminate\Contracts\Cache\Factory;
+use Illuminate\Support\Arr;
 use InvalidArgumentException;
+use Symfony\Component\Cache\Adapter\Psr16Adapter;
 use Symfony\Component\Cache\Adapter\SimpleCacheAdapter;
 
 /**
@@ -67,7 +69,7 @@ class GitHubFactory
      */
     public function make(array $config)
     {
-        $client = new Client($this->getBuilder($config), array_get($config, 'version'), array_get($config, 'enterprise'));
+        $client = new Client($this->getBuilder($config), Arr::get($config, 'version'), Arr::get($config, 'enterprise'));
 
         if (!array_key_exists('method', $config)) {
             throw new InvalidArgumentException('The github factory requires an auth method.');
@@ -91,14 +93,28 @@ class GitHubFactory
     {
         $builder = new ClientBuilder();
 
-        if ($backoff = array_get($config, 'backoff')) {
+        if ($backoff = Arr::get($config, 'backoff')) {
             $builder->addPlugin(new RetryPlugin(['retries' => $backoff === true ? 2 : $backoff]));
         }
 
-        if ($cache = array_get($config, 'cache')) {
-            $builder->addCache(new SimpleCacheAdapter($this->cache->store($cache === true ? null : $cache)));
+        if ($cache = Arr::get($config, 'cache')) {
+            $builder->addCache($this->getCacheAdapter($cache));
         }
 
         return $builder;
+    }
+
+    /**
+     * Get the symfony cache adapter for the given illuminate store.
+     *
+     * @param bool|string $name
+     *
+     * @return \Symfony\Component\Cache\Adapter\AdapterInterface
+     */
+    protected function getCacheAdapter(string $name = null)
+    {
+        $store = $this->cache->store($name === true ? null : $name);
+
+        return class_exists(Psr16Adapter::class) ? new Psr16Adapter($store) : new SimpleCacheAdapter($store);
     }
 }
