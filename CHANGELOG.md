@@ -5,6 +5,7 @@ CHANGE LOG
 ## V8.0 (30/06/2019)
 
 * Reworked caching
+* Avoid calling deprecated code
 
 
 ## V7.8 (16/06/2019)
