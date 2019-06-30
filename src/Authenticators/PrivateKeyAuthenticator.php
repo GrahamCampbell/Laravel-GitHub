@@ -13,10 +13,11 @@ declare(strict_types=1);
 
 namespace GrahamCampbell\GitHub\Authenticators;
 
-use DateTime;
+use DateTimeImmutable;
 use GitHub\Client;
 use InvalidArgumentException;
 use Lcobucci\JWT\Builder;
+use Lcobucci\JWT\Signer\Key;
 use Lcobucci\JWT\Signer\Rsa\Sha256;
 
 /**
@@ -50,11 +51,10 @@ class PrivateKeyAuthenticator extends AbstractAuthenticator
         }
 
         $token = (new Builder())
-            ->setIssuedAt((new DateTime())->getTimestamp())
-            ->setExpiration((new DateTime('+10 minutes'))->getTimestamp())
-            ->setIssuer($config['appId'])
-            ->sign(new Sha256(), 'file://'.$config['keyPath'])
-            ->getToken();
+            ->expiresAt((new DateTimeImmutable('+10 minutes'))->getTimestamp())
+            ->issuedAt((new DateTimeImmutable())->getTimestamp())
+            ->issuedBy($config['appId'])
+            ->getToken(new Sha256(), new Key('file://'.$config['keyPath']));
 
         $this->client->authenticate($token, Client::AUTH_JWT);
 
