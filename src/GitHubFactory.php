@@ -111,7 +111,7 @@ class GitHubFactory
      *
      * @return \Symfony\Component\Cache\Adapter\AdapterInterface
      */
-    protected function getCacheAdapter(string $name = null)
+    protected function getCacheAdapter($name)
     {
         $store = $this->cache->store($name === true ? null : $name);
 
