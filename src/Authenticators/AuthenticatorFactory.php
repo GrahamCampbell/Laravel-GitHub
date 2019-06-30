@@ -35,15 +35,15 @@ class AuthenticatorFactory
     {
         switch ($method) {
             case 'application':
-                return new ApplicationAuthenticator(); // AUTH_URL_CLIENT_ID
+                return new ApplicationAuthenticator();
             case 'jwt':
-                return new JwtAuthenticator(); // AUTH_JWT
+                return new JwtAuthenticator();
             case 'private':
-                return new PrivateKeyAuthenticator(); // AUTH_JWT
+                return new PrivateKeyAuthenticator();
             case 'password':
-                return new PasswordAuthenticator(); // AUTH_HTTP_PASSWORD
+                return new PasswordAuthenticator();
             case 'token':
-                return new TokenAuthenticator(); // AUTH_HTTP_TOKEN
+                return new TokenAuthenticator();
         }
 
         throw new InvalidArgumentException("Unsupported authentication method [$method].");
