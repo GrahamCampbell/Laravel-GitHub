@@ -2,6 +2,12 @@ CHANGE LOG
 ==========
 
 
+## V8.1 (18/08/2019)
+
+* Work around Laravel caching bugs
+* Ensure cache TTLs aren't too large
+
+
 ## V8.0 (30/06/2019)
 
 * Reworked caching
