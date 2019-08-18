@@ -15,8 +15,6 @@ namespace GrahamCampbell\GitHub\Http;
 
 use DateInterval;
 use DateTimeImmutable;
-use DateTimeInterface;
-use Exception;
 use Illuminate\Contracts\Cache\Repository;
 use ReflectionClass;
 
