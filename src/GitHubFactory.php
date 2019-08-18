@@ -16,6 +16,7 @@ namespace GrahamCampbell\GitHub;
 use Github\Client;
 use GrahamCampbell\GitHub\Authenticators\AuthenticatorFactory;
 use GrahamCampbell\GitHub\Http\ClientBuilder;
+use GrahamCampbell\GitHub\Http\Psr16Cache;
 use Http\Client\Common\Plugin\RetryPlugin;
 use Illuminate\Contracts\Cache\Factory;
 use Illuminate\Support\Arr;
@@ -30,6 +31,20 @@ use Symfony\Component\Cache\Adapter\SimpleCacheAdapter;
  */
 class GitHubFactory
 {
+    /**
+     * The minimum cache lifetime of 12 hours.
+     *
+     * @var int
+     */
+    const MIN_CACHE_LIFETIME = 43200;
+
+    /**
+     * The maximum cache lifetime of 48 hours.
+     *
+     * @var int
+     */
+    const MAX_CACHE_LIFETIME = 172800;
+
     /**
      * The authenticator factory instance.
      *
@@ -115,6 +130,8 @@ class GitHubFactory
     {
         $store = $this->cache->store($name === true ? null : $name);
 
-        return class_exists(Psr16Adapter::class) ? new Psr16Adapter($store) : new SimpleCacheAdapter($store);
+        $repo = new Psr16Cache($store, self::MIN_CACHE_LIFETIME, self::MAX_CACHE_LIFETIME);
+
+        return class_exists(Psr16Adapter::class) ? new Psr16Adapter($repo) : new SimpleCacheAdapter($repo);
     }
 }
