@@ -2,6 +2,12 @@ CHANGE LOG
 ==========
 
 
+## V8.3 (03/11/2019)
+
+* Require knplabs/github-api 2.12
+* Support both HTTPlug v1 and v2
+
+
 ## V8.2 (26/08/2019)
 
 * Added Laravel 6 support
