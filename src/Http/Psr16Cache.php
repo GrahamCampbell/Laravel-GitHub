@@ -35,6 +35,20 @@ class Psr16Cache implements CacheInterface
     protected $cache;
 
     /**
+     * The minimum cache time.
+     *
+     * @var int
+     */
+    protected $min;
+
+    /**
+     * The maximum cache time.
+     *
+     * @var int
+     */
+    protected $max;
+
+    /**
      * Create a PSR-16 cache instance.
      *
      * @param \Illuminate\Contracts\Cache\Repository $cache
