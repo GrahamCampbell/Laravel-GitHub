@@ -2,6 +2,11 @@ CHANGE LOG
 ==========
 
 
+## V8.3.1 (08/12/2019)
+
+* Added missing properties
+
+
 ## V8.3 (03/11/2019)
 
 * Require knplabs/github-api 2.12
