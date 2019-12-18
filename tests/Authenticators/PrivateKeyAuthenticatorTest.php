@@ -42,7 +42,7 @@ class PrivateKeyAuthenticatorTest extends AbstractTestCase
         $this->expectExceptionMessage('You must provide a valid key file');
 
         $authenticator->with($client)->authenticate([
-            'appId'  => 1,
+            'appId'   => 1,
             'keyPath' => 'test',
         ]);
     }
@@ -137,7 +137,9 @@ KEY;
         $this->expectException(InvalidArgumentException::class);
         $this->expectExceptionMessage('The private key authenticator requires the key or key path to be configured.');
 
-        $authenticator->with($client)->authenticate([]);
+        $authenticator->with($client)->authenticate([
+            'appId' => 1,
+        ]);
     }
 
     public function testMakeWithBothKeyAndKeyPath()
