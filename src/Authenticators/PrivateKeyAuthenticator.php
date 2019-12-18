@@ -69,8 +69,7 @@ class PrivateKeyAuthenticator extends AbstractAuthenticator
     protected function getKey(array $config)
     {
         if (
-            !array_key_exists('key', $config) ||
-            !array_key_exists('keyPath', $config) ||
+            !(array_key_exists('key', $config) || array_key_exists('keyPath', $config)) ||
             (array_key_exists('key', $config) && array_key_exists('keyPath', $config))
         ) {
             throw new InvalidArgumentException('The private key authenticator requires the key or key path to be configured.');
