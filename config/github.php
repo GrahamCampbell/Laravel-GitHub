@@ -33,16 +33,16 @@ return [
     |
     | Here are each of the connections setup for your application. Example
     | configuration has been included, but you may add as many connections as
-    | you would like. Note that the 5 supported authentication methods are:
-    | "application", "jwt", "none", "password", and "token".
+    | you would like. Note that the 6 supported authentication methods are:
+    | "application", "jwt", "none", "password", "private", and "token".
     |
     */
 
     'connections' => [
 
         'main' => [
-            'token'      => 'your-token',
             'method'     => 'token',
+            'token'      => 'your-token',
             // 'backoff'    => false,
             // 'cache'      => false,
             // 'version'    => 'v3',
@@ -50,9 +50,9 @@ return [
         ],
 
         'app' => [
+            'method'       => 'application',
             'clientId'     => 'your-client-id',
             'clientSecret' => 'your-client-secret',
-            'method'       => 'application',
             // 'backoff'      => false,
             // 'cache'        => false,
             // 'version'      => 'v3',
@@ -60,18 +60,29 @@ return [
         ],
 
         'jwt' => [
-            'token'        => 'your-jwt-token',
             'method'       => 'jwt',
+            'token'        => 'your-jwt-token',
             // 'backoff'      => false,
             // 'cache'        => false,
             // 'version'      => 'v3',
             // 'enterprise'   => false,
         ],
 
-        'other' => [
+        'private' => [
+            'method'     => 'private',
+            'appId'      => 'your-github-app-id',
+            'keyPath'    => 'your-private-key-path',
+            // 'key'        => 'your-private-key-content',
+            // 'backoff'    => false,
+            // 'cache'      => false,
+            // 'version'    => 'v3',
+            // 'enterprise' => false,
+        ],
+
+        'password' => [
+            'method'     => 'password',
             'username'   => 'your-username',
             'password'   => 'your-password',
-            'method'     => 'password',
             // 'backoff'    => false,
             // 'cache'      => false,
             // 'version'    => 'v3',
@@ -80,16 +91,6 @@ return [
 
         'none' => [
             'method'     => 'none',
-            // 'backoff'    => false,
-            // 'cache'      => false,
-            // 'version'    => 'v3',
-            // 'enterprise' => false,
-        ],
-
-        'private' => [
-            'appId'      => 'your-github-app-id',
-            'keyPath'    => 'your-private-key-path',
-            'method'     => 'private',
             // 'backoff'    => false,
             // 'cache'      => false,
             // 'version'    => 'v3',
