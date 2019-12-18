@@ -54,10 +54,28 @@ class PrivateKeyAuthenticator extends AbstractAuthenticator
             ->expiresAt((new DateTimeImmutable('+10 minutes'))->getTimestamp())
             ->issuedAt((new DateTimeImmutable())->getTimestamp())
             ->issuedBy($config['appId'])
-            ->getToken(new Sha256(), new Key('file://'.$config['keyPath']));
+            ->getToken(new Sha256(), $this->makeKey($config['keyPath']));
 
         $this->client->authenticate($token, Client::AUTH_JWT);
 
         return $this->client;
+    }
+
+    /**
+     * Create a Key instance.
+     *
+     * @param string $key
+     *
+     * @return \Lcobucci\JWT\Signer\Key
+     */
+    protected function makeKey(string $key)
+    {
+        if (strpos($key, '-----BEGIN RSA PRIVATE KEY-----') === 0) {
+            $key = str_replace('\\n', "\n", $key);
+        } else {
+            $key = 'file://'.$key;
+        }
+
+        return new Key($key);
     }
 }
