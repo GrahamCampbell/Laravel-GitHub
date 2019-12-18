@@ -56,7 +56,7 @@ class PrivateKeyAuthenticator extends AbstractAuthenticator
 
         return $this->client;
     }
- 
+
     /**
      * Get the key from the config.
      *

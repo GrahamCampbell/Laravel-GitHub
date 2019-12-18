@@ -60,7 +60,7 @@ class PrivateKeyAuthenticatorTest extends AbstractTestCase
                 return true;
             }), 'jwt');
 
-        $key = <<<KEY
+        $key = <<<'KEY'
 -----BEGIN RSA PRIVATE KEY-----
 MIIEpAIBAAKCAQEAov6ljr4lPgoyyyyhIRp+8QdaSUUpWU6oThOeDzX1NIGNCtW+
 EaGLt0Qbhk8qaEhm/aZRRbdvEqNogDMm9b/+RsiremQ98O/4eGuQTTPD9Y78IkAh
