@@ -42,10 +42,6 @@ class PrivateKeyAuthenticator extends AbstractAuthenticator
             throw new InvalidArgumentException('The client instance was not given to the private key authenticator.');
         }
 
-        if (!array_key_exists('keyPath', $config)) {
-            throw new InvalidArgumentException('The private key authenticator requires the key path to be configured.');
-        }
-
         if (!array_key_exists('appId', $config)) {
             throw new InvalidArgumentException('The private key authenticator requires the application id to be configured.');
         }
@@ -54,28 +50,32 @@ class PrivateKeyAuthenticator extends AbstractAuthenticator
             ->expiresAt((new DateTimeImmutable('+10 minutes'))->getTimestamp())
             ->issuedAt((new DateTimeImmutable())->getTimestamp())
             ->issuedBy($config['appId'])
-            ->getToken(new Sha256(), $this->makeKey($config['keyPath']));
+            ->getToken(new Sha256(), $this->getKey($config));
 
         $this->client->authenticate($token, Client::AUTH_JWT);
 
         return $this->client;
     }
-
+ 
     /**
-     * Create a Key instance.
+     * Get the key from the config.
      *
-     * @param string $key
+     * @param array $config
+     *
+     * @throws \InvalidArgumentException
      *
      * @return \Lcobucci\JWT\Signer\Key
      */
-    protected function makeKey(string $key)
+    protected function getKey(array $config)
     {
-        if (strpos($key, '-----BEGIN RSA PRIVATE KEY-----') === 0) {
-            $key = str_replace('\\n', "\n", $key);
-        } else {
-            $key = 'file://'.$key;
+        if (
+            !array_key_exists('key', $config) ||
+            !array_key_exists('keyPath', $config) ||
+            (array_key_exists('key', $config) && array_key_exists('keyPath', $config))
+        ) {
+            throw new InvalidArgumentException('The private key authenticator requires the key or key path to be configured.');
         }
 
-        return new Key($key);
+        return new Key(array_key_exists('key', $config) ? $config['key'] : 'file://'.$config['keyPath']);
     }
 }
