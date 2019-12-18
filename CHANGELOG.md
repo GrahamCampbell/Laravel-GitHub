@@ -2,6 +2,12 @@ CHANGE LOG
 ==========
 
 
+## V8.4 (18/12/2019)
+
+* Support directly providing a key to the private authenticator
+* Fixed docs and example config for the private authenticator
+
+
 ## V8.3.1 (08/12/2019)
 
 * Added missing properties
