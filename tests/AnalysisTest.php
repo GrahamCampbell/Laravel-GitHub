@@ -17,6 +17,7 @@ use GrahamCampbell\Analyzer\AnalysisTrait;
 use Laravel\Lumen\Application;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\Cache\Adapter\Psr16Adapter;
+use Symfony\Component\Cache\Adapter\SimpleCacheAdapter;
 
 /**
  * This is the analysis test class.
@@ -48,6 +49,6 @@ class AnalysisTest extends TestCase
      */
     protected function getIgnored()
     {
-        return [Application::class, Psr16Adapter::class];
+        return [Application::class, Psr16Adapter::class, SimpleCacheAdapter::class];
     }
 }
