@@ -19,6 +19,9 @@ use Illuminate\Contracts\Config\Repository;
 /**
  * This is the github manager class.
  *
+ * @method \Github\Client connection(string|null $name)
+ * @method \Github\Client reconnect(string|null $name)
+ * @method array<string,\Github\Client> getConnections(string $name)
  * @method \Github\Api\CurrentUser currentUser()
  * @method \Github\Api\CurrentUser me()
  * @method \Github\Api\Enterprise ent()
