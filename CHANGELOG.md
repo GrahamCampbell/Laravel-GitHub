@@ -2,6 +2,11 @@ CHANGE LOG
 ==========
 
 
+## V8.5 (25/01/2020)
+
+* Added Laravel 7 support
+
+
 ## V8.4 (18/12/2019)
 
 * Support directly providing a key to the private authenticator
