@@ -91,7 +91,7 @@ class GitHubServiceProvider extends ServiceProvider
     {
         $this->app->singleton('github.factory', function (Container $app) {
             $auth = $app['github.authfactory'];
-            $cache = $app['cache'];
+            $cache = $app->bound('cache') ? $app->make('cache') : null;
 
             return new GitHubFactory($auth, $cache);
         });
