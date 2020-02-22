@@ -99,4 +99,33 @@ return [
 
     ],
 
+    /*
+    |--------------------------------------------------------------------------
+    | HTTP Cache
+    |--------------------------------------------------------------------------
+    |
+    | Here are each of the cache configurations setup for your application.
+    | Only the "illuminate" driver is provided out of the box. Example
+    | configuration has been included.
+    |
+    */
+
+    'cache' => [
+
+        'main' => [
+            'driver'    => 'illuminate',
+            'connector' => null, // null means use default driver
+            // 'min'       => 43200,
+            // 'max'       => 172800
+        ],
+
+        'bar' => [
+            'driver'    => 'illuminate',
+            'connector' => 'redis', // config/cache.php
+            // 'min'       => 43200,
+            // 'max'       => 172800
+        ],
+
+    ],
+
 ];

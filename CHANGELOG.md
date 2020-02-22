@@ -2,6 +2,13 @@ CHANGE LOG
 ==========
 
 
+## V9.0 (Upcoming)
+
+* Dropped Laravel 5
+* Moved around internals
+* Reworked caching support
+
+
 ## V8.6 (08/02/2020)
 
 * Fixed deprecated in app auth

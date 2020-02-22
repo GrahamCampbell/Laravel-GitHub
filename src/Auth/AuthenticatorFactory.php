@@ -11,7 +11,7 @@ declare(strict_types=1);
  * file that was distributed with this source code.
  */
 
-namespace GrahamCampbell\GitHub\Authenticators;
+namespace GrahamCampbell\GitHub\Auth;
 
 use InvalidArgumentException;
 
@@ -29,21 +29,21 @@ class AuthenticatorFactory
      *
      * @throws \InvalidArgumentException
      *
-     * @return \GrahamCampbell\GitHub\Authenticators\AuthenticatorInterface
+     * @return \GrahamCampbell\GitHub\Auth\Authenticator\AuthenticatorInterface
      */
     public function make(string $method)
     {
         switch ($method) {
             case 'application':
-                return new ApplicationAuthenticator();
+                return new Authenticator\ApplicationAuthenticator();
             case 'jwt':
-                return new JwtAuthenticator();
+                return new Authenticator\JwtAuthenticator();
             case 'private':
-                return new PrivateKeyAuthenticator();
+                return new Authenticator\PrivateKeyAuthenticator();
             case 'password':
-                return new PasswordAuthenticator();
+                return new Authenticator\PasswordAuthenticator();
             case 'token':
-                return new TokenAuthenticator();
+                return new Authenticator\TokenAuthenticator();
         }
 
         throw new InvalidArgumentException("Unsupported authentication method [$method].");

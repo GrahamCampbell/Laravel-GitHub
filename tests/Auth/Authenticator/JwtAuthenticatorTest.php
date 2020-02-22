@@ -11,10 +11,10 @@ declare(strict_types=1);
  * file that was distributed with this source code.
  */
 
-namespace GrahamCampbell\Tests\GitHub\Authenticators;
+namespace GrahamCampbell\Tests\GitHub\Auth\Authenticators;
 
 use Github\Client;
-use GrahamCampbell\GitHub\Authenticators\JwtAuthenticator;
+use GrahamCampbell\GitHub\Auth\Authenticator\JwtAuthenticator;
 use GrahamCampbell\Tests\GitHub\AbstractTestCase;
 use InvalidArgumentException;
 use Mockery;

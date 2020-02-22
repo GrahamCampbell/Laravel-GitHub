@@ -11,17 +11,17 @@ declare(strict_types=1);
  * file that was distributed with this source code.
  */
 
-namespace GrahamCampbell\GitHub\Authenticators;
+namespace GrahamCampbell\GitHub\Auth\Authenticator;
 
 use GitHub\Client;
 use InvalidArgumentException;
 
 /**
- * This is the password authenticator class.
+ * This is the application authenticator class.
  *
  * @author Graham Campbell <graham@alt-three.com>
  */
-class PasswordAuthenticator extends AbstractAuthenticator
+class ApplicationAuthenticator extends AbstractAuthenticator
 {
     /**
      * Authenticate the client, and return it.
@@ -35,14 +35,14 @@ class PasswordAuthenticator extends AbstractAuthenticator
     public function authenticate(array $config)
     {
         if (!$this->client) {
-            throw new InvalidArgumentException('The client instance was not given to the password authenticator.');
+            throw new InvalidArgumentException('The client instance was not given to the application authenticator.');
         }
 
-        if (!array_key_exists('username', $config) || !array_key_exists('password', $config)) {
-            throw new InvalidArgumentException('The password authenticator requires a username and password.');
+        if (!array_key_exists('clientId', $config) || !array_key_exists('clientSecret', $config)) {
+            throw new InvalidArgumentException('The application authenticator requires a client id and secret.');
         }
 
-        $this->client->authenticate($config['username'], $config['password'], Client::AUTH_HTTP_PASSWORD);
+        $this->client->authenticate($config['clientId'], $config['clientSecret'], Client::AUTH_HTTP_PASSWORD);
 
         return $this->client;
     }

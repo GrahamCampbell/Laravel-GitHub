@@ -11,7 +11,7 @@ declare(strict_types=1);
  * file that was distributed with this source code.
  */
 
-namespace GrahamCampbell\GitHub\Authenticators;
+namespace GrahamCampbell\GitHub\Auth\Authenticator;
 
 use Github\Client;
 
@@ -27,7 +27,7 @@ interface AuthenticatorInterface
      *
      * @param \Github\Client $client
      *
-     * @return \GrahamCampbell\GitHub\Authenticators\AuthenticatorInterface
+     * @return \GrahamCampbell\GitHub\Auth\Authenticator\AuthenticatorInterface
      */
     public function with(Client $client);
 

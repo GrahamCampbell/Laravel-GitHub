@@ -45,6 +45,23 @@ class GitHubManagerTest extends AbstractTestBenchTestCase
         $this->assertArrayHasKey('main', $manager->getConnections());
     }
 
+    public function testConnectionCache()
+    {
+        $config = ['token' => 'your-token', 'cache' => 'redis'];
+
+        $cache = ['driver' => 'illuminate', 'connection' => 'redis', 'min' => 123, 'max' => 1234];
+
+        $manager = $this->getManagerWithCache($config, $cache);
+
+        $this->assertSame([], $manager->getConnections());
+
+        $return = $manager->connection('oauth');
+
+        $this->assertInstanceOf(Client::class, $return);
+
+        $this->assertArrayHasKey('oauth', $manager->getConnections());
+    }
+
     protected function getManager(array $config)
     {
         $repo = Mockery::mock(Repository::class);
@@ -58,6 +75,28 @@ class GitHubManagerTest extends AbstractTestBenchTestCase
         $config['name'] = 'main';
 
         $manager->getFactory()->shouldReceive('make')->once()
+            ->with($config)->andReturn(Mockery::mock(Client::class));
+
+        return $manager;
+    }
+
+    protected function getManagerWithCache(array $config, array $cache)
+    {
+        $repo = Mockery::mock(Repository::class);
+        $factory = Mockery::mock(GitHubFactory::class);
+        $manager = new GitHubManager($repo, $factory);
+
+        $repo->shouldReceive('get')->once()
+            ->with('github.connections')->andReturn(['oauth' => $config]);
+
+        $repo->shouldReceive('get')->once()
+            ->with('github.cache')->andReturn(['redis' => $cache]);
+
+        $cache['name'] = 'redis';
+        $config['name'] = 'oauth';
+        $config['cache'] = $cache;
+
+        $factory->shouldReceive('make')->once()
             ->with($config)->andReturn(Mockery::mock(Client::class));
 
         return $manager;

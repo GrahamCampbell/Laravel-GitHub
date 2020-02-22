@@ -11,17 +11,17 @@ declare(strict_types=1);
  * file that was distributed with this source code.
  */
 
-namespace GrahamCampbell\GitHub\Authenticators;
+namespace GrahamCampbell\GitHub\Auth\Authenticator;
 
 use GitHub\Client;
 use InvalidArgumentException;
 
 /**
- * This is the token authenticator class.
+ * This is the password authenticator class.
  *
  * @author Graham Campbell <graham@alt-three.com>
  */
-class TokenAuthenticator extends AbstractAuthenticator
+class PasswordAuthenticator extends AbstractAuthenticator
 {
     /**
      * Authenticate the client, and return it.
@@ -35,14 +35,14 @@ class TokenAuthenticator extends AbstractAuthenticator
     public function authenticate(array $config)
     {
         if (!$this->client) {
-            throw new InvalidArgumentException('The client instance was not given to the token authenticator.');
+            throw new InvalidArgumentException('The client instance was not given to the password authenticator.');
         }
 
-        if (!array_key_exists('token', $config)) {
-            throw new InvalidArgumentException('The token authenticator requires a token.');
+        if (!array_key_exists('username', $config) || !array_key_exists('password', $config)) {
+            throw new InvalidArgumentException('The password authenticator requires a username and password.');
         }
 
-        $this->client->authenticate($config['token'], Client::AUTH_HTTP_TOKEN);
+        $this->client->authenticate($config['username'], $config['password'], Client::AUTH_HTTP_PASSWORD);
 
         return $this->client;
     }

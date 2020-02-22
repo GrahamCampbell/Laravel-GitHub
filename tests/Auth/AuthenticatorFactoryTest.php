@@ -11,14 +11,14 @@ declare(strict_types=1);
  * file that was distributed with this source code.
  */
 
-namespace GrahamCampbell\Tests\GitHub\Authenticators;
+namespace GrahamCampbell\Tests\GitHub\Auth;
 
-use GrahamCampbell\GitHub\Authenticators\ApplicationAuthenticator;
-use GrahamCampbell\GitHub\Authenticators\AuthenticatorFactory;
-use GrahamCampbell\GitHub\Authenticators\JwtAuthenticator;
-use GrahamCampbell\GitHub\Authenticators\PasswordAuthenticator;
-use GrahamCampbell\GitHub\Authenticators\PrivateKeyAuthenticator;
-use GrahamCampbell\GitHub\Authenticators\TokenAuthenticator;
+use GrahamCampbell\GitHub\Auth\Authenticator\ApplicationAuthenticator;
+use GrahamCampbell\GitHub\Auth\Authenticator\JwtAuthenticator;
+use GrahamCampbell\GitHub\Auth\Authenticator\PasswordAuthenticator;
+use GrahamCampbell\GitHub\Auth\Authenticator\PrivateKeyAuthenticator;
+use GrahamCampbell\GitHub\Auth\Authenticator\TokenAuthenticator;
+use GrahamCampbell\GitHub\Auth\AuthenticatorFactory;
 use GrahamCampbell\Tests\GitHub\AbstractTestCase;
 use InvalidArgumentException;
 use TypeError;

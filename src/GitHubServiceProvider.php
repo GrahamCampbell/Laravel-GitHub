@@ -14,7 +14,8 @@ declare(strict_types=1);
 namespace GrahamCampbell\GitHub;
 
 use Github\Client;
-use GrahamCampbell\GitHub\Authenticators\AuthenticatorFactory;
+use GrahamCampbell\GitHub\Auth\AuthenticatorFactory;
+use GrahamCampbell\GitHub\Cache\ConnectionFactory;
 use Illuminate\Contracts\Container\Container;
 use Illuminate\Foundation\Application as LaravelApplication;
 use Illuminate\Support\ServiceProvider;
@@ -63,6 +64,7 @@ class GitHubServiceProvider extends ServiceProvider
     public function register()
     {
         $this->registerAuthFactory();
+        $this->registerCacheFactory();
         $this->registerGitHubFactory();
         $this->registerManager();
         $this->registerBindings();
@@ -83,6 +85,22 @@ class GitHubServiceProvider extends ServiceProvider
     }
 
     /**
+     * Register the cache factory class.
+     *
+     * @return void
+     */
+    protected function registerCacheFactory()
+    {
+        $this->app->singleton('github.cachefactory', function (Container $app) {
+            $cache = $app->bound('cache') ? $app->make('cache') : null;
+
+            return new ConnectionFactory($cache);
+        });
+
+        $this->app->alias('github.cachefactory', ConnectionFactory::class);
+    }
+
+    /**
      * Register the github factory class.
      *
      * @return void
@@ -91,7 +109,7 @@ class GitHubServiceProvider extends ServiceProvider
     {
         $this->app->singleton('github.factory', function (Container $app) {
             $auth = $app['github.authfactory'];
-            $cache = $app->bound('cache') ? $app->make('cache') : null;
+            $cache = $app['github.cachefactory'];
 
             return new GitHubFactory($auth, $cache);
         });

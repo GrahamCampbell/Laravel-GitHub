@@ -11,33 +11,33 @@ declare(strict_types=1);
  * file that was distributed with this source code.
  */
 
-namespace GrahamCampbell\Tests\GitHub\Authenticators;
+namespace GrahamCampbell\Tests\GitHub\Auth\Authenticators;
 
 use Github\Client;
-use GrahamCampbell\GitHub\Authenticators\ApplicationAuthenticator;
+use GrahamCampbell\GitHub\Auth\Authenticator\PasswordAuthenticator;
 use GrahamCampbell\Tests\GitHub\AbstractTestCase;
 use InvalidArgumentException;
 use Mockery;
 
 /**
- * This is the application authenticator test class.
+ * This is the password authenticator test class.
  *
  * @author Graham Campbell <graham@alt-three.com>
  */
-class ApplicationAuthenticatorTest extends AbstractTestCase
+class PasswordAuthenticatorTest extends AbstractTestCase
 {
-    public function testMakeStandardWithMethod()
+    public function testMakeWithMethod()
     {
         $authenticator = $this->getAuthenticator();
 
         $client = Mockery::mock(Client::class);
         $client->shouldReceive('authenticate')->once()
-            ->with('your-client-id', 'your-client-secret', 'http_password');
+            ->with('your-username', 'your-password', 'http_password');
 
         $return = $authenticator->with($client)->authenticate([
-            'clientId'     => 'your-client-id',
-            'clientSecret' => 'your-client-secret',
-            'method'       => 'application',
+            'username' => 'your-username',
+            'password' => 'your-password',
+            'method'   => 'password',
         ]);
 
         $this->assertInstanceOf(Client::class, $return);
@@ -49,41 +49,41 @@ class ApplicationAuthenticatorTest extends AbstractTestCase
 
         $client = Mockery::mock(Client::class);
         $client->shouldReceive('authenticate')->once()
-            ->with('your-client-id', 'your-client-secret', 'http_password');
+            ->with('your-username', 'your-password', 'http_password');
 
         $return = $authenticator->with($client)->authenticate([
-            'clientId'     => 'your-client-id',
-            'clientSecret' => 'your-client-secret',
+            'username' => 'your-username',
+            'password' => 'your-password',
         ]);
 
         $this->assertInstanceOf(Client::class, $return);
     }
 
-    public function testMakeWithoutClientId()
+    public function testMakeWithoutUsername()
     {
         $authenticator = $this->getAuthenticator();
 
         $client = Mockery::mock(Client::class);
 
         $this->expectException(InvalidArgumentException::class);
-        $this->expectExceptionMessage('The application authenticator requires a client id and secret.');
+        $this->expectExceptionMessage('The password authenticator requires a username and password.');
 
         $authenticator->with($client)->authenticate([
-            'clientSecret' => 'your-client-secret',
+            'password' => 'your-password',
         ]);
     }
 
-    public function testMakeWithoutClientSecret()
+    public function testMakeWithoutPassword()
     {
         $authenticator = $this->getAuthenticator();
 
         $client = Mockery::mock(Client::class);
 
         $this->expectException(InvalidArgumentException::class);
-        $this->expectExceptionMessage('The application authenticator requires a client id and secret.');
+        $this->expectExceptionMessage('The password authenticator requires a username and password.');
 
         $authenticator->with($client)->authenticate([
-            'clientId' => 'your-client-id',
+            'username' => 'your-username',
         ]);
     }
 
@@ -92,17 +92,17 @@ class ApplicationAuthenticatorTest extends AbstractTestCase
         $authenticator = $this->getAuthenticator();
 
         $this->expectException(InvalidArgumentException::class);
-        $this->expectExceptionMessage('The client instance was not given to the application authenticator.');
+        $this->expectExceptionMessage('The client instance was not given to the password authenticator.');
 
         $authenticator->authenticate([
-            'clientId'     => 'your-client-id',
-            'clientSecret' => 'your-client-secret',
-            'method'       => 'application',
+            'username' => 'your-username',
+            'password' => 'your-password',
+            'method'   => 'password',
         ]);
     }
 
     protected function getAuthenticator()
     {
-        return new ApplicationAuthenticator();
+        return new PasswordAuthenticator();
     }
 }

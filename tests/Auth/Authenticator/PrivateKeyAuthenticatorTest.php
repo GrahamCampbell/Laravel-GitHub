@@ -1,9 +1,20 @@
 <?php
 
-namespace GrahamCampbell\Tests\GitHub\Authenticators;
+declare(strict_types=1);
+
+/*
+ * This file is part of Laravel GitHub.
+ *
+ * (c) Graham Campbell <graham@alt-three.com>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
+namespace GrahamCampbell\Tests\GitHub\Auth\Authenticators;
 
 use Github\Client;
-use GrahamCampbell\GitHub\Authenticators\PrivateKeyAuthenticator;
+use GrahamCampbell\GitHub\Auth\Authenticator\PrivateKeyAuthenticator;
 use GrahamCampbell\Tests\GitHub\AbstractTestCase;
 use InvalidArgumentException;
 use Lcobucci\JWT\Token;
@@ -26,7 +37,7 @@ class PrivateKeyAuthenticatorTest extends AbstractTestCase
 
         $return = $authenticator->with($client)->authenticate([
             'appId'   => 1,
-            'keyPath' => sprintf('%s/fixtures/key.pem', dirname(__DIR__)),
+            'keyPath' => sprintf('%s/fixtures/key.pem', dirname(dirname(__DIR__))),
         ]);
 
         $this->assertInstanceOf(Client::class, $return);
