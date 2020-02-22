@@ -25,7 +25,7 @@ use ReflectionClass;
  *
  * @author Graham Campbell <graham@alt-three.com>
  */
-class ClientBuilder extends Builder
+final class ClientBuilder extends Builder
 {
     /**
      * The default cache lifetime of 48 hours.

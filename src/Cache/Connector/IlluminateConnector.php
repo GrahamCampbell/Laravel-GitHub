@@ -26,28 +26,28 @@ use Symfony\Component\Cache\Adapter\Psr16Adapter;
  *
  * @author Graham Campbell <graham@alt-three.com>
  */
-class IlluminateConnector implements ConnectorInterface
+final class IlluminateConnector implements ConnectorInterface
 {
     /**
      * The minimum cache lifetime of 12 hours.
      *
      * @var int
      */
-    const MIN_CACHE_LIFETIME = 43200;
+    private const MIN_CACHE_LIFETIME = 43200;
 
     /**
      * The maximum cache lifetime of 48 hours.
      *
      * @var int
      */
-    const MAX_CACHE_LIFETIME = 172800;
+    private const MAX_CACHE_LIFETIME = 172800;
 
     /**
      * The cache factory instance.
      *
      * @var \Illuminate\Contracts\Cache\Factory|null
      */
-    protected $cache;
+    private $cache;
 
     /**
      * Create a new illuminate connector instance.
@@ -74,7 +74,7 @@ class IlluminateConnector implements ConnectorInterface
     {
         $repository = $this->getRepository($config);
 
-        return $this->getAdapter($repository, $config);
+        return self::getAdapter($repository, $config);
     }
 
     /**
@@ -86,7 +86,7 @@ class IlluminateConnector implements ConnectorInterface
      *
      * @return \Illuminate\Contracts\Cache\Repository
      */
-    protected function getRepository(array $config)
+    private function getRepository(array $config)
     {
         if (!$this->cache) {
             throw new InvalidArgumentException('Illuminate caching support not available.');
@@ -105,7 +105,7 @@ class IlluminateConnector implements ConnectorInterface
      *
      * @return \Symfony\Component\Cache\Adapter\AdapterInterface
      */
-    protected function getAdapter(Repository $repository, array $config)
+    private static function getAdapter(Repository $repository, array $config)
     {
         $min = Arr::get($config, 'min', self::MIN_CACHE_LIFETIME);
         $max = Arr::get($config, 'max', self::MAX_CACHE_LIFETIME);
@@ -113,15 +113,5 @@ class IlluminateConnector implements ConnectorInterface
         return new Psr16Adapter(
             new BoundedCache($repository, $min, $max)
         );
-    }
-
-    /**
-     * Get the cache instance.
-     *
-     * @return \Illuminate\Contracts\Cache\Factory|null
-     */
-    public function getCache()
-    {
-        return $this->cache;
     }
 }

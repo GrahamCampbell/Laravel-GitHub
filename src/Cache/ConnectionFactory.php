@@ -78,14 +78,4 @@ class ConnectionFactory
 
         throw new InvalidArgumentException("Unsupported driver [{$config['driver']}].");
     }
-
-    /**
-     * Get the cache factory instance.
-     *
-     * @return \Illuminate\Contracts\Cache\Factory|null
-     */
-    public function getCache()
-    {
-        return $this->cache;
-    }
 }

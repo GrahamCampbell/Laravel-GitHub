@@ -21,7 +21,7 @@ use InvalidArgumentException;
  *
  * @author Graham Campbell <graham@alt-three.com>
  */
-class TokenAuthenticator extends AbstractAuthenticator
+final class TokenAuthenticator extends AbstractAuthenticator
 {
     /**
      * Authenticate the client, and return it.

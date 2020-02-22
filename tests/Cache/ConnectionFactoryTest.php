@@ -16,6 +16,7 @@ namespace GrahamCampbell\Tests\GitHub\Cache;
 use GrahamCampbell\GitHub\Cache\ConnectionFactory;
 use GrahamCampbell\GitHub\Cache\Connector\IlluminateConnector;
 use GrahamCampbell\TestBench\AbstractTestCase;
+use Illuminate\Cache\Repository;
 use Illuminate\Contracts\Cache\Factory;
 use InvalidArgumentException;
 use Mockery;
@@ -30,7 +31,9 @@ class ConnectionFactoryTest extends AbstractTestCase
 {
     public function testMake()
     {
-        $factory = $this->getMockedFactory();
+        $cache = Mockery::mock(Factory::class);
+        $cache->shouldReceive('store')->once()->with('redis')->andReturn(Mockery::mock(Repository::class));
+        $factory = new ConnectionFactory($cache);
 
         $return = $factory->make(['name' => 'foo', 'driver' => 'illuminate', 'connector' => 'redis']);
 
@@ -64,24 +67,5 @@ class ConnectionFactoryTest extends AbstractTestCase
         $this->expectExceptionMessage('Unsupported driver [unsupported].');
 
         $factory->createConnector(['driver' => 'unsupported']);
-    }
-
-    protected function getMockedFactory()
-    {
-        $cache = Mockery::mock(Factory::class);
-
-        $mock = Mockery::mock(ConnectionFactory::class.'[createConnector]', [$cache]);
-
-        $connector = Mockery::mock(IlluminateConnector::class, [$cache]);
-
-        $connector->shouldReceive('connect')->once()
-            ->with(['name' => 'foo', 'driver' => 'illuminate', 'connector' => 'redis'])
-            ->andReturn(Mockery::mock(CacheItemPoolInterface::class));
-
-        $mock->shouldReceive('createConnector')->once()
-            ->with(['name' => 'foo', 'driver' => 'illuminate', 'connector' => 'redis'])
-            ->andReturn($connector);
-
-        return $mock;
     }
 }

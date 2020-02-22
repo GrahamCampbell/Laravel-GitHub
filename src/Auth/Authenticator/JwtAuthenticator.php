@@ -22,7 +22,7 @@ use InvalidArgumentException;
  * @author Graham Campbell <graham@alt-three.com>
  * @author Lucas Michot <lucas@semalead.com>
  */
-class JwtAuthenticator extends AbstractAuthenticator
+final class JwtAuthenticator extends AbstractAuthenticator
 {
     /**
      * Authenticate the client, and return it.

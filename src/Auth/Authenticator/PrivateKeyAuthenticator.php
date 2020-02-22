@@ -25,7 +25,7 @@ use Lcobucci\JWT\Signer\Rsa\Sha256;
  *
  * @author Pavel Zhytomirsky <r3volut1oner@gmail.com>
  */
-class PrivateKeyAuthenticator extends AbstractAuthenticator
+final class PrivateKeyAuthenticator extends AbstractAuthenticator
 {
     /**
      * Build JWT token from provided private key file and authenticate with it.
@@ -50,7 +50,7 @@ class PrivateKeyAuthenticator extends AbstractAuthenticator
             ->expiresAt((new DateTimeImmutable('+10 minutes'))->getTimestamp())
             ->issuedAt((new DateTimeImmutable())->getTimestamp())
             ->issuedBy($config['appId'])
-            ->getToken(new Sha256(), $this->getKey($config));
+            ->getToken(new Sha256(), self::getKey($config));
 
         $this->client->authenticate($token, Client::AUTH_JWT);
 
@@ -66,7 +66,7 @@ class PrivateKeyAuthenticator extends AbstractAuthenticator
      *
      * @return \Lcobucci\JWT\Signer\Key
      */
-    protected function getKey(array $config)
+    private static function getKey(array $config)
     {
         if (
             !(array_key_exists('key', $config) || array_key_exists('keyPath', $config)) ||

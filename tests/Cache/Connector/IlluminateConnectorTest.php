@@ -30,18 +30,18 @@ class IlluminateConnectorTest extends AbstractTestCase
 {
     public function testConnectStandard()
     {
-        $connector = $this->getIlluminateConnector();
-        $repo = Mockery::mock(Repository::class);
-        $connector->getCache()->shouldReceive('store')->once()->andReturn($repo);
+        $cache = Mockery::mock(Factory::class);
+        $connector = new IlluminateConnector($cache);
+        $cache->shouldReceive('store')->once()->andReturn(Mockery::mock(Repository::class));
 
         $this->assertInstanceOf(AdapterInterface::class, $connector->connect([]));
     }
 
     public function testConnectFull()
     {
-        $connector = $this->getIlluminateConnector();
-        $repo = Mockery::mock(Repository::class);
-        $connector->getCache()->shouldReceive('store')->once()->with('redis')->andReturn($repo);
+        $cache = Mockery::mock(Factory::class);
+        $connector = new IlluminateConnector($cache);
+        $cache->shouldReceive('store')->once()->with('redis')->andReturn(Mockery::mock(Repository::class));
 
         $return = $connector->connect([
             'driver'    => 'illuminate',
@@ -61,12 +61,5 @@ class IlluminateConnectorTest extends AbstractTestCase
         $this->expectExceptionMessage('Illuminate caching support not available.');
 
         $connector->connect([]);
-    }
-
-    protected function getIlluminateConnector()
-    {
-        $cache = Mockery::mock(Factory::class);
-
-        return new IlluminateConnector($cache);
     }
 }
