@@ -2,6 +2,11 @@ CHANGE LOG
 ==========
 
 
+## V9.0.1 (01/03/2020)
+
+* Fixed typo in requirements
+
+
 ## V9.0 (01/03/2020)
 
 * Dropped Laravel 5
