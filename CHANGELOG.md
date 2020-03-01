@@ -2,7 +2,7 @@ CHANGE LOG
 ==========
 
 
-## V9.0 (Upcoming)
+## V9.0 (01/03/2020)
 
 * Dropped Laravel 5
 * Moved around internals
