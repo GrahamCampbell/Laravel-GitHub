@@ -2,6 +2,11 @@ CHANGE LOG
 ==========
 
 
+## V8.7 (17/03/2020)
+
+* Require knplabs/github-api 2.13
+
+
 ## V8.6 (08/02/2020)
 
 * Fixed deprecated in app auth
