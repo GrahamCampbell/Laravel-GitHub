@@ -2,6 +2,11 @@ CHANGE LOG
 ==========
 
 
+## V9.1 (Upcoming)
+
+* Require knplabs/github-api 2.13
+
+
 ## V9.0.1 (01/03/2020)
 
 * Fixed typo in requirements
