@@ -61,7 +61,7 @@ use Illuminate\Support\Facades\Facade;
  * @method static \Github\Api\Authorizations authorizations()
  * @method static \Github\Api\Meta meta()
  * @method static \Github\Api\GraphQL graphql()
- * 
+ *
  * @see \GrahamCampbell\GitHub\GitHubManager
  *
  * @author Graham Campbell <graham@alt-three.com>
