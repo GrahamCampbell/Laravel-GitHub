@@ -6,12 +6,12 @@ Laravel GitHub was created by, and is maintained by [Graham Campbell](https://gi
 ![Banner](https://user-images.githubusercontent.com/2829600/71477348-60993680-27e1-11ea-845e-fbc2ee79ed7d.png)
 
 <p align="center">
-<a href="https://styleci.io/repos/22288869"><img src="https://styleci.io/repos/22288869/shield" alt="StyleCI Status"></img></a>
-<a href="https://travis-ci.org/GrahamCampbell/Laravel-GitHub"><img src="https://img.shields.io/travis/GrahamCampbell/Laravel-GitHub/master.svg?style=flat-square" alt="Build Status"></img></a>
-<a href="https://scrutinizer-ci.com/g/GrahamCampbell/Laravel-GitHub/code-structure"><img src="https://img.shields.io/scrutinizer/coverage/g/GrahamCampbell/Laravel-GitHub.svg?style=flat-square" alt="Coverage Status"></img></a>
-<a href="https://scrutinizer-ci.com/g/GrahamCampbell/Laravel-GitHub"><img src="https://img.shields.io/scrutinizer/g/GrahamCampbell/Laravel-GitHub.svg?style=flat-square" alt="Quality Score"></img></a>
-<a href="LICENSE"><img src="https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square" alt="Software License"></img></a>
-<a href="https://github.com/GrahamCampbell/Laravel-GitHub/releases"><img src="https://img.shields.io/github/release/GrahamCampbell/Laravel-GitHub.svg?style=flat-square" alt="Latest Version"></img></a>
+<a href="https://github.styleci.io/repos/22288869"><img src="https://github.styleci.io/repos/22288869/shield" alt="StyleCI Status"></img></a>
+<a href="https://github.com/GrahamCampbell/Laravel-GitHub/actions?query=workflow%3ATests"><img src="https://img.shields.io/github/workflow/status/GrahamCampbell/Laravel-GitHub/Tests?style=flat-square" alt="Build Status"></img></a>
+<a href="https://scrutinizer-ci.com/g/GrahamCampbell/Laravel-GitHub/code-structure"><img src="https://img.shields.io/scrutinizer/coverage/g/GrahamCampbell/Laravel-GitHub?style=flat-square" alt="Coverage Status"></img></a>
+<a href="https://scrutinizer-ci.com/g/GrahamCampbell/Laravel-GitHub"><img src="https://img.shields.io/scrutinizer/g/GrahamCampbell/Laravel-GitHub?style=flat-square" alt="Quality Score"></img></a>
+<a href="LICENSE"><img src="https://img.shields.io/badge/license-MIT-brightgreen?style=flat-square" alt="Software License"></img></a>
+<a href="https://github.com/GrahamCampbell/Laravel-GitHub/releases"><img src="https://img.shields.io/github/release/GrahamCampbell/Laravel-GitHub?style=flat-square" alt="Latest Version"></img></a>
 </p>
 
 
@@ -179,8 +179,8 @@ If you discover a security vulnerability within this package, please send an ema
 Laravel GitHub is licensed under [The MIT License (MIT)](LICENSE).
 
 
-## For enterprise
+## For Enterprise
 
-Available as part of the Tidelift Subscription.
+Available as part of the Tidelift Subscription
 
-The maintainers of `Laravel GitHub` and thousands of other packages are working with Tidelift to deliver commercial support and maintenance for the open source dependencies you use to build your applications. Save time, reduce risk, and improve code health, while paying the maintainers of the exact dependencies you use. [Learn more.](https://tidelift.com/subscription/pkg/packagist-graham-campbell-github?utm_source=packagist-graham-campbell-github&utm_medium=referral&utm_campaign=enterprise&utm_term=repo)
+The maintainers of `graham-campbell/github` and thousands of other packages are working with Tidelift to deliver commercial support and maintenance for the open source dependencies you use to build your applications. Save time, reduce risk, and improve code health, while paying the maintainers of the exact dependencies you use. [Learn more.](https://tidelift.com/subscription/pkg/packagist-graham-campbell-github?utm_source=packagist-graham-campbell-github&utm_medium=referral&utm_campaign=enterprise&utm_term=repo)
