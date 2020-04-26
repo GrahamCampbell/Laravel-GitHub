@@ -15,7 +15,7 @@
         "graham-campbell/manager": "^4.5",
         "illuminate/contracts": "^6.0|^7.0",
         "illuminate/support": "^6.0|^7.0",
-        "knplabs/github-api": "2.13.*",
+        "knplabs/github-api": "2.14.*",
         "php-http/client-common": "^1.9|^2.0",
         "php-http/cache-plugin": "^1.6",
         "symfony/cache": "^4.3|^5.0"
@@ -46,7 +46,7 @@
     },
     "extra": {
         "branch-alias": {
-            "dev-master": "9.1-dev"
+            "dev-master": "9.2-dev"
         },
         "laravel": {
             "providers": [
