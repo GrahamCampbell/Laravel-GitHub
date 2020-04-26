@@ -2,6 +2,11 @@ CHANGE LOG
 ==========
 
 
+## V8.8 (26/04/2020)
+
+* Require knplabs/github-api 2.14
+
+
 ## V8.7.1 (14/04/2020)
 
 * Updated funding information
