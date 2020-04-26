@@ -14,7 +14,7 @@
         "illuminate/contracts": "^5.5|^6.0|^7.0",
         "illuminate/support": "^5.5|^6.0|^7.0",
         "graham-campbell/manager": "^4.4",
-        "knplabs/github-api": "2.13.*",
+        "knplabs/github-api": "2.14.*",
         "php-http/client-common": "^1.9|^2.0",
         "php-http/cache-plugin": "^1.6",
         "symfony/cache": "^3.3|^4.0|^5.0"
