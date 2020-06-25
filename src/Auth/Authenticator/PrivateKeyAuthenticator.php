@@ -47,7 +47,7 @@ final class PrivateKeyAuthenticator extends AbstractAuthenticator
         }
 
         $token = (new Builder())
-            ->expiresAt((new DateTimeImmutable('+10 minutes'))->getTimestamp())
+            ->expiresAt((new DateTimeImmutable('+10 minutes'))->getTimestamp() - 1)
             ->issuedAt((new DateTimeImmutable())->getTimestamp())
             ->issuedBy($config['appId'])
             ->getToken(new Sha256(), self::getKey($config));
