@@ -2,6 +2,12 @@ CHANGE LOG
 ==========
 
 
+## V9.2.1 (Upcoming)
+
+* Fixes for case sensitive filesystems
+* Issue JWT tokens for 9m59s rather than 10m
+
+
 ## V9.2 (26/04/2020)
 
 * Require knplabs/github-api 2.14

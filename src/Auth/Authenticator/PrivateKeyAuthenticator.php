@@ -13,8 +13,9 @@ declare(strict_types=1);
 
 namespace GrahamCampbell\GitHub\Auth\Authenticator;
 
+use DateInterval;
 use DateTimeImmutable;
-use GitHub\Client;
+use Github\Client;
 use InvalidArgumentException;
 use Lcobucci\JWT\Builder;
 use Lcobucci\JWT\Signer\Key;
@@ -46,9 +47,12 @@ final class PrivateKeyAuthenticator extends AbstractAuthenticator
             throw new InvalidArgumentException('The private key authenticator requires the application id to be configured.');
         }
 
+        $issued = new DateTimeImmutable();
+        $expires = $issued->add(new DateInterval('PT9M59S'));
+
         $token = (new Builder())
-            ->expiresAt((new DateTimeImmutable('+10 minutes'))->getTimestamp())
-            ->issuedAt((new DateTimeImmutable())->getTimestamp())
+            ->expiresAt($expires->getTimestamp())
+            ->issuedAt($issued->getTimestamp())
             ->issuedBy($config['appId'])
             ->getToken(new Sha256(), self::getKey($config));
 

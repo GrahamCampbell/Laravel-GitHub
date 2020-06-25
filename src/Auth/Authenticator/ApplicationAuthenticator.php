@@ -13,7 +13,7 @@ declare(strict_types=1);
 
 namespace GrahamCampbell\GitHub\Auth\Authenticator;
 
-use GitHub\Client;
+use Github\Client;
 use InvalidArgumentException;
 
 /**
