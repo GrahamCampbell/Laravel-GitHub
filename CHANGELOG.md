@@ -2,7 +2,7 @@ CHANGE LOG
 ==========
 
 
-## V9.2.1 (Upcoming)
+## V9.2.1 (25/06/2020)
 
 * Fixes for case sensitive filesystems
 * Issue JWT tokens for 9m59s rather than 10m
