@@ -14,7 +14,7 @@ declare(strict_types=1);
 namespace GrahamCampbell\GitHub\Authenticators;
 
 use DateTimeImmutable;
-use GitHub\Client;
+use Github\Client;
 use InvalidArgumentException;
 use Lcobucci\JWT\Builder;
 use Lcobucci\JWT\Signer\Key;
