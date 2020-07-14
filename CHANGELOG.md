@@ -5,6 +5,7 @@ CHANGE LOG
 ## V9.3 (14/07/2020)
 
 * Require knplabs/github-api 2.15
+* Added missing cachefactory provides
 
 
 ## V9.2.1 (25/06/2020)
