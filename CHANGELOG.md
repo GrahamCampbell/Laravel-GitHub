@@ -2,6 +2,11 @@ CHANGE LOG
 ==========
 
 
+## V10.0 (UPCOMING)
+
+* Require knplabs/github-api 3.0
+
+
 ## V9.3 (14/07/2020)
 
 * Require knplabs/github-api 2.15
