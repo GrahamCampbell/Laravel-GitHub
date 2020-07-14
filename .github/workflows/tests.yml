@@ -6,14 +6,13 @@ on:
 
 jobs:
   tests:
-    name: PHP ${{ matrix.php }}; Laravel ${{ matrix.laravel }}; HTTPlug ${{ matrix.httplug }}
+    name: PHP ${{ matrix.php }}; Laravel ${{ matrix.laravel }}
     runs-on: ubuntu-20.04
 
     strategy:
       matrix:
         php: ['7.2', '7.3', '7.4']
         laravel: ['6', '7']
-        httplug: ['1', '2']
 
     steps:
       - name: Checkout Code
@@ -35,7 +34,7 @@ jobs:
           timeout_minutes: 5
           max_attempts: 5
           command: |
-            composer require "laravel/framework:{{ matrix.laravel }}" "php-http/httplug:^${{ matrix.httplug }}" --no-update --no-interaction
+            composer require "laravel/framework:{{ matrix.laravel }}" --no-update --no-interaction
             composer update --no-interaction --no-progress
 
       - name: Execute PHPUnit
