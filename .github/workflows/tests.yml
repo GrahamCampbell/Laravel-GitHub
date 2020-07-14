@@ -6,18 +6,14 @@ on:
 
 jobs:
   tests:
-    name: PHP ${{ matrix.php }}; Laravel ${{ matrix.laravel }}
+    name: PHP ${{ matrix.php }}; Laravel ${{ matrix.laravel }}; HTTPlug ${{ matrix.httplug }}
     runs-on: ubuntu-20.04
 
     strategy:
       matrix:
-        php: ['7.1', '7.2', '7.3', '7.4']
-        laravel: ['5.5', '5.6', '5.7', '5.8', '6', '7']
-        exclude:
-          - php: '7.1'
-            laravel: '6'
-          - php: '7.1'
-            laravel: '7'
+        php: ['7.2', '7.3', '7.4']
+        laravel: ['6', '7']
+        httplug: ['1', '2']
 
     steps:
       - name: Checkout Code
@@ -33,60 +29,14 @@ jobs:
       - name: Setup Problem Matchers
         run: echo "::add-matcher::${{ runner.tool_cache }}/phpunit.json"
 
-      - name: Select Laravel 5.5
-        uses: nick-invision/retry@v1
-        with:
-          timeout_minutes: 5
-          max_attempts: 5
-          command: composer require "laravel/framework:5.5.*" "phpunit/phpunit:^6.5" --no-update --no-interaction
-        if: "matrix.laravel == '5.5'"
-
-      - name: Select Laravel 5.6
-        uses: nick-invision/retry@v1
-        with:
-          timeout_minutes: 5
-          max_attempts: 5
-          command: composer require "laravel/framework:5.6.*" "phpunit/phpunit:^7.5" --no-update --no-interaction
-        if: "matrix.laravel == '5.6'"
-
-      - name: Select Laravel 5.7
-        uses: nick-invision/retry@v1
-        with:
-          timeout_minutes: 5
-          max_attempts: 5
-          command: composer require "laravel/framework:5.7.*" "phpunit/phpunit:^7.5" --no-update --no-interaction
-        if: "matrix.laravel == '5.7'"
-
-      - name: Select Laravel 5.8
-        uses: nick-invision/retry@v1
-        with:
-          timeout_minutes: 5
-          max_attempts: 5
-          command: composer require "laravel/framework:5.8.*" "phpunit/phpunit:^7.5|^8.5" --no-update --no-interaction
-        if: "matrix.laravel == '5.8'"
-
-      - name: Select Laravel 6
-        uses: nick-invision/retry@v1
-        with:
-          timeout_minutes: 5
-          max_attempts: 5
-          command: composer require "laravel/framework:6.*" "phpunit/phpunit:^8.5|^9.0" --no-update --no-interaction
-        if: "matrix.laravel == '6'"
-
-      - name: Select Laravel 7
-        uses: nick-invision/retry@v1
-        with:
-          timeout_minutes: 5
-          max_attempts: 5
-          command: composer require "laravel/framework:7.*" "phpunit/phpunit:^8.5|^9.0" --no-update --no-interaction
-        if: "matrix.laravel == '7'"
-
       - name: Install Dependencies
         uses: nick-invision/retry@v1
         with:
           timeout_minutes: 5
           max_attempts: 5
-          command: composer update --no-interaction --no-progress
+          command: |
+            composer require "laravel/framework:{{ matrix.laravel }}" "php-http/httplug:^${{ matrix.httplug }}" --no-update --no-interaction
+            composer update --no-interaction --no-progress
 
       - name: Execute PHPUnit
         run: vendor/bin/phpunit
