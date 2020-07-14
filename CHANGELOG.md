@@ -5,7 +5,6 @@ CHANGE LOG
 ## V8.9 (14/07/2020)
 
 * Require knplabs/github-api 2.15
-* Added missing provides
 
 
 ## V8.8.1 (25/06/2020)
