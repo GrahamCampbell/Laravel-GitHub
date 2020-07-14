@@ -141,6 +141,7 @@ class GitHubServiceProvider extends ServiceProvider
     {
         return [
             'github.authfactory',
+            'github.cachefactory',
             'github.factory',
             'github',
             'github.connection',
