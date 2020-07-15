@@ -17,7 +17,6 @@ use Github\Client;
 use Github\HttpClient\Builder;
 use GrahamCampbell\GitHub\Auth\AuthenticatorFactory;
 use GrahamCampbell\GitHub\Cache\ConnectionFactory;
-use GrahamCampbell\GitHub\Http\ClientBuilder;
 use Http\Client\Common\Plugin\RetryPlugin;
 use Illuminate\Support\Arr;
 use InvalidArgumentException;
