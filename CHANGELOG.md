@@ -2,6 +2,11 @@ CHANGE LOG
 ==========
 
 
+## V8.9.1 (15/07/2020)
+
+* Avoid deprecated authentication methods
+
+
 ## V8.9 (14/07/2020)
 
 * Require knplabs/github-api 2.15
