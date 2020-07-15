@@ -15,7 +15,6 @@ namespace GrahamCampbell\Tests\GitHub\Auth;
 
 use GrahamCampbell\GitHub\Auth\Authenticator\ApplicationAuthenticator;
 use GrahamCampbell\GitHub\Auth\Authenticator\JwtAuthenticator;
-use GrahamCampbell\GitHub\Auth\Authenticator\PasswordAuthenticator;
 use GrahamCampbell\GitHub\Auth\Authenticator\PrivateKeyAuthenticator;
 use GrahamCampbell\GitHub\Auth\Authenticator\TokenAuthenticator;
 use GrahamCampbell\GitHub\Auth\AuthenticatorFactory;
@@ -46,15 +45,6 @@ class AuthenticatorFactoryTest extends AbstractTestCase
         $return = $factory->make('jwt');
 
         $this->assertInstanceOf(JwtAuthenticator::class, $return);
-    }
-
-    public function testMakePasswordAuthenticator()
-    {
-        $factory = $this->getFactory();
-
-        $return = $factory->make('password');
-
-        $this->assertInstanceOf(PasswordAuthenticator::class, $return);
     }
 
     public function testMakeTokenAuthenticator()

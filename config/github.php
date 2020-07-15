@@ -33,8 +33,8 @@ return [
     |
     | Here are each of the connections setup for your application. Example
     | configuration has been included, but you may add as many connections as
-    | you would like. Note that the 6 supported authentication methods are:
-    | "application", "jwt", "none", "password", "private", and "token".
+    | you would like. Note that the 5 supported authentication methods are:
+    | "application", "jwt", "none", "private", and "token".
     |
     */
 
@@ -73,16 +73,6 @@ return [
             'appId'      => 'your-github-app-id',
             'keyPath'    => 'your-private-key-path',
             // 'key'        => 'your-private-key-content',
-            // 'backoff'    => false,
-            // 'cache'      => false,
-            // 'version'    => 'v3',
-            // 'enterprise' => false,
-        ],
-
-        'password' => [
-            'method'     => 'password',
-            'username'   => 'your-username',
-            'password'   => 'your-password',
             // 'backoff'    => false,
             // 'cache'      => false,
             // 'version'    => 'v3',

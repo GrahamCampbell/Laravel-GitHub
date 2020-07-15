@@ -40,8 +40,6 @@ class AuthenticatorFactory
                 return new Authenticator\JwtAuthenticator();
             case 'private':
                 return new Authenticator\PrivateKeyAuthenticator();
-            case 'password':
-                return new Authenticator\PasswordAuthenticator();
             case 'token':
                 return new Authenticator\TokenAuthenticator();
         }
