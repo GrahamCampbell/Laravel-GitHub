@@ -2,7 +2,7 @@ CHANGE LOG
 ==========
 
 
-## V9.3.1 (UPCOMING)
+## V9.3.1 (15/07/2020)
 
 * Avoid deprecated authentication methods
 
