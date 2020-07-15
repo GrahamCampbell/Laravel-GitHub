@@ -45,7 +45,10 @@ class GitHubFactoryTest extends AbstractTestBenchTestCase
     {
         $factory = $this->getFactory();
 
-        $factory[1]->shouldReceive('make')->once()->with(['name' => 'main', 'driver' => 'illuminate'])->andReturn(Mockery::mock(BoundedCacheInterface::class));
+        $boundedCache = Mockery::mock(BoundedCacheInterface::class);
+        $boundedCache->shouldReceive('getMaximumLifetime')->once()->with()->andReturn(42);
+
+        $factory[1]->shouldReceive('make')->once()->with(['name' => 'main', 'driver' => 'illuminate'])->andReturn($boundedCache);
 
         $client = $factory[0]->make(['token' => 'your-token', 'method' => 'token', 'cache' => ['name' => 'main', 'driver' => 'illuminate']]);
 
@@ -57,7 +60,10 @@ class GitHubFactoryTest extends AbstractTestBenchTestCase
     {
         $factory = $this->getFactory();
 
-        $factory[1]->shouldReceive('make')->once()->with(['name' => 'main', 'driver' => 'illuminate', 'connection' => 'foo'])->andReturn(Mockery::mock(BoundedCacheInterface::class));
+        $boundedCache = Mockery::mock(BoundedCacheInterface::class);
+        $boundedCache->shouldReceive('getMaximumLifetime')->once()->with()->andReturn(42);
+
+        $factory[1]->shouldReceive('make')->once()->with(['name' => 'main', 'driver' => 'illuminate', 'connection' => 'foo'])->andReturn($boundedCache);
 
         $client = $factory[0]->make(['token' => 'your-token', 'method' => 'token', 'cache' => ['name' => 'main', 'driver' => 'illuminate', 'connection' => 'foo']]);
 
