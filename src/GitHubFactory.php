@@ -14,6 +14,7 @@ declare(strict_types=1);
 namespace GrahamCampbell\GitHub;
 
 use Github\Client;
+use Github\HttpClient\Builder;
 use GrahamCampbell\GitHub\Auth\AuthenticatorFactory;
 use GrahamCampbell\GitHub\Cache\ConnectionFactory;
 use GrahamCampbell\GitHub\Http\ClientBuilder;
@@ -28,6 +29,13 @@ use InvalidArgumentException;
  */
 class GitHubFactory
 {
+    /**
+     * The cache lifetime of 48 hours.
+     *
+     * @var int
+     */
+    private const CACHE_LIFETIME = 172800;
+
     /**
      * The authenticator factory instance.
      *
@@ -85,18 +93,18 @@ class GitHubFactory
      *
      * @param string[] $config
      *
-     * @return \GrahamCampbell\GitHub\Http\ClientBuilder
+     * @return \Github\HttpClient\Builder
      */
     protected function getBuilder(array $config)
     {
-        $builder = new ClientBuilder();
+        $builder = new Builder();
 
         if ($backoff = Arr::get($config, 'backoff')) {
             $builder->addPlugin(new RetryPlugin(['retries' => $backoff === true ? 2 : $backoff]));
         }
 
         if (is_array($cache = Arr::get($config, 'cache', false))) {
-            $builder->addCache($this->cache->make($cache));
+            $builder->addCache($this->cache->make($cache), ['cache_lifetime' => self::CACHE_LIFETIME]);
         }
 
         return $builder;
