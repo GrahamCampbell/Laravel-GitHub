@@ -73,7 +73,7 @@ final class IlluminateConnector implements ConnectorInterface
     {
         $repository = $this->getRepository($config);
 
-        return self::getAdapter($repository, $config);
+        return self::getBoundedCache($repository, $config);
     }
 
     /**
