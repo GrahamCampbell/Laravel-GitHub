@@ -109,6 +109,6 @@ final class IlluminateConnector implements ConnectorInterface
         $min = Arr::get($config, 'min', self::MIN_CACHE_LIFETIME);
         $max = Arr::get($config, 'max', self::MAX_CACHE_LIFETIME);
 
-        new BoundedCache($repository, $min, $max)
+        return new BoundedCache($repository, $min, $max);
     }
 }
