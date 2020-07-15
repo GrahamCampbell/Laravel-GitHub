@@ -5,6 +5,12 @@ CHANGE LOG
 ## V10.0 (UPCOMING)
 
 * Require knplabs/github-api 3.0
+* Remove password authenticator
+
+
+## V9.3.1 (15/07/2020)
+
+* Avoid deprecated authentication methods
 
 
 ## V9.3 (14/07/2020)

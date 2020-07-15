@@ -42,7 +42,7 @@ final class TokenAuthenticator extends AbstractAuthenticator
             throw new InvalidArgumentException('The token authenticator requires a token.');
         }
 
-        $this->client->authenticate($config['token'], Client::AUTH_HTTP_TOKEN);
+        $this->client->authenticate($config['token'], Client::AUTH_ACCESS_TOKEN);
 
         return $this->client;
     }
