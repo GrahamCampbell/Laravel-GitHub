@@ -19,7 +19,6 @@ use Illuminate\Contracts\Cache\Factory;
 use Illuminate\Contracts\Cache\Repository;
 use Illuminate\Support\Arr;
 use InvalidArgumentException;
-use Symfony\Component\Cache\Adapter\Psr16Adapter;
 
 /**
  * This is the illuminate connector class.
@@ -68,7 +67,7 @@ final class IlluminateConnector implements ConnectorInterface
      *
      * @throws \InvalidArgumentException
      *
-     * @return \Psr\Cache\CacheItemPoolInterface
+     * @return \GrahamCampbell\BoundedCache\BoundedCacheInterface
      */
     public function connect(array $config)
     {
@@ -98,20 +97,18 @@ final class IlluminateConnector implements ConnectorInterface
     }
 
     /**
-     * Get the illuminate cache adapter.
+     * Get the bounded cache instance.
      *
      * @param \Illuminate\Contracts\Cache\Repository $repository
      * @param array                                  $config
      *
-     * @return \Symfony\Component\Cache\Adapter\AdapterInterface
+     * @return \GrahamCampbell\BoundedCache\BoundedCacheInterface
      */
-    private static function getAdapter(Repository $repository, array $config)
+    private static function getBoundedCache(Repository $repository, array $config)
     {
         $min = Arr::get($config, 'min', self::MIN_CACHE_LIFETIME);
         $max = Arr::get($config, 'max', self::MAX_CACHE_LIFETIME);
 
-        return new Psr16Adapter(
-            new BoundedCache($repository, $min, $max)
-        );
+        new BoundedCache($repository, $min, $max)
     }
 }

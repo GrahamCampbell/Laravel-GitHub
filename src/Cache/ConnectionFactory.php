@@ -49,7 +49,7 @@ class ConnectionFactory
      *
      * @throws \InvalidArgumentException
      *
-     * @return \Psr\Cache\CacheItemPoolInterface
+     * @return \GrahamCampbell\BoundedCache\BoundedCacheInterface
      */
     public function make(array $config)
     {
