@@ -32,7 +32,7 @@ class ApplicationAuthenticatorTest extends AbstractTestCase
 
         $client = Mockery::mock(Client::class);
         $client->shouldReceive('authenticate')->once()
-            ->with('your-client-id', 'your-client-secret', 'http_password');
+            ->with('your-client-id', 'your-client-secret', 'client_id_header');
 
         $return = $authenticator->with($client)->authenticate([
             'clientId'     => 'your-client-id',
@@ -49,7 +49,7 @@ class ApplicationAuthenticatorTest extends AbstractTestCase
 
         $client = Mockery::mock(Client::class);
         $client->shouldReceive('authenticate')->once()
-            ->with('your-client-id', 'your-client-secret', 'http_password');
+            ->with('your-client-id', 'your-client-secret', 'client_id_header');
 
         $return = $authenticator->with($client)->authenticate([
             'clientId'     => 'your-client-id',
