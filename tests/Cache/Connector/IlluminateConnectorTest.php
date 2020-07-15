@@ -13,13 +13,13 @@ declare(strict_types=1);
 
 namespace GrahamCampbell\Tests\GitHub\Cache\Connector;
 
+use GrahamCampbell\BoundedCache\BoundedCacheInterface;
 use GrahamCampbell\GitHub\Cache\Connector\IlluminateConnector;
 use GrahamCampbell\TestBench\AbstractTestCase;
 use Illuminate\Cache\Repository;
 use Illuminate\Contracts\Cache\Factory;
 use InvalidArgumentException;
 use Mockery;
-use Symfony\Component\Cache\Adapter\AdapterInterface;
 
 /**
  * This is the illuminate connector test class.
@@ -34,7 +34,7 @@ class IlluminateConnectorTest extends AbstractTestCase
         $connector = new IlluminateConnector($cache);
         $cache->shouldReceive('store')->once()->andReturn(Mockery::mock(Repository::class));
 
-        $this->assertInstanceOf(AdapterInterface::class, $connector->connect([]));
+        $this->assertInstanceOf(BoundedCacheInterface::class, $connector->connect([]));
     }
 
     public function testConnectFull()
@@ -50,7 +50,7 @@ class IlluminateConnectorTest extends AbstractTestCase
             'ttl'       => 600,
         ]);
 
-        $this->assertInstanceOf(AdapterInterface::class, $return);
+        $this->assertInstanceOf(BoundedCacheInterface::class, $return);
     }
 
     public function testConnectNoCacheFactory()
