@@ -32,7 +32,7 @@ class TokenAuthenticatorTest extends AbstractTestCase
 
         $client = Mockery::mock(Client::class);
         $client->shouldReceive('authenticate')->once()
-            ->with('your-token', 'http_token');
+            ->with('your-token', 'access_token_header');
 
         $return = $authenticator->with($client)->authenticate([
             'token'  => 'your-token',
@@ -48,7 +48,7 @@ class TokenAuthenticatorTest extends AbstractTestCase
 
         $client = Mockery::mock(Client::class);
         $client->shouldReceive('authenticate')->once()
-            ->with('your-token', 'http_token');
+            ->with('your-token', 'access_token_header');
 
         $return = $authenticator->with($client)->authenticate([
             'token'  => 'your-token',

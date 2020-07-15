@@ -42,7 +42,7 @@ class ApplicationAuthenticator extends AbstractAuthenticator
             throw new InvalidArgumentException('The application authenticator requires a client id and secret.');
         }
 
-        $this->client->authenticate($config['clientId'], $config['clientSecret'], Client::AUTH_HTTP_PASSWORD);
+        $this->client->authenticate($config['clientId'], $config['clientSecret'], Client::AUTH_CLIENT_ID);
 
         return $this->client;
     }
