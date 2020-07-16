@@ -17,7 +17,6 @@ use Github\Client;
 use GrahamCampbell\GitHub\Auth\Authenticator\PrivateKeyAuthenticator;
 use GrahamCampbell\Tests\GitHub\AbstractTestCase;
 use InvalidArgumentException;
-use Lcobucci\JWT\Token;
 use Mockery;
 
 class PrivateKeyAuthenticatorTest extends AbstractTestCase
