@@ -24,6 +24,7 @@ use Lcobucci\JWT\Signer\Rsa\Sha256;
 /**
  * This is private key github authenticator.
  *
+ * @author Graham Campbell <graham@alt-three.com>
  * @author Pavel Zhytomirsky <r3volut1oner@gmail.com>
  */
 final class PrivateKeyAuthenticator extends AbstractAuthenticator
@@ -56,7 +57,7 @@ final class PrivateKeyAuthenticator extends AbstractAuthenticator
             ->issuedBy($config['appId'])
             ->getToken(new Sha256(), self::getKey($config));
 
-        $this->client->authenticate($token, Client::AUTH_JWT);
+        $this->client->authenticate((string) $token, Client::AUTH_JWT);
 
         return $this->client;
     }
