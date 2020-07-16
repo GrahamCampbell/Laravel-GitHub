@@ -70,7 +70,7 @@ use Illuminate\Support\Arr;
  * @method string getApiVersion()
  * @method void addCache(\Psr\Cache\CacheItemPoolInterface $cachePool, array $config = [])
  * @method void removeCache()
- * @method \Http\Client\Common\HttpMethodsClient getHttpClient()
+ * @method \Http\Client\Common\HttpMethodsClientInterface getHttpClient()
  * @method \Psr\Http\Message\ResponseInterface|null getLastResponse()
  *
  * @author Graham Campbell <graham@alt-three.com>
