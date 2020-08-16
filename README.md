@@ -32,7 +32,6 @@ Laravel GitHub requires [PHP](https://php.net) 7.2-7.4. This particular version 
 | 9.4    | :x:                | :x:                | :x:                | :x:                | :x:                | :x:                | :x:                | :x:                | :white_check_mark: | :white_check_mark: | :white_check_mark: |
 | 10.0   | :x:                | :x:                | :x:                | :x:                | :x:                | :x:                | :x:                | :x:                | :white_check_mark: | :white_check_mark: | :white_check_mark: |
 
-
 To get the latest version, simply require the project using [Composer](https://getcomposer.org). You will need to install any packages that "provide" `psr/http-client-implementation` and `psr/http-factory-implementation`. Most users will want:
 
 ```bash
