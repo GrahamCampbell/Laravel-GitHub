@@ -8,6 +8,11 @@ CHANGE LOG
 * Removed password authenticator
 
 
+## V9.4 (UPCOMING)
+
+* Support Laravel 8
+
+
 ## V9.3.1 (15/07/2020)
 
 * Avoid deprecated authentication methods
