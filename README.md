@@ -34,6 +34,13 @@ Laravel GitHub requires [PHP](https://php.net) 7.2-7.4. This particular version 
 To get the latest version, simply require the project using [Composer](https://getcomposer.org). You will need to install any package that "provides" `php-http/client-implementation`. Most users will want:
 
 ```bash
+$ composer require graham-campbell/github:^9.4 php-http/guzzle7-adapter:^0.1
+```
+
+If your project uses Guzzle 6 still then you should use:
+
+
+```bash
 $ composer require graham-campbell/github:^9.4 php-http/guzzle6-adapter:^2.0
 ```
 
