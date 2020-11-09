@@ -2,6 +2,11 @@ CHANGE LOG
 ==========
 
 
+## V9.5 (UPCOMING)
+
+* Require knplabs/github-api 2.16
+
+
 ## V9.4 (16/08/2020)
 
 * Support Laravel 8
