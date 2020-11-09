@@ -2,7 +2,7 @@ CHANGE LOG
 ==========
 
 
-## V9.5 (UPCOMING)
+## V9.5 (09/11/2020)
 
 * Require knplabs/github-api 2.16
 
