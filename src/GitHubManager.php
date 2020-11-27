@@ -20,9 +20,10 @@ use Illuminate\Support\Arr;
 /**
  * This is the github manager class.
  *
- * @method \Github\Client                           connection(string|null $name)
- * @method \Github\Client                           reconnect(string|null $name)
- * @method array<string,\Github\Client>             getConnections(string $name)
+ * @method \Github\Client                           connection(string|null $name = null)
+ * @method \Github\Client                           reconnect(string|null $name = null)
+ * @method void                                     disconnect(string|null $name = null)
+ * @method array<string,\Github\Client>             getConnections()
  * @method \Github\Api\CurrentUser                  currentUser()
  * @method \Github\Api\CurrentUser                  me()
  * @method \Github\Api\Enterprise                   ent()

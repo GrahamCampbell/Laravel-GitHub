@@ -6,6 +6,7 @@ CHANGE LOG
 
 * Require knplabs/github-api 2.17
 * Upgrade to lcobucci/jwt ^3.4 || ^4.0
+* Manager phpdoc fixes
 
 
 ## V9.5 (09/11/2020)
