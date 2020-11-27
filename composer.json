@@ -23,13 +23,13 @@
     "require-dev": {
         "graham-campbell/analyzer": "^3.0",
         "graham-campbell/testbench": "^5.4",
-        "lcobucci/jwt": "^3.3",
+        "lcobucci/jwt": "^3.4",
         "mockery/mockery": "^1.3.1",
         "phpunit/phpunit": "^8.5.8 || ^9.3.7",
         "php-http/guzzle6-adapter": "^1.1 || ^2.0"
     },
     "suggest": {
-        "lcobucci/jwt": "Allows using the private key authenticator (^3.3)"
+        "lcobucci/jwt": "Allows using the private key authenticator (^3.4)"
     },
     "autoload": {
         "psr-4": {

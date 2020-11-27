@@ -51,8 +51,8 @@ final class PrivateKeyAuthenticator extends AbstractAuthenticator
         $expires = $issued->add(new DateInterval('PT9M59S'));
 
         $token = (new Builder())
-            ->expiresAt($expires->getTimestamp())
-            ->issuedAt($issued->getTimestamp())
+            ->expiresAt($expires)
+            ->issuedAt($issued)
             ->issuedBy($config['appId'])
             ->getToken(new Sha256(), self::getKey($config));
 
