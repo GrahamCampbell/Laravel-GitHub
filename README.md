@@ -43,6 +43,12 @@ If you'd like to use the private key authenticator, then you will also need to i
 $ composer require lcobucci/jwt:^3.4
 ```
 
+or:
+
+```bash
+$ composer require lcobucci/jwt:^4.0
+```
+
 Once installed, if you are not using automatic package discovery, then you need to register the `GrahamCampbell\GitHub\GitHubServiceProvider` service provider in your `config/app.php`.
 
 You can also optionally alias our facade:

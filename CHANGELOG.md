@@ -5,6 +5,7 @@ CHANGE LOG
 ## V9.6 (UPCOMING)
 
 * Require knplabs/github-api 2.17
+* Upgrade to lcobucci/jwt ^3.4 || ^4.0
 
 
 ## V9.5 (09/11/2020)
