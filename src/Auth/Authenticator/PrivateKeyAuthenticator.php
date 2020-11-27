@@ -79,7 +79,7 @@ final class PrivateKeyAuthenticator extends AbstractAuthenticator
             ->expiresAt($expires)
             ->issuedAt($issued)
             ->issuedBy((string) $config['appId']);
-        
+
         return $builder->getToken(
             $configuration->signer(),
             $configuration->signingKey()
