@@ -6,6 +6,7 @@ CHANGE LOG
 
 * Require knplabs/github-api 3.0
 * Removed password authenticator
+* Added PHP 8.0 support
 
 
 ## V9.7 (12/12/2020)

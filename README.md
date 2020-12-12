@@ -20,7 +20,7 @@ Laravel GitHub was created by, and is maintained by [Graham Campbell](https://gi
 
 ## Installation
 
-Laravel GitHub requires [PHP](https://php.net) 7.2-7.4. This particular version supports Laravel 6-8.
+Laravel GitHub requires [PHP](https://php.net) 7.2-8.0. This particular version supports Laravel 6-8.
 
 | GitHub | L5.1               | L5.2               | L5.3               | L5.4               | L5.5               | L5.6               | L5.7               | L5.8               | L6                 | L7                 | L8                 |
 |--------|--------------------|--------------------|--------------------|--------------------|--------------------|--------------------|--------------------|--------------------|--------------------|--------------------|--------------------|
