@@ -74,7 +74,6 @@ use Illuminate\Support\Arr;
  * @method void                                           removeCache()
  * @method \Psr\Http\Message\ResponseInterface|null       getLastResponse()
  * @method \Http\Client\Common\HttpMethodsClientInterface getHttpClient()
- * @method \Github\HttpClient\Builder                     getHttpClientBuilder()
  *
  * @author Graham Campbell <graham@alt-three.com>
  */
