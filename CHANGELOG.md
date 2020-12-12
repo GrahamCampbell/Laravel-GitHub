@@ -8,6 +8,18 @@ CHANGE LOG
 * Removed password authenticator
 
 
+## V9.7 (12/12/2020)
+
+* Require knplabs/github-api 2.18
+
+
+## V9.6 (27/11/2020)
+
+* Require knplabs/github-api 2.17
+* Upgrade to lcobucci/jwt ^3.4 || ^4.0
+* Manager phpdoc fixes
+
+
 ## V9.5 (09/11/2020)
 
 * Require knplabs/github-api 2.16

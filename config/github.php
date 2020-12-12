@@ -73,6 +73,7 @@ return [
             'appId'      => 'your-github-app-id',
             'keyPath'    => 'your-private-key-path',
             // 'key'        => 'your-private-key-content',
+            // 'passphrase' => 'your-private-key-passphrase'
             // 'backoff'    => false,
             // 'cache'      => false,
             // 'version'    => 'v3',

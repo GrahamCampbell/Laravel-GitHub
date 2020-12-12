@@ -17,8 +17,9 @@ use DateInterval;
 use DateTimeImmutable;
 use Github\Client;
 use InvalidArgumentException;
-use Lcobucci\JWT\Builder;
-use Lcobucci\JWT\Signer\Key;
+use Lcobucci\JWT\Configuration;
+use Lcobucci\JWT\Signer\Key\InMemory;
+use Lcobucci\JWT\Signer\Key\LocalFileReference;
 use Lcobucci\JWT\Signer\Rsa\Sha256;
 
 /**
@@ -48,18 +49,42 @@ final class PrivateKeyAuthenticator extends AbstractAuthenticator
             throw new InvalidArgumentException('The private key authenticator requires the application id to be configured.');
         }
 
-        $issued = new DateTimeImmutable();
-        $expires = $issued->add(new DateInterval('PT9M59S'));
-
-        $token = (new Builder())
-            ->expiresAt($expires->getTimestamp())
-            ->issuedAt($issued->getTimestamp())
-            ->issuedBy($config['appId'])
-            ->getToken(new Sha256(), self::getKey($config));
-
-        $this->client->authenticate((string) $token, Client::AUTH_JWT);
+        $this->client->authenticate(self::getToken($config)->toString(), Client::AUTH_JWT);
 
         return $this->client;
+    }
+
+    /**
+     * Build JWT token from provided private key file.
+     *
+     * @param array $config
+     *
+     * @throws \Exception
+     *
+     * @return \Lcobucci\JWT\Token
+     */
+    private static function getToken(array $config)
+    {
+        $configuration = Configuration::forSymmetricSigner(
+            new Sha256(),
+            self::getKey($config)
+        );
+
+        $issued = new DateTimeImmutable();
+
+        $expires = $issued->add(
+            new DateInterval('PT9M59S')
+        );
+
+        $builder = $configuration->builder()
+            ->expiresAt($expires)
+            ->issuedAt($issued)
+            ->issuedBy((string) $config['appId']);
+
+        return $builder->getToken(
+            $configuration->signer(),
+            $configuration->signingKey()
+        );
     }
 
     /**
@@ -80,6 +105,10 @@ final class PrivateKeyAuthenticator extends AbstractAuthenticator
             throw new InvalidArgumentException('The private key authenticator requires the key or key path to be configured.');
         }
 
-        return new Key(array_key_exists('key', $config) ? $config['key'] : 'file://'.$config['keyPath']);
+        if (array_key_exists('key', $config)) {
+            return InMemory::plainText($config['key'], $config['passphrase'] ?? '');
+        }
+
+        return LocalFileReference::file($config['keyPath'], $config['passphrase'] ?? '');
     }
 }

@@ -43,7 +43,7 @@ class PrivateKeyAuthenticatorTest extends AbstractTestCase
         $client = Mockery::mock(Client::class);
 
         $this->expectException(InvalidArgumentException::class);
-        $this->expectExceptionMessage('You must provide a valid key file');
+        $this->expectExceptionMessage('The path "test" does not contain a valid key file');
 
         $authenticator->with($client)->authenticate([
             'appId'   => 1,
