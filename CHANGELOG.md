@@ -2,6 +2,11 @@ CHANGE LOG
 ==========
 
 
+## V9.7.1 (12/12/2020)
+
+* Corrected phpdoc
+
+
 ## V9.7 (12/12/2020)
 
 * Require knplabs/github-api 2.18
