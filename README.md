@@ -29,8 +29,8 @@ Laravel GitHub requires [PHP](https://php.net) 7.2-8.0. This particular version 
 | 6.2    | :white_check_mark: | :white_check_mark: | :white_check_mark: | :white_check_mark: | :white_check_mark: | :x:                | :x:                | :x:                | :x:                | :x:                | :x:                |
 | 7.8    | :x:                | :x:                | :x:                | :x:                | :white_check_mark: | :white_check_mark: | :white_check_mark: | :white_check_mark: | :x:                | :x:                | :x:                |
 | 8.9    | :x:                | :x:                | :x:                | :x:                | :white_check_mark: | :white_check_mark: | :white_check_mark: | :white_check_mark: | :white_check_mark: | :white_check_mark: | :x:                |
-| 9.7    | :x:                | :x:                | :x:                | :x:                | :x:                | :x:                | :x:                | :x:                | :white_check_mark: | :white_check_mark: | :white_check_mark: |
-| 10.0   | :x:                | :x:                | :x:                | :x:                | :x:                | :x:                | :x:                | :x:                | :white_check_mark: | :white_check_mark: | :white_check_mark: |
+| 9.8    | :x:                | :x:                | :x:                | :x:                | :x:                | :x:                | :x:                | :x:                | :white_check_mark: | :white_check_mark: | :white_check_mark: |
+| 10.0   | :x:                | :x:                | :x:                | :x:                | :x:                | :x:                | :x:                | :x:                | :white_check_mark: | :white_check_mark: | :white_chec
 
 To get the latest version, simply require the project using [Composer](https://getcomposer.org). You will need to install any packages that "provide" `psr/http-client-implementation` and `psr/http-factory-implementation`. Most users will want:
 
@@ -90,7 +90,7 @@ This option (`'cache'`) is where each of the cache configurations setup for your
 
 ##### GitHubManager
 
-This is the class of most interest. It is bound to the ioc container as `'github'` and can be accessed using the `Facades\GitHub` facade. This class implements the `ManagerInterface` by extending `AbstractManager`. The interface and abstract class are both part of my [Laravel Manager](https://github.com/GrahamCampbell/Laravel-Manager) package, so you may want to go and checkout the docs for how to use the manager class over at [that repo](https://github.com/GrahamCampbell/Laravel-Manager#usage). Note that the connection class returned will always be an instance of `\Github\Client`.
+This is the class of most interest. It is bound to the ioc container as `'github'` and can be accessed using the `Facades\GitHub` facade. This class implements the `ManagerInterface` by extending `AbstractManager`. The interface and abstract class are both part of my [Laravel Manager](https://github.com/GrahamCampbell/Laravel-Manager) package, so you may want to go and checkout the docs for how to use the manager class over at [that repo](https://github.com/GrahamCampbell/Laravel-Manager#usage). Note that the connection class returned will always be an instance of `Github\Client`.
 
 ##### Facades\GitHub
 
@@ -115,7 +115,7 @@ GitHub::repo()->show('GrahamCampbell', 'Laravel-GitHub');
 // this example is simple, and there are far more methods available
 ```
 
-The github manager will behave like it is a `\Github\Client` class. If you want to call specific connections, you can do with the `connection` method:
+The github manager will behave like it is a `Github\Client` class. If you want to call specific connections, you can do with the `connection` method:
 
 ```php
 use GrahamCampbell\GitHub\Facades\GitHub;
@@ -172,7 +172,7 @@ class Foo
 App::make('Foo')->bar();
 ```
 
-For more information on how to use the `\Github\Client` class we are calling behind the scenes here, check out the docs at https://github.com/KnpLabs/php-github-api/tree/master/doc, and the manager class at https://github.com/GrahamCampbell/Laravel-Manager#usage.
+For more information on how to use the `Github\Client` class we are calling behind the scenes here, check out the docs at https://github.com/KnpLabs/php-github-api/tree/v2.19.0/doc, and the manager class at https://github.com/GrahamCampbell/Laravel-Manager#usage.
 
 ##### Further Information
 
