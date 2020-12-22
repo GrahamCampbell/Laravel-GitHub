@@ -2,7 +2,7 @@ CHANGE LOG
 ==========
 
 
-## V10.0 (UPCOMING)
+## V10.0 (22/12/2020)
 
 * Require knplabs/github-api 3.0
 * Removed password authenticator
