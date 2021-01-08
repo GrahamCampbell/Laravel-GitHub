@@ -2,6 +2,11 @@ CHANGE LOG
 ==========
 
 
+## V9.8.1 (08/01/2021)
+
+* Tweaked private token auth
+
+
 ## V9.8 (22/12/2020)
 
 * Require knplabs/github-api 2.19
