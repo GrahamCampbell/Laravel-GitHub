@@ -69,11 +69,11 @@ final class PrivateKeyAuthenticator extends AbstractAuthenticator
             self::getKey($config)
         );
 
-        $issued = new DateTimeImmutable();
+        $issued = (new DateTimeImmutable())
+            ->sub(new DateInterval('PT30S'));
 
-        $expires = $issued->add(
-            new DateInterval('PT9M59S')
-        );
+        $expires = $issued
+            ->add(new DateInterval('PT10M'));
 
         $builder = $configuration->builder()
             ->expiresAt($expires)
