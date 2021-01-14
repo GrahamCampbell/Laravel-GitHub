@@ -2,7 +2,7 @@ CHANGE LOG
 ==========
 
 
-## V9.8.2 (UPCOMING)
+## V9.8.2 (14/01/2021)
 
 * Always build keys using integer timestamps
 
