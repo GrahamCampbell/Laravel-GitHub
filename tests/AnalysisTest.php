@@ -15,6 +15,9 @@ namespace GrahamCampbell\Tests\GitHub;
 
 use GrahamCampbell\Analyzer\AnalysisTrait;
 use Laravel\Lumen\Application;
+use Lcobucci\JWT\ClaimsFormatter;
+use Lcobucci\JWT\Encoding\ChainedFormatter;
+use Lcobucci\JWT\Encoding\UnifyAudience;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -47,6 +50,11 @@ class AnalysisTest extends TestCase
      */
     protected function getIgnored()
     {
-        return [Application::class];
+        return [
+            Application::class,
+            ClaimsFormatter::class,
+            ChainedFormatter::class,
+            UnifyAudience::class,
+        ];
     }
 }
