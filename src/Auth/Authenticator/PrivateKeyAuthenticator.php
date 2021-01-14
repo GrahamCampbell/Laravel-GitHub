@@ -17,10 +17,14 @@ use DateInterval;
 use DateTimeImmutable;
 use Github\Client;
 use InvalidArgumentException;
+use Lcobucci\JWT\ClaimsFormatter;
 use Lcobucci\JWT\Configuration;
+use Lcobucci\JWT\Encoding\ChainedFormatter;
+use Lcobucci\JWT\Encoding\UnifyAudience;
 use Lcobucci\JWT\Signer\Key\InMemory;
 use Lcobucci\JWT\Signer\Key\LocalFileReference;
 use Lcobucci\JWT\Signer\Rsa\Sha256;
+use Lcobucci\JWT\Token\RegisteredClaims;
 
 /**
  * This is private key github authenticator.
@@ -75,7 +79,7 @@ final class PrivateKeyAuthenticator extends AbstractAuthenticator
         $expires = $issued
             ->add(new DateInterval('PT10M'));
 
-        $builder = $configuration->builder()
+        $builder = self::getBuilder($configuration)
             ->expiresAt($expires)
             ->issuedAt($issued)
             ->issuedBy((string) $config['appId']);
@@ -109,5 +113,38 @@ final class PrivateKeyAuthenticator extends AbstractAuthenticator
         }
 
         return LocalFileReference::file($config['keyPath'], $config['passphrase'] ?? '');
+    }
+
+    /**
+     * Create a JWT builder.
+     *
+     * @param \Lcobucci\JWT\Configuration $configuration
+     *
+     * @return \Lcobucci\JWT\Builder
+     */
+    private static function getBuilder(Configuration $configuration)
+    {
+        if (!interface_exists(ClaimsFormatter::class)) {
+            return $configuration->builder();
+        }
+
+        $formatter = new class implements ClaimsFormatter {
+            public function formatClaims(array $claims): array
+            {
+                foreach (RegisteredClaims::DATE_CLAIMS as $claim) {
+                    if (! array_key_exists($claim, $claims)) {
+                        continue;
+                    }
+
+                    $claims[$claim] = $claims[$claim]->getTimestamp();
+                }
+
+                return $claims;
+            }
+        };
+
+        return $configuration->builder(
+            new ChainedFormatter(new UnifyAudience(), $formatter)
+        );
     }
 }

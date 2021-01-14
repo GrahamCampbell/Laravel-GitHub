@@ -2,6 +2,11 @@ CHANGE LOG
 ==========
 
 
+## V9.8.2 (UPCOMING)
+
+* Always build keys using integer timestamps
+
+
 ## V9.8.1 (08/01/2021)
 
 * Tweaked private token auth
