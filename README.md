@@ -35,19 +35,19 @@ Laravel GitHub requires [PHP](https://php.net) 7.2-8.0. This particular version 
 To get the latest version, simply require the project using [Composer](https://getcomposer.org). You will need to install any packages that "provide" `psr/http-client-implementation` and `psr/http-factory-implementation`. Most users will want:
 
 ```bash
-$ composer require "graham-campbell/github:^10.0" "guzzlehttp/guzzle:^7.2" "http-interop/http-factory-guzzle:^1.0"
+composer require "graham-campbell/github:^10.0" "guzzlehttp/guzzle:^7.2" "http-interop/http-factory-guzzle:^1.0"
 ```
 
 If you'd like to use the private key authenticator, then you will also need to install `lcobucci/jwt`:
 
 ```bash
-$ composer require lcobucci/jwt:^3.4
+composer require lcobucci/jwt:^3.4
 ```
 
 or:
 
 ```bash
-$ composer require lcobucci/jwt:^4.0
+composer require lcobucci/jwt:^4.0
 ```
 
 Once installed, if you are not using automatic package discovery, then you need to register the `GrahamCampbell\GitHub\GitHubServiceProvider` service provider in your `config/app.php`.
@@ -66,7 +66,7 @@ Laravel GitHub requires connection configuration.
 To get started, you'll need to publish all vendor assets:
 
 ```bash
-$ php artisan vendor:publish
+php artisan vendor:publish --provider="GrahamCampbell\GitHub\GitHubServiceProvider"
 ```
 
 This will create a `config/github.php` file in your app that you can modify to set your configuration. Also, make sure you check for changes to the original config file in this package between releases.
