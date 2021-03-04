@@ -174,6 +174,19 @@ App::make('Foo')->bar();
 
 For more information on how to use the `Github\Client` class we are calling behind the scenes here, check out the docs at https://github.com/KnpLabs/php-github-api/tree/v3.0.0/doc, and the manager class at https://github.com/GrahamCampbell/Laravel-Manager#usage.
 
+## Note for Usage in Queued Jobs
+
+While using the package in queued jobs or long-running processes, remember to request for a fresh connection as the previous cached connection's authentication may have expired.
+
+```php
+use GrahamCampbell\GitHub\Facades\GitHub;
+
+Github::reconnect()->issues()->show('GrahamCampbell', 'Laravel-GitHub', 2);
+
+// or for a specific connection:
+Github::reconnect('alternative')->issues()->show('GrahamCampbell', 'Laravel-GitHub', 2);
+```
+
 ##### Further Information
 
 There are other classes in this package that are not documented here. This is because they are not intended for public use and are used internally by this package.
