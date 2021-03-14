@@ -2,6 +2,11 @@ CHANGE LOG
 ==========
 
 
+## V10.1 (14/03/2021)
+
+* Require knplabs/github-api 3.1
+
+
 ## V10.0.2 (14/01/2021)
 
 * Always build keys using integer timestamps

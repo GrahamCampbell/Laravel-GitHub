@@ -30,12 +30,12 @@ Laravel GitHub requires [PHP](https://php.net) 7.2-8.0. This particular version 
 | 7.8    | :x:                | :x:                | :x:                | :x:                | :white_check_mark: | :white_check_mark: | :white_check_mark: | :white_check_mark: | :x:                | :x:                | :x:                |
 | 8.9    | :x:                | :x:                | :x:                | :x:                | :white_check_mark: | :white_check_mark: | :white_check_mark: | :white_check_mark: | :white_check_mark: | :white_check_mark: | :x:                |
 | 9.8    | :x:                | :x:                | :x:                | :x:                | :x:                | :x:                | :x:                | :x:                | :white_check_mark: | :white_check_mark: | :white_check_mark: |
-| 10.0   | :x:                | :x:                | :x:                | :x:                | :x:                | :x:                | :x:                | :x:                | :white_check_mark: | :white_check_mark: | :white_check_mark: |
+| 10.1   | :x:                | :x:                | :x:                | :x:                | :x:                | :x:                | :x:                | :x:                | :white_check_mark: | :white_check_mark: | :white_check_mark: |
 
 To get the latest version, simply require the project using [Composer](https://getcomposer.org). You will need to install any packages that "provide" `psr/http-client-implementation` and `psr/http-factory-implementation`. Most users will want:
 
 ```bash
-$ composer require "graham-campbell/github:^10.0" "guzzlehttp/guzzle:^7.2" "http-interop/http-factory-guzzle:^1.0"
+$ composer require "graham-campbell/github:^10.1" "guzzlehttp/guzzle:^7.2" "http-interop/http-factory-guzzle:^1.0"
 ```
 
 If you'd like to use the private key authenticator, then you will also need to install `lcobucci/jwt`:
@@ -172,7 +172,7 @@ class Foo
 App::make('Foo')->bar();
 ```
 
-For more information on how to use the `Github\Client` class we are calling behind the scenes here, check out the docs at https://github.com/KnpLabs/php-github-api/tree/v3.0.0/doc, and the manager class at https://github.com/GrahamCampbell/Laravel-Manager#usage.
+For more information on how to use the `Github\Client` class we are calling behind the scenes here, check out the docs at https://github.com/KnpLabs/php-github-api/tree/v3.1.0/doc, and the manager class at https://github.com/GrahamCampbell/Laravel-Manager#usage.
 
 ##### Further Information
 
