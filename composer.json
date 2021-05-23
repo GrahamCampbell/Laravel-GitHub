@@ -15,7 +15,7 @@
         "graham-campbell/manager": "^4.5",
         "illuminate/contracts": "^6.0 || ^7.0 || ^8.0",
         "illuminate/support": "^6.0 || ^7.0 || ^8.0",
-        "knplabs/github-api": "3.2.*",
+        "knplabs/github-api": "3.3.*",
         "symfony/cache": "^4.3 || ^5.0"
     },
     "require-dev": {
