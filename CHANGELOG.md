@@ -2,6 +2,12 @@ CHANGE LOG
 ==========
 
 
+## V10.3.1 (21/11/2021)
+
+* Provisional PHP 8.1 support
+* Updated package metadata
+
+
 ## V10.3 (23/05/2021)
 
 * Require knplabs/github-api 3.3
