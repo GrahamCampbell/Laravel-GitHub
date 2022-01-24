@@ -2,7 +2,7 @@ CHANGE LOG
 ==========
 
 
-## V10.4 (UPCOMING)
+## V10.4 (24/01/2022)
 
 * Support Laravel 9
 * Require knplabs/github-api 3.4
