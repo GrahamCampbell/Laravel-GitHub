@@ -2,6 +2,12 @@ CHANGE LOG
 ==========
 
 
+## V10.4 (UPCOMING)
+
+* Support Laravel 9
+* Require knplabs/github-api 3.4
+
+
 ## V10.3.1 (21/11/2021)
 
 * Provisional PHP 8.1 support
