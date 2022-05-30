@@ -16,9 +16,9 @@ namespace GrahamCampbell\Tests\GitHub;
 use Github\Client;
 use GrahamCampbell\GitHub\Auth\AuthenticatorFactory;
 use GrahamCampbell\GitHub\Cache\ConnectionFactory;
-use GrahamCampbell\GitHub\HttpClient\BuilderFactory;
 use GrahamCampbell\GitHub\GitHubFactory;
 use GrahamCampbell\GitHub\GitHubManager;
+use GrahamCampbell\GitHub\HttpClient\BuilderFactory;
 use GrahamCampbell\TestBenchCore\ServiceProviderTrait;
 
 /**
