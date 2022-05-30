@@ -81,7 +81,7 @@ class GitHubServiceProvider extends ServiceProvider
      */
     protected function registerHttpClientFactory()
     {
-        $this->app->singleton('gitlab.httpclientfactory', function () {
+        $this->app->singleton('github.httpclientfactory', function () {
             $psrFactory = new GuzzlePsrFactory();
 
             return new BuilderFactory(
@@ -91,7 +91,7 @@ class GitHubServiceProvider extends ServiceProvider
             );
         });
 
-        $this->app->alias('gitlab.httpclientfactory', BuilderFactory::class);
+        $this->app->alias('github.httpclientfactory', BuilderFactory::class);
     }
 
     /**
@@ -132,7 +132,7 @@ class GitHubServiceProvider extends ServiceProvider
     protected function registerGitHubFactory()
     {
         $this->app->singleton('github.factory', function (Container $app) {
-            $builder = $app['bitbucket.httpclientfactory'];
+            $builder = $app['github.httpclientfactory'];
             $auth = $app['github.authfactory'];
             $cache = $app['github.cachefactory'];
 
