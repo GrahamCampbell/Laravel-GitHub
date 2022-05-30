@@ -26,12 +26,12 @@ Laravel GitHub requires [PHP](https://php.net) 7.2-8.1. This particular version 
 | 7.8    | :x:                | :x:                | :x:                | :x:                | :white_check_mark: | :white_check_mark: | :white_check_mark: | :white_check_mark: | :x:                | :x:                | :x:                | :x:                |
 | 8.9    | :x:                | :x:                | :x:                | :x:                | :white_check_mark: | :white_check_mark: | :white_check_mark: | :white_check_mark: | :white_check_mark: | :white_check_mark: | :x:                | :x:                |
 | 9.8    | :x:                | :x:                | :x:                | :x:                | :x:                | :x:                | :x:                | :x:                | :white_check_mark: | :white_check_mark: | :white_check_mark: | :x:                |
-| 10.5   | :x:                | :x:                | :x:                | :x:                | :x:                | :x:                | :x:                | :x:                | :white_check_mark: | :white_check_mark: | :white_check_mark: | :white_check_mark: |
+| 10.6   | :x:                | :x:                | :x:                | :x:                | :x:                | :x:                | :x:                | :x:                | :white_check_mark: | :white_check_mark: | :white_check_mark: | :white_check_mark: |
 
 To get the latest version, simply require the project using [Composer](https://getcomposer.org). You will need to install any packages that "provide" `psr/http-client-implementation` and `psr/http-factory-implementation`. Most users will want:
 
 ```bash
-$ composer require "graham-campbell/github:^10.5" "guzzlehttp/guzzle:^7.4" "http-interop/http-factory-guzzle:^1.0"
+$ composer require "graham-campbell/github:^10.6" "guzzlehttp/guzzle:^7.4" "http-interop/http-factory-guzzle:^1.0"
 ```
 
 If you'd like to use the private key authenticator, then you will also need to install `lcobucci/jwt`:
