@@ -13,12 +13,12 @@ declare(strict_types=1);
 
 namespace GrahamCampbell\GitHub;
 
-use GuzzleHttp\Client as GuzzleClient;
-use GuzzleHttp\Psr7\HttpFactory as GuzzlePsrFactory;
 use Github\Client;
 use GrahamCampbell\GitHub\Auth\AuthenticatorFactory;
 use GrahamCampbell\GitHub\Cache\ConnectionFactory;
 use GrahamCampbell\GitHub\HttpClient\BuilderFactory;
+use GuzzleHttp\Client as GuzzleClient;
+use GuzzleHttp\Psr7\HttpFactory as GuzzlePsrFactory;
 use Illuminate\Contracts\Container\Container;
 use Illuminate\Foundation\Application as LaravelApplication;
 use Illuminate\Support\ServiceProvider;
