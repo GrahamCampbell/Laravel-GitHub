@@ -5,6 +5,7 @@ CHANGE LOG
 ## V10.6 (30/05/2022)
 
 * Require knplabs/github-api 3.6
+* Support graham-campbell/bounded-cache v2 too
 
 
 ## V10.5 (24/01/2022)
