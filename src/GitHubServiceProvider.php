@@ -13,9 +13,12 @@ declare(strict_types=1);
 
 namespace GrahamCampbell\GitHub;
 
+use GuzzleHttp\Client as GuzzleClient;
+use GuzzleHttp\Psr7\HttpFactory as GuzzlePsrFactory;
 use Github\Client;
 use GrahamCampbell\GitHub\Auth\AuthenticatorFactory;
 use GrahamCampbell\GitHub\Cache\ConnectionFactory;
+use GrahamCampbell\GitHub\HttpClient\BuilderFactory;
 use Illuminate\Contracts\Container\Container;
 use Illuminate\Foundation\Application as LaravelApplication;
 use Illuminate\Support\ServiceProvider;
@@ -63,11 +66,32 @@ class GitHubServiceProvider extends ServiceProvider
      */
     public function register()
     {
+        $this->registerHttpClientFactory();
         $this->registerAuthFactory();
         $this->registerCacheFactory();
         $this->registerGitHubFactory();
         $this->registerManager();
         $this->registerBindings();
+    }
+
+    /**
+     * Register the http client factory class.
+     *
+     * @return void
+     */
+    protected function registerHttpClientFactory(()
+    {
+        $this->app->singleton('gitlab.httpclientfactory', function () {
+            $psrFactory = new GuzzlePsrFactory();
+
+            return new BuilderFactory(
+                new GuzzleClient(['connect_timeout' => 10, 'timeout' => 30]),
+                $psrFactory,
+                $psrFactory,
+            );
+        });
+
+        $this->app->alias('gitlab.httpclientfactory', BuilderFactory::class);
     }
 
     /**
@@ -108,10 +132,11 @@ class GitHubServiceProvider extends ServiceProvider
     protected function registerGitHubFactory()
     {
         $this->app->singleton('github.factory', function (Container $app) {
+            $builder = $app['bitbucket.httpclientfactory'];
             $auth = $app['github.authfactory'];
             $cache = $app['github.cachefactory'];
 
-            return new GitHubFactory($auth, $cache);
+            return new GitHubFactory($builder, $auth, $cache);
         });
 
         $this->app->alias('github.factory', GitHubFactory::class);
@@ -158,6 +183,7 @@ class GitHubServiceProvider extends ServiceProvider
     public function provides()
     {
         return [
+            'github.httpclientfactory',
             'github.authfactory',
             'github.cachefactory',
             'github.factory',

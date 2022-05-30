@@ -14,9 +14,9 @@ declare(strict_types=1);
 namespace GrahamCampbell\GitHub;
 
 use Github\Client;
-use Github\HttpClient\Builder;
 use GrahamCampbell\GitHub\Auth\AuthenticatorFactory;
 use GrahamCampbell\GitHub\Cache\ConnectionFactory;
+use GrahamCampbell\GitHub\HttpClient\BuilderFactory;
 use Http\Client\Common\Plugin\RetryPlugin;
 use Illuminate\Support\Arr;
 use InvalidArgumentException;
@@ -29,6 +29,13 @@ use Symfony\Component\Cache\Adapter\Psr16Adapter;
  */
 class GitHubFactory
 {
+    /**
+     * The http client builder factory instance.
+     *
+     * @var \GrahamCampbell\GitHub\HttpClient\BuilderFactory
+     */
+    protected $builder;
+
     /**
      * The authenticator factory instance.
      *
@@ -46,13 +53,15 @@ class GitHubFactory
     /**
      * Create a new github factory instance.
      *
+     * @param \GrahamCampbell\GitHub\HttpClient\BuilderFactory $builder
      * @param \GrahamCampbell\GitHub\Auth\AuthenticatorFactory $auth
      * @param \GrahamCampbell\GitHub\Cache\ConnectionFactory   $cache
      *
      * @return void
      */
-    public function __construct(AuthenticatorFactory $auth, ConnectionFactory $cache)
+    public function __construct(BuilderFactory $builder, AuthenticatorFactory $auth, ConnectionFactory $cache)
     {
+        $this->builder = $builder;
         $this->auth = $auth;
         $this->cache = $cache;
     }
@@ -90,7 +99,7 @@ class GitHubFactory
      */
     protected function getBuilder(array $config)
     {
-        $builder = new Builder();
+        $builder = $this->builder->make();
 
         if ($backoff = Arr::get($config, 'backoff')) {
             $builder->addPlugin(new RetryPlugin(['retries' => $backoff === true ? 2 : $backoff]));

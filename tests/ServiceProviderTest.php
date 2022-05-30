@@ -16,6 +16,7 @@ namespace GrahamCampbell\Tests\GitHub;
 use Github\Client;
 use GrahamCampbell\GitHub\Auth\AuthenticatorFactory;
 use GrahamCampbell\GitHub\Cache\ConnectionFactory;
+use GrahamCampbell\GitHub\HttpClient\BuilderFactory;
 use GrahamCampbell\GitHub\GitHubFactory;
 use GrahamCampbell\GitHub\GitHubManager;
 use GrahamCampbell\TestBenchCore\ServiceProviderTrait;
@@ -28,6 +29,11 @@ use GrahamCampbell\TestBenchCore\ServiceProviderTrait;
 class ServiceProviderTest extends AbstractTestCase
 {
     use ServiceProviderTrait;
+
+    public function testHttpClientFactoryIsInjectable()
+    {
+        $this->assertIsInjectable(BuilderFactory::class);
+    }
 
     public function testAuthFactoryIsInjectable()
     {

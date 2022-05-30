@@ -2,6 +2,12 @@ CHANGE LOG
 ==========
 
 
+## V11.0 (UPGRADES)
+
+* Dropped PHP < 7.4
+* Dropped Laravel < 8
+
+
 ## V10.6 (30/05/2022)
 
 * Require knplabs/github-api 3.6

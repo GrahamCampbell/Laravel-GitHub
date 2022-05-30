@@ -1,7 +1,7 @@
 Laravel GitHub
 ==============
 
-Laravel GitHub was created by, and is maintained by [Graham Campbell](https://github.com/GrahamCampbell), and is a [PHP GitHub API](https://github.com/KnpLabs/php-github-api) bridge for [Laravel](https://laravel.com). It utilises my [Laravel Manager](https://github.com/GrahamCampbell/Laravel-Manager) package. Feel free to check out the [change log](CHANGELOG.md), [releases](https://github.com/GrahamCampbell/Laravel-GitHub/releases), [security policy](https://github.com/GrahamCampbell/Laravel-GitHub/security/policy), [license](LICENSE), [code of conduct](.github/CODE_OF_CONDUCT.md), and [contribution guidelines](.github/CONTRIBUTING.md).
+Laravel GitHub was created by, and is maintained by [Graham Campbell](https://github.com/GrahamCampbell), and is a [PHP GitHub API](https://github.com/KnpLabs/php-github-api) bridge for [Laravel](https://laravel.com/). It utilises my [Laravel Manager](https://github.com/GrahamCampbell/Laravel-Manager) package. Feel free to check out the [change log](CHANGELOG.md), [releases](https://github.com/GrahamCampbell/Laravel-GitHub/releases), [security policy](https://github.com/GrahamCampbell/Laravel-GitHub/security/policy), [license](LICENSE), [code of conduct](.github/CODE_OF_CONDUCT.md), and [contribution guidelines](.github/CONTRIBUTING.md).
 
 ![Banner](https://user-images.githubusercontent.com/2829600/71477348-60993680-27e1-11ea-845e-fbc2ee79ed7d.png)
 
@@ -16,7 +16,7 @@ Laravel GitHub was created by, and is maintained by [Graham Campbell](https://gi
 
 ## Installation
 
-Laravel GitHub requires [PHP](https://php.net) 7.2-8.1. This particular version supports Laravel 6-9.
+This version requires [PHP](https://www.php.net/) 7.4-8.1 and supports [Laravel](https://laravel.com/) 8-9.
 
 | GitHub | L5.1               | L5.2               | L5.3               | L5.4               | L5.5               | L5.6               | L5.7               | L5.8               | L6                 | L7                 | L8                 | L9                 |
 |--------|--------------------|--------------------|--------------------|--------------------|--------------------|--------------------|--------------------|--------------------|--------------------|--------------------|--------------------|--------------------|
@@ -27,23 +27,12 @@ Laravel GitHub requires [PHP](https://php.net) 7.2-8.1. This particular version 
 | 8.9    | :x:                | :x:                | :x:                | :x:                | :white_check_mark: | :white_check_mark: | :white_check_mark: | :white_check_mark: | :white_check_mark: | :white_check_mark: | :x:                | :x:                |
 | 9.8    | :x:                | :x:                | :x:                | :x:                | :x:                | :x:                | :x:                | :x:                | :white_check_mark: | :white_check_mark: | :white_check_mark: | :x:                |
 | 10.6   | :x:                | :x:                | :x:                | :x:                | :x:                | :x:                | :x:                | :x:                | :white_check_mark: | :white_check_mark: | :white_check_mark: | :white_check_mark: |
+| 11.0   | :x:                | :x:                | :x:                | :x:                | :x:                | :x:                | :x:                | :x:                | :x:                | :x:                | :white_check_mark: | :white_check_mark: |
 
-To get the latest version, simply require the project using [Composer](https://getcomposer.org). You will need to install any packages that "provide" `psr/http-client-implementation` and `psr/http-factory-implementation`. Most users will want:
-
-```bash
-$ composer require "graham-campbell/github:^10.6" "guzzlehttp/guzzle:^7.4" "http-interop/http-factory-guzzle:^1.0"
-```
-
-If you'd like to use the private key authenticator, then you will also need to install `lcobucci/jwt`:
+To get the latest version, simply require the project using [Composer](https://getcomposer.org/):
 
 ```bash
-$ composer require lcobucci/jwt:^3.4
-```
-
-or:
-
-```bash
-$ composer require lcobucci/jwt:^4.0
+$ composer require "graham-campbell/github:^11.0"
 ```
 
 Once installed, if you are not using automatic package discovery, then you need to register the `GrahamCampbell\GitHub\GitHubServiceProvider` service provider in your `config/app.php`.
