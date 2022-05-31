@@ -2,10 +2,11 @@ CHANGE LOG
 ==========
 
 
-## V11.0 (UPGRADES)
+## V11.0 (31/05/2022)
 
 * Dropped PHP < 7.4
 * Dropped Laravel < 8
+* Require lcobucci/jwt ^4.1.5
 
 
 ## V10.6 (30/05/2022)
