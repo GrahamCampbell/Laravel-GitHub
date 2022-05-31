@@ -18,7 +18,10 @@ use GrahamCampbell\BoundedCache\BoundedCacheInterface;
 use GrahamCampbell\GitHub\Auth\AuthenticatorFactory;
 use GrahamCampbell\GitHub\Cache\ConnectionFactory;
 use GrahamCampbell\GitHub\GitHubFactory;
+use GrahamCampbell\GitHub\HttpClient\BuilderFactory;
 use GrahamCampbell\TestBench\AbstractTestCase as AbstractTestBenchTestCase;
+use GuzzleHttp\Client as GuzzleClient;
+use GuzzleHttp\Psr7\HttpFactory as GuzzlePsrFactory;
 use Http\Client\Common\HttpMethodsClientInterface;
 use Illuminate\Contracts\Cache\Factory;
 use InvalidArgumentException;
@@ -143,8 +146,16 @@ class GitHubFactoryTest extends AbstractTestBenchTestCase
 
     protected function getFactory()
     {
+        $psrFactory = new GuzzlePsrFactory();
+
+        $builder = new BuilderFactory(
+            new GuzzleClient(['connect_timeout' => 10, 'timeout' => 30]),
+            $psrFactory,
+            $psrFactory,
+        );
+
         $cache = Mockery::mock(ConnectionFactory::class);
 
-        return [new GitHubFactory(new AuthenticatorFactory(), $cache), $cache];
+        return [new GitHubFactory($builder, new AuthenticatorFactory(), $cache), $cache];
     }
 }
