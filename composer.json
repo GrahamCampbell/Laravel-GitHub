@@ -1,7 +1,20 @@
 {
     "name": "graham-campbell/github",
     "description": "GitHub Is A GitHub Bridge For Laravel",
-    "keywords": ["laravel", "framework", "github", "php-github-api", "PHP GitHub API", "github bridge", "bridge", "GitHub", "Laravel GitHub", "Laravel-GitHub", "Graham Campbell", "GrahamCampbell"],
+    "keywords": [
+        "laravel",
+        "framework",
+        "github",
+        "php-github-api",
+        "PHP GitHub API",
+        "github bridge",
+        "bridge",
+        "GitHub",
+        "Laravel GitHub",
+        "Laravel-GitHub",
+        "Graham Campbell",
+        "GrahamCampbell"
+    ],
     "license": "MIT",
     "authors": [
         {
@@ -11,21 +24,21 @@
         }
     ],
     "require": {
-        "php":  "^7.4.15 || ^8.0.2",
+        "php": "^7.4.15 || ^8.0.2",
         "graham-campbell/bounded-cache": "^1.2 || ^2.0",
         "graham-campbell/manager": "^4.7",
-        "guzzlehttp/guzzle": "^7.4.3",
+        "guzzlehttp/guzzle": "^7.4.3|^7.2",
         "guzzlehttp/psr7": "^2.2.1",
-        "illuminate/contracts": "^8.75 || ^9.0",
-        "illuminate/support": "^8.75 || ^9.0",
-        "knplabs/github-api": "3.6.*",
+        "illuminate/contracts": "^8.75 || ^9.0|^10.0",
+        "illuminate/support": "^8.75 || ^9.0|^10.0",
+        "knplabs/github-api": "3.6.*|^3.9",
         "lcobucci/jwt": "^4.1.5",
         "symfony/cache": "^5.4 || ^6.0"
     },
     "require-dev": {
         "graham-campbell/analyzer": "^3.1",
         "graham-campbell/testbench": "^5.7",
-        "mockery/mockery": "^1.5",
+        "mockery/mockery": "^1.5|^1.4.4",
         "phpunit/phpunit": "^9.5"
     },
     "autoload": {
