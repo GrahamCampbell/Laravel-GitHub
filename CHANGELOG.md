@@ -2,7 +2,7 @@ CHANGE LOG
 ==========
 
 
-## V12.0 (XX/03/2023)
+## V12.0 (07/03/2023)
 
 * Support Laravel 8-10 only
 * Support PHP 7.4-8.2 only
