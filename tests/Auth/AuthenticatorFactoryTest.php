@@ -29,45 +29,37 @@ use TypeError;
  */
 class AuthenticatorFactoryTest extends AbstractTestCase
 {
-    public function testMakeApplicationAuthenticator()
+    public function testMakeApplicationAuthenticator(): void
     {
-        $factory = $this->getFactory();
+        $factory = new AuthenticatorFactory();
 
-        $return = $factory->make('application');
-
-        $this->assertInstanceOf(ApplicationAuthenticator::class, $return);
+        self::assertInstanceOf(ApplicationAuthenticator::class, $factory->make('application'));
     }
 
-    public function testMakeJwtAuthenticator()
+    public function testMakeJwtAuthenticator(): void
     {
-        $factory = $this->getFactory();
+        $factory = new AuthenticatorFactory();
 
-        $return = $factory->make('jwt');
-
-        $this->assertInstanceOf(JwtAuthenticator::class, $return);
+        self::assertInstanceOf(JwtAuthenticator::class, $factory->make('jwt'));
     }
 
-    public function testMakeTokenAuthenticator()
+    public function testMakeTokenAuthenticator(): void
     {
-        $factory = $this->getFactory();
+        $factory = new AuthenticatorFactory();
 
-        $return = $factory->make('token');
-
-        $this->assertInstanceOf(TokenAuthenticator::class, $return);
+        self::assertInstanceOf(TokenAuthenticator::class, $factory->make('token'));
     }
 
-    public function testMakePrivateKeyAuthenticator()
+    public function testMakePrivateKeyAuthenticator(): void
     {
-        $factory = $this->getFactory();
+        $factory = new AuthenticatorFactory();
 
-        $return = $factory->make('private');
-
-        $this->assertInstanceOf(PrivateKeyAuthenticator::class, $return);
+        self::assertInstanceOf(PrivateKeyAuthenticator::class, $factory->make('private'));
     }
 
-    public function testMakeInvalidAuthenticator()
+    public function testMakeInvalidAuthenticator(): void
     {
-        $factory = $this->getFactory();
+        $factory = new AuthenticatorFactory();
 
         $this->expectException(InvalidArgumentException::class);
         $this->expectExceptionMessage('Unsupported authentication method [foo].');
@@ -75,17 +67,12 @@ class AuthenticatorFactoryTest extends AbstractTestCase
         $factory->make('foo');
     }
 
-    public function testMakeNoAuthenticator()
+    public function testMakeNoAuthenticator(): void
     {
-        $factory = $this->getFactory();
+        $factory = new AuthenticatorFactory();
 
         $this->expectException(TypeError::class);
 
         $factory->make(null);
-    }
-
-    protected function getFactory()
-    {
-        return new AuthenticatorFactory();
     }
 }

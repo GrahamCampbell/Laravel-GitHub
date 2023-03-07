@@ -32,7 +32,7 @@ class GitHubTest extends AbstractTestCase
      *
      * @return string
      */
-    protected function getFacadeAccessor()
+    protected static function getFacadeAccessor(): string
     {
         return 'github';
     }
@@ -42,7 +42,7 @@ class GitHubTest extends AbstractTestCase
      *
      * @return string
      */
-    protected function getFacadeClass()
+    protected static function getFacadeClass(): string
     {
         return GitHub::class;
     }
@@ -52,7 +52,7 @@ class GitHubTest extends AbstractTestCase
      *
      * @return string
      */
-    protected function getFacadeRoot()
+    protected static function getFacadeRoot(): string
     {
         return GitHubManager::class;
     }

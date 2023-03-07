@@ -30,21 +30,21 @@ class BuilderFactory
      *
      * @var \Psr\Http\Client\ClientInterface
      */
-    protected $httpClient;
+    private ClientInterface $httpClient;
 
     /**
      * The request factory instance.
      *
      * @var \Psr\Http\Message\RequestFactoryInterface
      */
-    protected $requestFactory;
+    private RequestFactoryInterface $requestFactory;
 
     /**
      * The stream factory instance.
      *
      * @var \Psr\Http\Message\StreamFactoryInterface
      */
-    protected $streamFactory;
+    private StreamFactoryInterface $streamFactory;
 
     /**
      * Create a new connection factory instance.
@@ -67,7 +67,7 @@ class BuilderFactory
      *
      * @return \Github\HttpClient\Builder
      */
-    public function make()
+    public function make(): Builder
     {
         return new Builder($this->httpClient, $this->requestFactory, $this->streamFactory);
     }

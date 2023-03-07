@@ -27,42 +27,42 @@ use Mockery;
  */
 class GitHubManagerTest extends AbstractTestBenchTestCase
 {
-    public function testCreateConnection()
+    public function testCreateConnection(): void
     {
         $config = ['token' => 'your-token'];
 
-        $manager = $this->getManager($config);
+        $manager = self::getManager($config);
 
         $manager->getConfig()->shouldReceive('get')->once()
             ->with('github.default')->andReturn('main');
 
-        $this->assertSame([], $manager->getConnections());
+        self::assertSame([], $manager->getConnections());
 
         $return = $manager->connection();
 
-        $this->assertInstanceOf(Client::class, $return);
+        self::assertInstanceOf(Client::class, $return);
 
-        $this->assertArrayHasKey('main', $manager->getConnections());
+        self::assertArrayHasKey('main', $manager->getConnections());
     }
 
-    public function testConnectionCache()
+    public function testConnectionCache(): void
     {
         $config = ['token' => 'your-token', 'cache' => 'redis'];
 
         $cache = ['driver' => 'illuminate', 'connection' => 'redis', 'min' => 123, 'max' => 1234];
 
-        $manager = $this->getManagerWithCache($config, $cache);
+        $manager = self::getManagerWithCache($config, $cache);
 
-        $this->assertSame([], $manager->getConnections());
+        self::assertSame([], $manager->getConnections());
 
         $return = $manager->connection('oauth');
 
-        $this->assertInstanceOf(Client::class, $return);
+        self::assertInstanceOf(Client::class, $return);
 
-        $this->assertArrayHasKey('oauth', $manager->getConnections());
+        self::assertArrayHasKey('oauth', $manager->getConnections());
     }
 
-    protected function getManager(array $config)
+    private static function getManager(array $config): GitHubManager
     {
         $repo = Mockery::mock(Repository::class);
         $factory = Mockery::mock(GitHubFactory::class);
@@ -80,7 +80,7 @@ class GitHubManagerTest extends AbstractTestBenchTestCase
         return $manager;
     }
 
-    protected function getManagerWithCache(array $config, array $cache)
+    private static function getManagerWithCache(array $config, array $cache): GitHubManager
     {
         $repo = Mockery::mock(Repository::class);
         $factory = Mockery::mock(GitHubFactory::class);

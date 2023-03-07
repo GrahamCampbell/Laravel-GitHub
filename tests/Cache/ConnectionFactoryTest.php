@@ -29,7 +29,7 @@ use Mockery;
  */
 class ConnectionFactoryTest extends AbstractTestCase
 {
-    public function testMake()
+    public function testMake(): void
     {
         $cache = Mockery::mock(Factory::class);
         $cache->shouldReceive('store')->once()->with('redis')->andReturn(Mockery::mock(Repository::class));
@@ -37,19 +37,19 @@ class ConnectionFactoryTest extends AbstractTestCase
 
         $return = $factory->make(['name' => 'foo', 'driver' => 'illuminate', 'connector' => 'redis']);
 
-        $this->assertInstanceOf(BoundedCacheInterface::class, $return);
+        self::assertInstanceOf(BoundedCacheInterface::class, $return);
     }
 
-    public function testCreateIlluminateConnector()
+    public function testCreateIlluminateConnector(): void
     {
         $factory = new ConnectionFactory(Mockery::mock(Factory::class));
 
         $return = $factory->createConnector(['name' => 'foo', 'driver' => 'illuminate', 'connector' => 'redis']);
 
-        $this->assertInstanceOf(IlluminateConnector::class, $return);
+        self::assertInstanceOf(IlluminateConnector::class, $return);
     }
 
-    public function testCreateEmptyDriverConnector()
+    public function testCreateEmptyDriverConnector(): void
     {
         $factory = new ConnectionFactory(Mockery::mock(Factory::class));
 
@@ -59,7 +59,7 @@ class ConnectionFactoryTest extends AbstractTestCase
         $factory->createConnector([]);
     }
 
-    public function testCreateUnsupportedDriverConnector()
+    public function testCreateUnsupportedDriverConnector(): void
     {
         $factory = new ConnectionFactory(Mockery::mock(Factory::class));
 

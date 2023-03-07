@@ -26,9 +26,9 @@ use Mockery;
  */
 class ApplicationAuthenticatorTest extends AbstractTestCase
 {
-    public function testMakeStandardWithMethod()
+    public function testMakeStandardWithMethod(): void
     {
-        $authenticator = $this->getAuthenticator();
+        $authenticator = new ApplicationAuthenticator();
 
         $client = Mockery::mock(Client::class);
         $client->shouldReceive('authenticate')->once()
@@ -40,12 +40,12 @@ class ApplicationAuthenticatorTest extends AbstractTestCase
             'method'       => 'application',
         ]);
 
-        $this->assertInstanceOf(Client::class, $return);
+        self::assertInstanceOf(Client::class, $return);
     }
 
-    public function testMakeWithoutMethod()
+    public function testMakeWithoutMethod(): void
     {
-        $authenticator = $this->getAuthenticator();
+        $authenticator = new ApplicationAuthenticator();
 
         $client = Mockery::mock(Client::class);
         $client->shouldReceive('authenticate')->once()
@@ -56,12 +56,12 @@ class ApplicationAuthenticatorTest extends AbstractTestCase
             'clientSecret' => 'your-client-secret',
         ]);
 
-        $this->assertInstanceOf(Client::class, $return);
+        self::assertInstanceOf(Client::class, $return);
     }
 
-    public function testMakeWithoutClientId()
+    public function testMakeWithoutClientId(): void
     {
-        $authenticator = $this->getAuthenticator();
+        $authenticator = new ApplicationAuthenticator();
 
         $client = Mockery::mock(Client::class);
 
@@ -73,9 +73,9 @@ class ApplicationAuthenticatorTest extends AbstractTestCase
         ]);
     }
 
-    public function testMakeWithoutClientSecret()
+    public function testMakeWithoutClientSecret(): void
     {
-        $authenticator = $this->getAuthenticator();
+        $authenticator = new ApplicationAuthenticator();
 
         $client = Mockery::mock(Client::class);
 
@@ -87,22 +87,17 @@ class ApplicationAuthenticatorTest extends AbstractTestCase
         ]);
     }
 
-    public function testMakeWithoutSettingClient()
+    public function testMakeWithoutSettingClient(): void
     {
-        $authenticator = $this->getAuthenticator();
+        $authenticator = new ApplicationAuthenticator();
 
         $this->expectException(InvalidArgumentException::class);
-        $this->expectExceptionMessage('The client instance was not given to the application authenticator.');
+        $this->expectExceptionMessage('The client instance was not given to the authenticator.');
 
         $authenticator->authenticate([
             'clientId'     => 'your-client-id',
             'clientSecret' => 'your-client-secret',
             'method'       => 'application',
         ]);
-    }
-
-    protected function getAuthenticator()
-    {
-        return new ApplicationAuthenticator();
     }
 }

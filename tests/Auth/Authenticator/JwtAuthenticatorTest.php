@@ -27,9 +27,9 @@ use Mockery;
  */
 class JwtAuthenticatorTest extends AbstractTestCase
 {
-    public function testMakeWithMethod()
+    public function testMakeWithMethod(): void
     {
-        $authenticator = $this->getAuthenticator();
+        $authenticator = new JwtAuthenticator();
 
         $client = Mockery::mock(Client::class);
         $client->shouldReceive('authenticate')->once()
@@ -40,12 +40,12 @@ class JwtAuthenticatorTest extends AbstractTestCase
             'method' => 'jwt',
         ]);
 
-        $this->assertInstanceOf(Client::class, $return);
+        self::assertInstanceOf(Client::class, $return);
     }
 
-    public function testMakeWithoutMethod()
+    public function testMakeWithoutMethod(): void
     {
-        $authenticator = $this->getAuthenticator();
+        $authenticator = new JwtAuthenticator();
 
         $client = Mockery::mock(Client::class);
         $client->shouldReceive('authenticate')->once()
@@ -55,12 +55,12 @@ class JwtAuthenticatorTest extends AbstractTestCase
             'token'  => 'your-token',
         ]);
 
-        $this->assertInstanceOf(Client::class, $return);
+        self::assertInstanceOf(Client::class, $return);
     }
 
-    public function testMakeWithoutToken()
+    public function testMakeWithoutToken(): void
     {
-        $authenticator = $this->getAuthenticator();
+        $authenticator = new JwtAuthenticator();
 
         $client = Mockery::mock(Client::class);
 
@@ -70,21 +70,16 @@ class JwtAuthenticatorTest extends AbstractTestCase
         $authenticator->with($client)->authenticate([]);
     }
 
-    public function testMakeWithoutSettingClient()
+    public function testMakeWithoutSettingClient(): void
     {
-        $authenticator = $this->getAuthenticator();
+        $authenticator = new JwtAuthenticator();
 
         $this->expectException(InvalidArgumentException::class);
-        $this->expectExceptionMessage('The client instance was not given to the jwt authenticator.');
+        $this->expectExceptionMessage('The client instance was not given to the authenticator.');
 
         $authenticator->authenticate([
             'token'  => 'your-token',
             'method' => 'jwt',
         ]);
-    }
-
-    protected function getAuthenticator()
-    {
-        return new JwtAuthenticator();
     }
 }

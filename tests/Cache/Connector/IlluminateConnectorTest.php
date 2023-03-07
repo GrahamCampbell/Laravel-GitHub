@@ -28,16 +28,16 @@ use Mockery;
  */
 class IlluminateConnectorTest extends AbstractTestCase
 {
-    public function testConnectStandard()
+    public function testConnectStandard(): void
     {
         $cache = Mockery::mock(Factory::class);
         $connector = new IlluminateConnector($cache);
         $cache->shouldReceive('store')->once()->andReturn(Mockery::mock(Repository::class));
 
-        $this->assertInstanceOf(BoundedCacheInterface::class, $connector->connect([]));
+        self::assertInstanceOf(BoundedCacheInterface::class, $connector->connect([]));
     }
 
-    public function testConnectFull()
+    public function testConnectFull(): void
     {
         $cache = Mockery::mock(Factory::class);
         $connector = new IlluminateConnector($cache);
@@ -50,10 +50,10 @@ class IlluminateConnectorTest extends AbstractTestCase
             'ttl'       => 600,
         ]);
 
-        $this->assertInstanceOf(BoundedCacheInterface::class, $return);
+        self::assertInstanceOf(BoundedCacheInterface::class, $return);
     }
 
-    public function testConnectNoCacheFactory()
+    public function testConnectNoCacheFactory(): void
     {
         $connector = new IlluminateConnector();
 

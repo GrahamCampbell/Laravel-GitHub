@@ -36,7 +36,7 @@ class GitHubServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    public function boot()
+    public function boot(): void
     {
         $this->setupConfig();
     }
@@ -46,7 +46,7 @@ class GitHubServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    protected function setupConfig()
+    private function setupConfig(): void
     {
         $source = realpath($raw = __DIR__.'/../config/github.php') ?: $raw;
 
@@ -64,7 +64,7 @@ class GitHubServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    public function register()
+    public function register(): void
     {
         $this->registerHttpClientFactory();
         $this->registerAuthFactory();
@@ -79,9 +79,9 @@ class GitHubServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    protected function registerHttpClientFactory()
+    private function registerHttpClientFactory(): void
     {
-        $this->app->singleton('github.httpclientfactory', function () {
+        $this->app->singleton('github.httpclientfactory', function (): BuilderFactory {
             $psrFactory = new GuzzlePsrFactory();
 
             return new BuilderFactory(
@@ -99,9 +99,9 @@ class GitHubServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    protected function registerAuthFactory()
+    private function registerAuthFactory(): void
     {
-        $this->app->singleton('github.authfactory', function () {
+        $this->app->singleton('github.authfactory', function (): AuthenticatorFactory {
             return new AuthenticatorFactory();
         });
 
@@ -113,9 +113,9 @@ class GitHubServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    protected function registerCacheFactory()
+    private function registerCacheFactory(): void
     {
-        $this->app->singleton('github.cachefactory', function (Container $app) {
+        $this->app->singleton('github.cachefactory', function (Container $app): ConnectionFactory {
             $cache = $app->bound('cache') ? $app->make('cache') : null;
 
             return new ConnectionFactory($cache);
@@ -129,9 +129,9 @@ class GitHubServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    protected function registerGitHubFactory()
+    private function registerGitHubFactory(): void
     {
-        $this->app->singleton('github.factory', function (Container $app) {
+        $this->app->singleton('github.factory', function (Container $app): GitHubFactory {
             $builder = $app['github.httpclientfactory'];
             $auth = $app['github.authfactory'];
             $cache = $app['github.cachefactory'];
@@ -147,9 +147,9 @@ class GitHubServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    protected function registerManager()
+    private function registerManager(): void
     {
-        $this->app->singleton('github', function (Container $app) {
+        $this->app->singleton('github', function (Container $app): GitHubManager {
             $config = $app['config'];
             $factory = $app['github.factory'];
 
@@ -164,9 +164,9 @@ class GitHubServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    protected function registerBindings()
+    private function registerBindings(): void
     {
-        $this->app->bind('github.connection', function (Container $app) {
+        $this->app->bind('github.connection', function (Container $app): Client {
             $manager = $app['github'];
 
             return $manager->connection();
@@ -180,7 +180,7 @@ class GitHubServiceProvider extends ServiceProvider
      *
      * @return string[]
      */
-    public function provides()
+    public function provides(): array
     {
         return [
             'github.httpclientfactory',

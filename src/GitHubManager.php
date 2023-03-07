@@ -13,6 +13,7 @@ declare(strict_types=1);
 
 namespace GrahamCampbell\GitHub;
 
+use Github\Client;
 use GrahamCampbell\Manager\AbstractManager;
 use Illuminate\Contracts\Config\Repository;
 use Illuminate\Support\Arr;
@@ -84,7 +85,7 @@ class GitHubManager extends AbstractManager
      *
      * @var \GrahamCampbell\GitHub\GitHubFactory
      */
-    protected $factory;
+    protected GitHubFactory $factory;
 
     /**
      * Create a new github manager instance.
@@ -107,7 +108,7 @@ class GitHubManager extends AbstractManager
      *
      * @return \Github\Client
      */
-    protected function createConnection(array $config)
+    protected function createConnection(array $config): Client
     {
         return $this->factory->make($config);
     }
@@ -117,7 +118,7 @@ class GitHubManager extends AbstractManager
      *
      * @return string
      */
-    protected function getConfigName()
+    protected function getConfigName(): string
     {
         return 'github';
     }
@@ -131,7 +132,7 @@ class GitHubManager extends AbstractManager
      *
      * @return array
      */
-    public function getConnectionConfig(string $name = null)
+    public function getConnectionConfig(string $name = null): array
     {
         $config = parent::getConnectionConfig($name);
 
@@ -147,7 +148,7 @@ class GitHubManager extends AbstractManager
      *
      * @return \GrahamCampbell\GitHub\GitHubFactory
      */
-    public function getFactory()
+    public function getFactory(): GitHubFactory
     {
         return $this->factory;
     }

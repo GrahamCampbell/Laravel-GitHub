@@ -21,9 +21,9 @@ use Mockery;
 
 class PrivateKeyAuthenticatorTest extends AbstractTestCase
 {
-    public function testMakeSuccess()
+    public function testMakeSuccess(): void
     {
-        $authenticator = $this->getAuthenticator();
+        $authenticator = new PrivateKeyAuthenticator();
 
         $client = Mockery::mock(Client::class);
         $client->shouldReceive('authenticate')->once();
@@ -33,12 +33,12 @@ class PrivateKeyAuthenticatorTest extends AbstractTestCase
             'keyPath' => sprintf('%s/fixtures/key.pem', dirname(dirname(__DIR__))),
         ]);
 
-        $this->assertInstanceOf(Client::class, $return);
+        self::assertInstanceOf(Client::class, $return);
     }
 
-    public function testMakeWithoutExistingFile()
+    public function testMakeWithoutExistingFile(): void
     {
-        $authenticator = $this->getAuthenticator();
+        $authenticator = new PrivateKeyAuthenticator();
 
         $client = Mockery::mock(Client::class);
 
@@ -51,9 +51,9 @@ class PrivateKeyAuthenticatorTest extends AbstractTestCase
         ]);
     }
 
-    public function testMakeSuccessPEM()
+    public function testMakeSuccessPEM(): void
     {
-        $authenticator = $this->getAuthenticator();
+        $authenticator = new PrivateKeyAuthenticator();
 
         $client = Mockery::mock(Client::class);
         $client->shouldReceive('authenticate')->once();
@@ -94,12 +94,12 @@ KEY;
             'key'   => $key,
         ]);
 
-        $this->assertInstanceOf(Client::class, $return);
+        self::assertInstanceOf(Client::class, $return);
     }
 
-    public function testMakeWithInvalidPEM()
+    public function testMakeWithInvalidPEM(): void
     {
-        $authenticator = $this->getAuthenticator();
+        $authenticator = new PrivateKeyAuthenticator();
 
         $client = Mockery::mock(Client::class);
 
@@ -112,9 +112,9 @@ KEY;
         ]);
     }
 
-    public function testMakeWithoutWithoutAppId()
+    public function testMakeWithoutWithoutAppId(): void
     {
-        $authenticator = $this->getAuthenticator();
+        $authenticator = new PrivateKeyAuthenticator();
 
         $client = Mockery::mock(Client::class);
 
@@ -126,9 +126,9 @@ KEY;
         ]);
     }
 
-    public function testMakeWithoutKeyOrKeyPath()
+    public function testMakeWithoutKeyOrKeyPath(): void
     {
-        $authenticator = $this->getAuthenticator();
+        $authenticator = new PrivateKeyAuthenticator();
 
         $client = Mockery::mock(Client::class);
 
@@ -140,9 +140,9 @@ KEY;
         ]);
     }
 
-    public function testMakeWithBothKeyAndKeyPath()
+    public function testMakeWithBothKeyAndKeyPath(): void
     {
-        $authenticator = $this->getAuthenticator();
+        $authenticator = new PrivateKeyAuthenticator();
 
         $client = Mockery::mock(Client::class);
 
@@ -156,21 +156,16 @@ KEY;
         ]);
     }
 
-    public function testMakeWithoutClient()
+    public function testMakeWithoutClient(): void
     {
-        $authenticator = $this->getAuthenticator();
+        $authenticator = new PrivateKeyAuthenticator();
 
         $this->expectException(InvalidArgumentException::class);
-        $this->expectExceptionMessage('The client instance was not given to the private key authenticator.');
+        $this->expectExceptionMessage('The client instance was not given to the authenticator.');
 
         $authenticator->authenticate([
             'appId'   => 1,
             'keyPath' => __FILE__,
         ]);
-    }
-
-    protected function getAuthenticator()
-    {
-        return new PrivateKeyAuthenticator();
     }
 }

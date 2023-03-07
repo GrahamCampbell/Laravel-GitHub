@@ -26,9 +26,9 @@ use Mockery;
  */
 class TokenAuthenticatorTest extends AbstractTestCase
 {
-    public function testMakeWithMethod()
+    public function testMakeWithMethod(): void
     {
-        $authenticator = $this->getAuthenticator();
+        $authenticator = new TokenAuthenticator();
 
         $client = Mockery::mock(Client::class);
         $client->shouldReceive('authenticate')->once()
@@ -39,12 +39,12 @@ class TokenAuthenticatorTest extends AbstractTestCase
             'method' => 'token',
         ]);
 
-        $this->assertInstanceOf(Client::class, $return);
+        self::assertInstanceOf(Client::class, $return);
     }
 
-    public function testMakeWithoutMethod()
+    public function testMakeWithoutMethod(): void
     {
-        $authenticator = $this->getAuthenticator();
+        $authenticator = new TokenAuthenticator();
 
         $client = Mockery::mock(Client::class);
         $client->shouldReceive('authenticate')->once()
@@ -54,12 +54,12 @@ class TokenAuthenticatorTest extends AbstractTestCase
             'token'  => 'your-token',
         ]);
 
-        $this->assertInstanceOf(Client::class, $return);
+        self::assertInstanceOf(Client::class, $return);
     }
 
-    public function testMakeWithoutToken()
+    public function testMakeWithoutToken(): void
     {
-        $authenticator = $this->getAuthenticator();
+        $authenticator = new TokenAuthenticator();
 
         $client = Mockery::mock(Client::class);
 
@@ -69,21 +69,16 @@ class TokenAuthenticatorTest extends AbstractTestCase
         $authenticator->with($client)->authenticate([]);
     }
 
-    public function testMakeWithoutSettingClient()
+    public function testMakeWithoutSettingClient(): void
     {
-        $authenticator = $this->getAuthenticator();
+        $authenticator = new TokenAuthenticator();
 
         $this->expectException(InvalidArgumentException::class);
-        $this->expectExceptionMessage('The client instance was not given to the token authenticator.');
+        $this->expectExceptionMessage('The client instance was not given to the authenticator.');
 
         $authenticator->authenticate([
             'token'  => 'your-token',
             'method' => 'token',
         ]);
-    }
-
-    protected function getAuthenticator()
-    {
-        return new TokenAuthenticator();
     }
 }

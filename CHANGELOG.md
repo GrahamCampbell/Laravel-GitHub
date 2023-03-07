@@ -2,6 +2,16 @@ CHANGE LOG
 ==========
 
 
+## V12.0 (XX/03/2023)
+
+* Support Laravel 8-10 only
+* Support PHP 7.4-8.2 only
+* Added additional types
+* Removed various getter methods
+* Require knplabs/github-api 3.9
+* Require lcobucci/jwt `^4.3 || ^5.0`
+
+
 ## V11.0 (31/05/2022)
 
 * Dropped PHP < 7.4
