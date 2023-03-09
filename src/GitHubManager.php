@@ -31,6 +31,8 @@ use Illuminate\Support\Arr;
  * @method \Github\Api\Deployment                         deployments()
  * @method \Github\Api\Enterprise                         ent()
  * @method \Github\Api\Enterprise                         enterprise()
+ * @method \Github\Api\Environment                        environment()
+ * @method \Github\Api\Environment                        environments()
  * @method \Github\Api\Miscellaneous\CodeOfConduct        codeOfConduct()
  * @method \Github\Api\Miscellaneous\Emojis               emojis()
  * @method \Github\Api\Miscellaneous\Licenses             licenses()
