@@ -23,7 +23,6 @@ use GrahamCampbell\TestBench\AbstractTestCase as AbstractTestBenchTestCase;
 use GuzzleHttp\Client as GuzzleClient;
 use GuzzleHttp\Psr7\HttpFactory as GuzzlePsrFactory;
 use Http\Client\Common\HttpMethodsClientInterface;
-use Illuminate\Contracts\Cache\Factory;
 use InvalidArgumentException;
 use Mockery;
 
