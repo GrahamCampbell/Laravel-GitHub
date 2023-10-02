@@ -18,7 +18,7 @@
         "guzzlehttp/psr7": "^2.4",
         "illuminate/contracts": "^8.75 || ^9.0 || ^10.0",
         "illuminate/support": "^8.75 || ^9.0 || ^10.0",
-        "knplabs/github-api": "3.11.*",
+        "knplabs/github-api": "3.12.*",
         "lcobucci/jwt": "^4.3 || ^5.0",
         "symfony/cache": "^5.4 || ^6.0"
     },
