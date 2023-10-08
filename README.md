@@ -30,7 +30,7 @@ This version requires [PHP](https://www.php.net/) 7.4-8.2 and supports [Laravel]
 To get the latest version, simply require the project using [Composer](https://getcomposer.org/):
 
 ```bash
-$ composer require "graham-campbell/github:^12.3"
+composer require "graham-campbell/github:^12.3"
 ```
 
 Once installed, if you are not using automatic package discovery, then you need to register the `GrahamCampbell\GitHub\GitHubServiceProvider` service provider in your `config/app.php`.
