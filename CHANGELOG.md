@@ -2,7 +2,7 @@ CHANGE LOG
 ==========
 
 
-## V12.3 (XX/10/2023)
+## V12.3 (08/10/2023)
 
 * Require knplabs/github-api 3.12
 
