@@ -58,16 +58,47 @@ There are two config options:
 
 ##### Default Connection Name
 
-This option (`'default'`) is where you may specify which of the connections below you wish to use as your default connection for all work. Of course, you may use many connections at once using the manager class. The default value for this setting is `'main'`.
+This option (`'default'`) is where you may specify which of the connections below you wish to use as your default connection for all work. Of course, you may use many connections at once using the manager class. The default value for this setting is `'main'`.  
+Option can also be set by setting the environmental variable `GITHUB_DEFAULT_CONNECTION`.
 
 ##### GitHub Connections
 
-This option (`'connections'`) is where each of the connections are setup for your application. Example configuration has been included, but you may add as many connections as you would like. Note that the 5 supported authentication methods are: `"application"`, `"jwt"`, `"none"`, `"private"`, and `"token"`.
+This option (`'connections'`) is where each of the connections are setup for your application. Example configuration has been included, but you may add as many connections as you would like. Note that the 5 supported authentication methods are: `"app"`, `"jwt"`, `"none"`, `"private"`, and `"token"`.
 
 ##### HTTP Cache
 
 This option (`'cache'`) is where each of the cache configurations setup for your application. Only the "illuminate" driver is provided out of the box. Example configuration has been included.
 
+### Authentication
+
+Each connection has its own authentication method, which can be configured by using environmental
+variables.
+
+#### `main`/`token`
+
+| Environmental variable | Description  |
+|------------------------|--------------|
+| `GITHUB_TOKEN`         | Github Token |
+
+#### `app`
+
+| Environmental variable     | Description            |
+|----------------------------|------------------------|
+| `GITHUB_APP_CLIENT_ID`     | Application Client ID  |
+| `GITHUB_APP_CLIENT_SECRET` | Application Secret key |
+
+#### `jwt`
+
+| Environmental variable | Description              |
+|------------------------|--------------------------|
+| `GITHUB_JWT_TOKEN`     | Authentication JWT token |
+
+#### `private`
+
+| Environmental variable    | Description                      |
+|---------------------------|----------------------------------|
+| `GITHUB_PRIVATE_APP_ID`   | Application ID                   |
+| `GITHUB_PRIVATE_KEY_PATH` | Path to the application key file |
 
 ## Usage
 

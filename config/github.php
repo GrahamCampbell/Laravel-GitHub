@@ -24,7 +24,7 @@ return [
     |
     */
 
-    'default' => 'main',
+    'default' => env("GITHUB_DEFAULT_CONNECTION", 'main'),
 
     /*
     |--------------------------------------------------------------------------
@@ -42,7 +42,7 @@ return [
 
         'main' => [
             'method'     => 'token',
-            'token'      => 'your-token',
+            'token'      => env("GITHUB_TOKEN"),
             // 'backoff'    => false,
             // 'cache'      => false,
             // 'version'    => 'v3',
@@ -51,8 +51,8 @@ return [
 
         'app' => [
             'method'       => 'application',
-            'clientId'     => 'your-client-id',
-            'clientSecret' => 'your-client-secret',
+            'clientId'     => env("GITHUB_APP_CLIENT_ID"),
+            'clientSecret' => env("GITHUB_APP_CLIENT_SECRET"),
             // 'backoff'      => false,
             // 'cache'        => false,
             // 'version'      => 'v3',
@@ -61,7 +61,7 @@ return [
 
         'jwt' => [
             'method'       => 'jwt',
-            'token'        => 'your-jwt-token',
+            'token'        => env("GITHUB_JWT_TOKEN"),
             // 'backoff'      => false,
             // 'cache'        => false,
             // 'version'      => 'v3',
@@ -70,8 +70,8 @@ return [
 
         'private' => [
             'method'     => 'private',
-            'appId'      => 'your-github-app-id',
-            'keyPath'    => 'your-private-key-path',
+            'appId'      => env("GITHUB_PRIVATE_APP_ID"),
+            'keyPath'    => env("GITHUB_PRIVATE_KEY_PATH"),
             // 'key'        => 'your-private-key-content',
             // 'passphrase' => 'your-private-key-passphrase'
             // 'backoff'    => false,
