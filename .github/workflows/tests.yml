@@ -18,8 +18,12 @@ jobs:
             laravel: '9'
           - php: '7.4'
             laravel: '10'
+          - php: '7.4'
+            laravel: '11'
           - php: '8.0'
             laravel: '10'
+          - php: '8.0'
+            laravel: '11'
           - php: '8.2'
             laravel: '8'
           - php: '8.3'
@@ -68,6 +72,14 @@ jobs:
           max_attempts: 5
           command: composer require "laravel/framework:^10.34.2" "phpunit/phpunit:^10.4.2" --no-update --no-interaction
         if: "matrix.laravel == '10'"
+
+      - name: Select Laravel 11
+        uses: nick-invision/retry@v2
+        with:
+          timeout_minutes: 5
+          max_attempts: 5
+          command: composer require "laravel/framework:^11.0" "phpunit/phpunit:^10.4.2" --no-update --no-interaction
+        if: "matrix.laravel == '11'"
 
       - name: Install PHP Dependencies
         uses: nick-invision/retry@v2
