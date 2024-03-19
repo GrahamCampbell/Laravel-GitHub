@@ -2,6 +2,11 @@ CHANGE LOG
 ==========
 
 
+## V12.6 (19/03/2024)
+
+* Require knplabs/github-api 3.14
+
+
 ## V12.5 (17/03/2024)
 
 * Added Laravel 11 support
