@@ -13,12 +13,14 @@ declare(strict_types=1);
 
 namespace GrahamCampbell\GitHub\Facades;
 
+use GrahamCampbell\GitHub\GitHubManager;
 use Illuminate\Support\Facades\Facade;
 
 /**
  * This is the github facade class.
  *
  * @author Graham Campbell <hello@gjcampbell.co.uk>
+ * @mixin GitHubManager
  */
 class GitHub extends Facade
 {
