@@ -2,6 +2,12 @@ CHANGE LOG
 ==========
 
 
+## V12.8 (02/03/2025)
+
+* Added graham-campbell/bounded-cache v3 support
+* Require knplabs/github-api 3.16
+
+
 ## V12.7 (02/03/2025)
 
 * Added PHP 8.4 support
