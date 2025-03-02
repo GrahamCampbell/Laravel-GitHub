@@ -2,6 +2,12 @@ CHANGE LOG
 ==========
 
 
+## V12.7 (02/03/2025)
+
+* Added PHP 8.4 support
+* Require knplabs/github-api 3.15
+
+
 ## V12.6 (19/03/2024)
 
 * Require knplabs/github-api 3.14
