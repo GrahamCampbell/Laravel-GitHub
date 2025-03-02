@@ -27,6 +27,7 @@ use Illuminate\Support\Arr;
  * @method array<string,\Github\Client>                   getConnections()
  * @method \Github\Api\CurrentUser                        currentUser()
  * @method \Github\Api\CurrentUser                        me()
+ * @method \Github\Api\Copilot\Usage                      copilotUsage()
  * @method \Github\Api\Deployment                         deployment()
  * @method \Github\Api\Deployment                         deployments()
  * @method \Github\Api\Enterprise                         ent()
