@@ -2,6 +2,12 @@ CHANGE LOG
 ==========
 
 
+## V13.0 (XX/03/2025)
+
+* Support only PHP 8.1-8.4
+* Support only Laravel 10-12
+
+
 ## V12.8 (02/03/2025)
 
 * Added graham-campbell/bounded-cache v3 support
