@@ -83,12 +83,7 @@ use Illuminate\Support\Arr;
  */
 class GitHubManager extends AbstractManager
 {
-    /**
-     * The factory instance.
-     *
-     * @var \GrahamCampbell\GitHub\GitHubFactory
-     */
-    protected GitHubFactory $factory;
+    protected readonly GitHubFactory $factory;
 
     /**
      * Create a new github manager instance.

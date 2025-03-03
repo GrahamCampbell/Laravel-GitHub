@@ -36,10 +36,10 @@ class AuthenticatorFactory
     {
         return match ($method) {
             'application' => new Authenticator\ApplicationAuthenticator(),
-            'jwt' => new Authenticator\JwtAuthenticator(),
-            'private' => new Authenticator\PrivateKeyAuthenticator(),
-            'token' => new Authenticator\TokenAuthenticator(),
-            default => throw new InvalidArgumentException("Unsupported authentication method [$method]."),
+            'jwt'         => new Authenticator\JwtAuthenticator(),
+            'private'     => new Authenticator\PrivateKeyAuthenticator(),
+            'token'       => new Authenticator\TokenAuthenticator(),
+            default       => throw new InvalidArgumentException("Unsupported authentication method [$method]."),
         };
     }
 }
