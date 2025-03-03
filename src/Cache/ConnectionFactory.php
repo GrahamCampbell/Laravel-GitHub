@@ -33,7 +33,7 @@ class ConnectionFactory
      * @return void
      */
     public function __construct(
-        private readonly Factory $cache = null,
+        private readonly ?Factory $cache = null,
     ) {
     }
 
