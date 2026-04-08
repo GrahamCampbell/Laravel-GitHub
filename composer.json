@@ -16,8 +16,8 @@
         "graham-campbell/manager": "^5.2",
         "guzzlehttp/guzzle": "^7.9.2",
         "guzzlehttp/psr7": "^2.7.0",
-        "illuminate/contracts": "^10.44 || ^11.0 || ^12.0",
-        "illuminate/support": "^10.44 || ^11.0 || ^12.0",
+        "illuminate/contracts": "^10.44 || ^11.0 || ^12.0 || ^13.0",
+        "illuminate/support": "^10.44 || ^11.0 || ^12.0 || ^13.0",
         "knplabs/github-api": "3.16.*",
         "lcobucci/jwt": "^5.2",
         "symfony/cache": "^6.2 || ^7.0"
