@@ -2,6 +2,12 @@ CHANGE LOG
 ==========
 
 
+## V13.1 (UPCOMING)
+
+* Add PHP 8.5 support
+* Add Laravel 13 support
+
+
 ## V13.0 (03/03/2025)
 
 * Support only PHP 8.1-8.4
