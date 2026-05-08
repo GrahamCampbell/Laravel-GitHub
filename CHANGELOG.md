@@ -2,7 +2,7 @@ CHANGE LOG
 ==========
 
 
-## V13.1.1 (UPCOMING)
+## V13.1.1 (09/05/2026)
 
 * Added missing organization members manager method docs
 
