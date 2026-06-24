@@ -25,9 +25,16 @@
     "require-dev": {
         "graham-campbell/analyzer": "^5.1",
         "graham-campbell/testbench": "^6.2",
+        "laravel/facade-documenter": "dev-main",
         "mockery/mockery": "^1.6.12",
         "phpunit/phpunit": "^10.5.63 || ^11.5.55 || ^12.5.14"
     },
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "https://github.com/laravel/facade-documenter.git"
+        }
+    ],
     "autoload": {
         "psr-4": {
             "GrahamCampbell\\GitHub\\": "src/"
@@ -43,6 +50,10 @@
         "allow-plugins": {
             "php-http/discovery": true
         }
+    },
+    "scripts": {
+        "facade:fix": "php -f vendor/bin/facade.php -- GrahamCampbell\\\\GitHub\\\\Facades\\\\GitHub",
+        "facade:lint": "php -f vendor/bin/facade.php -- --lint GrahamCampbell\\\\GitHub\\\\Facades\\\\GitHub"
     },
     "extra": {
         "laravel": {
